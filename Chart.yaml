@@ -1,6 +1,9 @@
 apiVersion: v2
-name: @jpitlor/homelab-containers
+name: homelab-containers
 description: The containers that make up my Homelab
 type: application
 version: 1.0.0
 appVersion: "1.0.0"
+dependencies:
+  - name:
+    version:
