@@ -2,8 +2,40 @@ apiVersion: v2
 name: homelab-containers
 description: The containers that make up my Homelab
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "1.0.0"
 dependencies:
-  - name:
-    version:
+  - name: homepage
+    repository: https://jameswynn.github.io/helm-charts
+    version: 2.0.1
+  - name: gitea
+    repository: https://dl.gitea.io/charts
+    version: 10.6.0
+  - name: vaultwarden
+    version: 0.14.1
+    repository: https://charts.gabe565.com
+  - name: grafana
+    version: 8.6.2
+    repository: https://grafana.github.io/helm-charts
+  - name: immich
+    version: 0.8.4
+    repository: https://immich-app.github.io/immich-charts
+  - name: tandoor
+    version: 0.9.7
+    repository: https://charts.gabe565.com
+  - name: guacamole
+    version: 1.4.1
+    repository: https://charts.beryju.org
+  - name: nextcloud
+    version: 6.2.4
+    repository: https://nextcloud.github.io/helm/
+  - name: plex-media-server
+    version: 0.5.0
+    repository: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
+# This is commented out for now because I'm not actively playing Minecraft
+#  - name: minecraft
+#    version: 4.23.2
+#    repository: https://itzg.github.io/minecraft-server-charts/
+  - name: bluesky-pds
+    version: 0.2.0
+    repository: https://charts.nerkho.ch
