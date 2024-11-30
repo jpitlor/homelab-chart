@@ -74,6 +74,16 @@ grafana:
       gethomepage.dev/name: Grafana
 
 immich:
+  immich:
+    persistence:
+      library:
+        existingClaim: default/pvc-claim-2
+  image:
+    tg: 0.8.4
+  redis:
+    enabled: true
+  postgresql:
+    enabled: true
   server:
     ingress:
       main:
