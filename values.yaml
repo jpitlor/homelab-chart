@@ -65,10 +65,8 @@ grafana:
     enabled: true
     hosts:
       - logs.pitlor.dev
-    paths:
-      - /
     annotations:
-      gethomepage.dev/enabled: true
+      gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Status Dashboards and Logs
       gethomepage.dev/icon: grafana.png
       gethomepage.dev/name: Grafana
