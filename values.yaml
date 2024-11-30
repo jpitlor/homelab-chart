@@ -41,7 +41,7 @@ gitea:
         paths:
             - path: /
     annotations:
-      gethomepage.dev/enabled: true
+      gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Code Hosting
       gethomepage.dev/icon: gitea.png
       gethomepage.dev/name: Gitea
@@ -55,7 +55,7 @@ vaultwarden:
           paths:
             - path: /
       annotations:
-        gethomepage.dev/enabled: true
+        gethomepage.dev/enabled: "true"
         gethomepage.dev/description: Passwords
         gethomepage.dev/icon: vaultwarden.png
         gethomepage.dev/name: Vaultwarden
@@ -91,7 +91,7 @@ immich:
             paths:
               - path: /
         annotations:
-          gethomepage.dev/enabled: true
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Photos
           gethomepage.dev/icon: immich.png
           gethomepage.dev/name: Immich
@@ -108,7 +108,7 @@ tandoor:
           paths:
             - path: /
       annotations:
-        gethomepage.dev/enabled: true
+        gethomepage.dev/enabled: "true"
         gethomepage.dev/description: Recipes
         gethomepage.dev/icon: tandoor.png
         gethomepage.dev/name: Tandoor
@@ -122,7 +122,7 @@ guacamole:
         paths:
             - path: /
     annotations:
-      gethomepage.dev/enabled: true
+      gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Remote Desktop
       gethomepage.dev/icon: guacamole.png
       gethomepage.dev/name: Guacamole
@@ -131,7 +131,7 @@ nextcloud:
   ingress:
     enabled: true
     annotations:
-      gethomepage.dev/enabled: true
+      gethomepage.dev/enabled: "true"
       gethomepage.dev/description: File Server
       gethomepage.dev/icon: nextcloud.png
       gethomepage.dev/name: NextCloud
@@ -146,7 +146,7 @@ plex-media-server:
     enabled: true
     url: media.pitlor.dev
     annotations:
-      gethomepage.dev/enabled: true
+      gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Media Server
       gethomepage.dev/icon: plex.png
       gethomepage.dev/name: Plex
