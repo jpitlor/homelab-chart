@@ -38,6 +38,8 @@ gitea:
     enabled: true
     hosts:
       - host: code.pitlor.dev
+        paths:
+            - path: /
     annotations:
       gethomepage.dev/enabled: true
       gethomepage.dev/description: Code Hosting
@@ -50,6 +52,8 @@ vaultwarden:
       enabled: true
       hosts:
         - host: passwords.pitlor.dev
+          paths:
+            - path: /
       annotations:
         gethomepage.dev/enabled: true
         gethomepage.dev/description: Passwords
@@ -61,6 +65,8 @@ grafana:
     enabled: true
     hosts:
       - logs.pitlor.dev
+    paths:
+      - /
     annotations:
       gethomepage.dev/enabled: true
       gethomepage.dev/description: Status Dashboards and Logs
@@ -74,6 +80,8 @@ immich:
         enabled: true
         hosts:
           - host: photos.pitlor.dev
+            paths:
+              - path: /
         annotations:
           gethomepage.dev/enabled: true
           gethomepage.dev/description: Photos
@@ -89,6 +97,8 @@ tandoor:
       enabled: true
       hosts:
         - host: recipes.pitlor.dev
+          paths:
+            - path: /
       annotations:
         gethomepage.dev/enabled: true
         gethomepage.dev/description: Recipes
@@ -101,6 +111,8 @@ guacamole:
     enabled: true
     hosts:
       - host: rdp.pitlor.dev
+        paths:
+            - path: /
     annotations:
       gethomepage.dev/enabled: true
       gethomepage.dev/description: Remote Desktop
@@ -141,3 +153,5 @@ bluesky-pds:
   ingress:
     hosts:
       - host: tweet.pitlor.dev
+        paths:
+            - path: /
