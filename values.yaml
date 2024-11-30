@@ -57,7 +57,15 @@ vaultwarden:
         gethomepage.dev/name: Vaultwarden
 
 grafana:
-  # TODO fill this in
+  ingress:
+    enabled: true
+    hosts:
+      - logs.pitlor.dev
+    annotations:
+      gethomepage.dev/enabled: true
+      gethomepage.dev/description: Status Dashboards and Logs
+      gethomepage.dev/icon: grafana.png
+      gethomepage.dev/name: Grafana
 
 immich:
   server:
@@ -110,8 +118,8 @@ nextcloud:
   nextcloud:
     host: files.pitlor.dev
 
-kavita:
-  # TODO fill this in
+#kavita:
+#  # TODO fill this in
 
 plex-media-server:
   ingress:
