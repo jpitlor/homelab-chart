@@ -40,6 +40,7 @@ gitea:
       - host: code.pitlor.dev
         paths:
             - path: /
+              pathType: Prefix
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Code Hosting
@@ -54,6 +55,7 @@ vaultwarden:
         - host: passwords.pitlor.dev
           paths:
             - path: /
+              pathType: Prefix
       annotations:
         gethomepage.dev/enabled: "true"
         gethomepage.dev/description: Passwords
@@ -90,6 +92,7 @@ immich:
           - host: photos.pitlor.dev
             paths:
               - path: /
+                pathType: Prefix
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Photos
@@ -107,6 +110,7 @@ tandoor:
         - host: recipes.pitlor.dev
           paths:
             - path: /
+              pathType: Prefix
       annotations:
         gethomepage.dev/enabled: "true"
         gethomepage.dev/description: Recipes
@@ -120,7 +124,8 @@ guacamole:
     hosts:
       - host: rdp.pitlor.dev
         paths:
-            - path: /
+          - path: /
+            pathType: Prefix
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Remote Desktop
@@ -163,3 +168,4 @@ bluesky-pds:
       - host: tweet.pitlor.dev
         paths:
             - path: /
+              pathType: Prefix
