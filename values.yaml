@@ -123,9 +123,7 @@ guacamole:
     enabled: true
     hosts:
       - host: rdp.pitlor.dev
-        paths:
-          - path: /
-            pathType: Prefix
+        paths: [/]
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Remote Desktop
