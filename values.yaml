@@ -1,5 +1,3 @@
-namespace: homelab
-
 homepage:
   config:
     widgets:
@@ -37,10 +35,10 @@ gitea:
   ingress:
     enabled: true
     hosts:
-      - host: code.pitlor.dev
+      - host: code.test.pitlor.dev
         paths:
-            - path: /
-              pathType: Prefix
+          - path: /
+            pathType: Prefix
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Code Hosting
@@ -52,7 +50,7 @@ vaultwarden:
     main:
       enabled: true
       hosts:
-        - host: passwords.pitlor.dev
+        - host: passwords.test.pitlor.dev
           paths:
             - path: /
               pathType: Prefix
@@ -66,7 +64,7 @@ grafana:
   ingress:
     enabled: true
     hosts:
-      - logs.pitlor.dev
+      - logs.test.pitlor.dev
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Status Dashboards and Logs
@@ -89,7 +87,7 @@ immich:
       main:
         enabled: true
         hosts:
-          - host: photos.pitlor.dev
+          - host: photos.test.pitlor.dev
             paths:
               - path: /
                 pathType: Prefix
@@ -107,7 +105,7 @@ tandoor:
     main:
       enabled: true
       hosts:
-        - host: recipes.pitlor.dev
+        - host: recipes.test.pitlor.dev
           paths:
             - path: /
               pathType: Prefix
@@ -122,7 +120,7 @@ guacamole:
   ingress:
     enabled: true
     hosts:
-      - host: rdp.pitlor.dev
+      - host: rdp.test.pitlor.dev
         paths: [/]
     annotations:
       gethomepage.dev/enabled: "true"
@@ -139,7 +137,7 @@ nextcloud:
       gethomepage.dev/icon: nextcloud.png
       gethomepage.dev/name: NextCloud
   nextcloud:
-    host: files.pitlor.dev
+    host: files.test.pitlor.dev
 
 #kavita:
 #  # TODO fill this in
@@ -147,7 +145,7 @@ nextcloud:
 plex-media-server:
   ingress:
     enabled: true
-    url: media.pitlor.dev
+    url: media.test.pitlor.dev
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Media Server
@@ -163,7 +161,7 @@ plex-media-server:
 bluesky-pds:
   ingress:
     hosts:
-      - host: tweet.pitlor.dev
+      - host: tweet.test.pitlor.dev
         paths:
-            - path: /
-              pathType: Prefix
+          - path: /
+            pathType: Prefix
