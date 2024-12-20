@@ -24,17 +24,17 @@ homepage:
   enableRbac: true
   ingress:
     main:
+      className: "traefik"
       enabled: true
       hosts:
         - host: homepage.pitlor.local
           paths:
             - path: /
               pathType: Prefix
-      annotations:
-        kubernetes.io/ingress.class: "traefik"
 
 gitea:
   ingress:
+    className: "traefik"
     enabled: true
     hosts:
       - host: code.test.pitlor.dev
@@ -46,11 +46,11 @@ gitea:
       gethomepage.dev/description: Code Hosting
       gethomepage.dev/icon: gitea.png
       gethomepage.dev/name: Gitea
-      kubernetes.io/ingress.class: "traefik"
 
 vaultwarden:
   ingress:
     main:
+      className: "traefik"
       enabled: true
       hosts:
         - host: passwords.test.pitlor.dev
@@ -62,10 +62,10 @@ vaultwarden:
         gethomepage.dev/description: Passwords
         gethomepage.dev/icon: vaultwarden.png
         gethomepage.dev/name: Vaultwarden
-        kubernetes.io/ingress.class: "traefik"
 
 grafana:
   ingress:
+    className: "traefik"
     enabled: true
     hosts:
       - logs.test.pitlor.dev
@@ -74,7 +74,6 @@ grafana:
       gethomepage.dev/description: Status Dashboards and Logs
       gethomepage.dev/icon: grafana.png
       gethomepage.dev/name: Grafana
-      kubernetes.io/ingress.class: "traefik"
 
 immich:
   immich:
@@ -90,6 +89,7 @@ immich:
   server:
     ingress:
       main:
+        className: "traefik"
         enabled: true
         hosts:
           - host: photos.test.pitlor.dev
@@ -101,7 +101,6 @@ immich:
           gethomepage.dev/description: Photos
           gethomepage.dev/icon: immich.png
           gethomepage.dev/name: Immich
-          kubernetes.io/ingress.class: "traefik"
 
 
 tandoor:
@@ -109,6 +108,7 @@ tandoor:
     TIMEZONE: America/New_York
   ingress:
     main:
+      className: "traefik"
       enabled: true
       hosts:
         - host: recipes.test.pitlor.dev
@@ -120,11 +120,11 @@ tandoor:
         gethomepage.dev/description: Recipes
         gethomepage.dev/icon: tandoor.png
         gethomepage.dev/name: Tandoor
-        kubernetes.io/ingress.class: "traefik"
 
 
 guacamole:
   ingress:
+    className: "traefik"
     enabled: true
     hosts:
       - host: rdp.test.pitlor.dev
@@ -134,17 +134,16 @@ guacamole:
       gethomepage.dev/description: Remote Desktop
       gethomepage.dev/icon: guacamole.png
       gethomepage.dev/name: Guacamole
-      kubernetes.io/ingress.class: "traefik"
 
 nextcloud:
   ingress:
+    className: "traefik"
     enabled: true
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: File Server
       gethomepage.dev/icon: nextcloud.png
       gethomepage.dev/name: NextCloud
-      kubernetes.io/ingress.class: "traefik"
   nextcloud:
     host: files.test.pitlor.dev
 
@@ -153,6 +152,7 @@ nextcloud:
 
 plex-media-server:
   ingress:
+    className: "traefik"
     enabled: true
     url: media.test.pitlor.dev
     annotations:
@@ -160,7 +160,6 @@ plex-media-server:
       gethomepage.dev/description: Media Server
       gethomepage.dev/icon: plex.png
       gethomepage.dev/name: Plex
-      kubernetes.io/ingress.class: "traefik"
 
 
 # This is commented out for now because I'm not actively playing Minecraft
@@ -170,12 +169,12 @@ plex-media-server:
 
 bluesky-pds:
   ingress:
+    className: "traefik"
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Social Media data server
       gethomepage.dev/icon: bluesky.png
       gethomepage.dev/name: Bluesky
-      kubernetes.io/ingress.class: "traefik"
     hosts:
       - host: tweet.test.pitlor.dev
         paths:
