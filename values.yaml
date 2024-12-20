@@ -30,6 +30,8 @@ homepage:
           paths:
             - path: /
               pathType: Prefix
+      annotations:
+        kubernetes.io/ingress.class: "traefik"
 
 gitea:
   ingress:
@@ -44,6 +46,7 @@ gitea:
       gethomepage.dev/description: Code Hosting
       gethomepage.dev/icon: gitea.png
       gethomepage.dev/name: Gitea
+      kubernetes.io/ingress.class: "traefik"
 
 vaultwarden:
   ingress:
@@ -59,6 +62,7 @@ vaultwarden:
         gethomepage.dev/description: Passwords
         gethomepage.dev/icon: vaultwarden.png
         gethomepage.dev/name: Vaultwarden
+        kubernetes.io/ingress.class: "traefik"
 
 grafana:
   ingress:
@@ -70,6 +74,7 @@ grafana:
       gethomepage.dev/description: Status Dashboards and Logs
       gethomepage.dev/icon: grafana.png
       gethomepage.dev/name: Grafana
+      kubernetes.io/ingress.class: "traefik"
 
 immich:
   immich:
@@ -96,6 +101,7 @@ immich:
           gethomepage.dev/description: Photos
           gethomepage.dev/icon: immich.png
           gethomepage.dev/name: Immich
+          kubernetes.io/ingress.class: "traefik"
 
 
 tandoor:
@@ -114,6 +120,7 @@ tandoor:
         gethomepage.dev/description: Recipes
         gethomepage.dev/icon: tandoor.png
         gethomepage.dev/name: Tandoor
+        kubernetes.io/ingress.class: "traefik"
 
 
 guacamole:
@@ -127,6 +134,7 @@ guacamole:
       gethomepage.dev/description: Remote Desktop
       gethomepage.dev/icon: guacamole.png
       gethomepage.dev/name: Guacamole
+      kubernetes.io/ingress.class: "traefik"
 
 nextcloud:
   ingress:
@@ -136,6 +144,7 @@ nextcloud:
       gethomepage.dev/description: File Server
       gethomepage.dev/icon: nextcloud.png
       gethomepage.dev/name: NextCloud
+      kubernetes.io/ingress.class: "traefik"
   nextcloud:
     host: files.test.pitlor.dev
 
@@ -151,6 +160,7 @@ plex-media-server:
       gethomepage.dev/description: Media Server
       gethomepage.dev/icon: plex.png
       gethomepage.dev/name: Plex
+      kubernetes.io/ingress.class: "traefik"
 
 
 # This is commented out for now because I'm not actively playing Minecraft
@@ -160,6 +170,12 @@ plex-media-server:
 
 bluesky-pds:
   ingress:
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: Social Media data server
+      gethomepage.dev/icon: bluesky.png
+      gethomepage.dev/name: Bluesky
+      kubernetes.io/ingress.class: "traefik"
     hosts:
       - host: tweet.test.pitlor.dev
         paths:
