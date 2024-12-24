@@ -1,0 +1,20 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ .Values.nasStorageClassName }}
+provisioner: smb.csi.k8s.io
+parameters:
+  source: //{{ .Values.nasIpAddress }}/{{ .Values.nasHomelabDataFolder }}/
+  subDir: "${pvc.metadata.name}"
+  csi.storage.k8s.io/provisioner-secret-name: {{ .Values.nasCredentialsName }}
+  csi.storage.k8s.io/provisioner-secret-namespace: {{ .Release.Namespace }}
+  csi.storage.k8s.io/node-stage-secret-name: {{ .Values.nasCredentialsName }}
+  csi.storage.k8s.io/node-stage-secret-namespace: {{ .Release.Namespace }}
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0774
+  - file_mode=0774
+  - uid=1001
+  - gid=1001

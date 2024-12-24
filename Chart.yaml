@@ -2,7 +2,7 @@ apiVersion: v2
 name: homelab-containers
 description: The containers that make up my Homelab
 type: application
-version: 1.0.1
+version: 1.0.2
 appVersion: "1.0.0"
 dependencies:
   - name: homepage
@@ -23,9 +23,9 @@ dependencies:
   - name: tandoor
     version: 0.9.7
     repository: https://charts.gabe565.com
-  - name: guacamole
-    version: 1.4.1
-    repository: https://charts.beryju.org
+#  - name: guacamole
+#    version: 1.4.1
+#    repository: https://charts.beryju.org
   - name: nextcloud
     version: 6.2.4
     repository: https://nextcloud.github.io/helm/

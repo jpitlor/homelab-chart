@@ -1,3 +1,9 @@
+nasStorageClassName: nas
+nasCredentialsName: nas-credentials
+nasIpAddress: 192.168.0.31
+nasUsername: docker_containers
+nasHomelabDataFolder: Homelab
+
 homepage:
   config:
     widgets:
@@ -33,6 +39,21 @@ homepage:
               pathType: Prefix
 
 gitea:
+  gitea:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    config:
+      server:
+        ENABLE_PPROF: true
+  persistence:
+    enabled: true
+    storageClass: nas
+  postgresql:
+    persistence:
+      enabled: true
+      storageClass: nas
   ingress:
     className: "traefik"
     enabled: true
@@ -48,6 +69,15 @@ gitea:
       gethomepage.dev/name: Gitea
 
 vaultwarden:
+  persistence:
+    enabled: true
+    storageClass: nas
+  postgresql:
+    enabled: true
+    primary:
+      persistence:
+        enabled: true
+        storageClass: nas
   ingress:
     main:
       className: "traefik"
@@ -64,6 +94,9 @@ vaultwarden:
         gethomepage.dev/name: Vaultwarden
 
 grafana:
+  persistence:
+    enabled: true
+    storageClassName: nas
   ingress:
     className: "traefik"
     enabled: true
@@ -77,15 +110,18 @@ grafana:
 
 immich:
   immich:
+    metrics:
+      enabled: true
     persistence:
       library:
-        existingClaim: default/pvc-claim-2
+        existingClaim: immich-library-pvc
   image:
-    tg: 0.8.4
+    tag: 0.8.4
   redis:
     enabled: true
   postgresql:
     enabled: true
+    # TODO this is deprecated, also has no persistence
   server:
     ingress:
       main:
@@ -101,7 +137,10 @@ immich:
           gethomepage.dev/description: Photos
           gethomepage.dev/icon: immich.png
           gethomepage.dev/name: Immich
-
+  machine-learning:
+    persistence:
+      cache:
+        storageClass: nas
 
 tandoor:
   env:
@@ -120,22 +159,68 @@ tandoor:
         gethomepage.dev/description: Recipes
         gethomepage.dev/icon: tandoor.png
         gethomepage.dev/name: Tandoor
-
-
-guacamole:
-  ingress:
-    className: "traefik"
+  persistence:
+    config:
+      enabled: true
+      storageClass: nas
+    media:
+      enabled: true
+      storageClass: nas
+  postgresql:
     enabled: true
-    hosts:
-      - host: rdp.test.pitlor.dev
-        paths: [/]
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: Remote Desktop
-      gethomepage.dev/icon: guacamole.png
-      gethomepage.dev/name: Guacamole
+    primary:
+      persistence:
+        enabled: true
+        storageClass: nas
+
+# TODO find a helm chart for this
+#guacamole:
+#  ingress:
+#    className: "traefik"
+#    enabled: true
+#    hosts:
+#      - host: rdp.test.pitlor.dev
+#        paths: [/]
+#    annotations:
+#      gethomepage.dev/enabled: "true"
+#      gethomepage.dev/description: Remote Desktop
+#      gethomepage.dev/icon: guacamole.png
+#      gethomepage.dev/name: Guacamole
 
 nextcloud:
+  redis:
+    enabled: true
+    global:
+      storageClass: nas
+    master:
+      persistence:
+        enabled: true
+    replica:
+      persistence:
+        enabled: true
+  internalDatabase:
+    enabled: false
+  externalDatabase:
+    enabled: true
+    type: mysql
+  mariadb:
+    enabled: true
+    global:
+      defaultStorageClass: nas
+    primary:
+      persistence:
+        enabled: true
+        storageClass: nas
+  persistence:
+    enabled: true
+    storageClass: nas
+    nextcloudData:
+      enabled: true
+      storageClass: nas
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
   ingress:
     className: "traefik"
     enabled: true
@@ -160,6 +245,8 @@ plex-media-server:
       gethomepage.dev/description: Media Server
       gethomepage.dev/icon: plex.png
       gethomepage.dev/name: Plex
+  pms:
+    storageClassName: nas
 
 
 # This is commented out for now because I'm not actively playing Minecraft
@@ -180,3 +267,12 @@ bluesky-pds:
         paths:
           - path: /
             pathType: Prefix
+      - host: "*.tweet.test.pitlor.dev"
+        paths:
+          - path: /
+            pathType: Prefix
+  pds:
+    config:
+      hostname: tweet.test.pitlor.dev
+    dataStorage:
+      storageClass: nas
