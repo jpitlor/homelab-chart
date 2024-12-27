@@ -1,0 +1,20 @@
+prometheus.remote_rewrite "default" {
+    endpoint {
+        url = "http://grafana.homelab.svc.cluster.local/api/v1/write"
+    }
+}
+
+discovery.kubernetes "pods" {
+    role = "pod"
+}
+
+prometheus.scrape "pods" {
+    targets = discovery.kubernetes.pods.targets
+    forward_to = [prometheus.remote_rewrite.default.receiver]
+}
+
+otelcol.exporter.otlp "default" {
+    client {
+        url = "http://grafana.homelab.svc.cluster.local/api/v1/write"
+    }
+}

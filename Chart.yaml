@@ -5,6 +5,21 @@ type: application
 version: 1.0.2
 appVersion: "1.0.0"
 dependencies:
+  # Monitoring
+  - name: grafana
+    version: 8.6.2
+    repository: https://grafana.github.io/helm-charts
+  - name: alloy
+    version: 0.10.1
+    repository: https://grafana.github.io/helm-charts
+  - name: loki
+    version: 2.1.1
+    repository: https://grafana.github.io/loki/charts
+  - name: prometheus
+    version: 26.0.1
+    repository: https://prometheus-community.github.io/helm-charts
+
+  # Applications
   - name: homepage
     repository: https://jameswynn.github.io/helm-charts
     version: 2.0.1
@@ -14,9 +29,6 @@ dependencies:
   - name: vaultwarden
     version: 0.14.1
     repository: https://charts.gabe565.com
-  - name: grafana
-    version: 8.6.2
-    repository: https://grafana.github.io/helm-charts
   - name: immich
     version: 0.8.4
     repository: https://immich-app.github.io/immich-charts

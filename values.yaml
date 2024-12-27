@@ -94,6 +94,7 @@ vaultwarden:
         gethomepage.dev/name: Vaultwarden
 
 grafana:
+  fullNameOverride: grafana
   persistence:
     enabled: true
     storageClassName: nas
@@ -107,6 +108,19 @@ grafana:
       gethomepage.dev/description: Status Dashboards and Logs
       gethomepage.dev/icon: grafana.png
       gethomepage.dev/name: Grafana
+  dataSource:
+    - name: Prometheus
+      type: prometheus
+      url: 'http://prometheus.homelab.svc.cluster.local'
+    - name: Loki
+      type: loki
+      url: 'http://loki.homelab.svc.cluster.local'
+
+alloy:
+  configMap:
+    create: false
+    name: alloy-config
+    key: config.alloy
 
 immich:
   immich:
