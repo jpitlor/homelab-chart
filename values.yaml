@@ -290,3 +290,16 @@ bluesky-pds:
       hostname: tweet.test.pitlor.dev
     dataStorage:
       storageClass: nas
+
+# TODO - HA postgres
+infisical:
+  image:
+    tag: "v0.99.0-postgres"
+  ingress:
+    hostName: vault.pitlor.local
+    ingressClassName: traefik
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: Secret Management
+      gethomepage.dev/icon: infiscal.png
+      gethomepage.dev/name: Infiscal
