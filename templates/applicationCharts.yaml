@@ -1,0 +1,29 @@
+{{ $lastIndex := sub (len .Values.applications) 1 }}
+{{- range $index, $application := .Values.applications }}
+{{- if $application.enabled -}}
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $application.name }}
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: {{ $application.name }}-chart-{{ $.Release.Name }}
+  namespace: kube-system
+spec:
+  repo: {{ $application.repository }}
+  chart: {{ $application.name }}
+  targetNamespace: {{ $application.name }}
+  {{- if $.Files.Get (printf "files/values/%s.yaml" $application.name) }}
+  valuesContent: |-
+{{ $.Files.Get (printf "files/values/%s.yaml" $application.name) | indent 4 }}
+  {{- end }}
+
+{{- if ne $index $lastIndex }}
+---
+{{- end }}
+
+{{- end }}
+{{- end }}

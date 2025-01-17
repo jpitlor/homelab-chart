@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../homelab-configuration" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../homelab-provisioner" vcs="Git" />
   </component>
 </project>

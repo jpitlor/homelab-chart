@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: infiscal-secrets
+type: Opaque
+stringData:
+  AUTH_SECRET: "abc123"
+  ENCRYPTION_KEY: "abc123"
+  SITE_URL: "https://vault.test.pitlor.dev"

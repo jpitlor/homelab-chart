@@ -1,0 +1,18 @@
+persistence:
+  enabled: true
+  storageClass: nas
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      storageClass: nas
+ingress:
+  class: "traefik"
+  enabled: true
+  hostName: passwords.test.pitlor.dev
+  additionalAnnotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Passwords
+    gethomepage.dev/icon: vaultwarden.png
+    gethomepage.dev/name: Vaultwarden

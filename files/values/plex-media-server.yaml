@@ -1,0 +1,11 @@
+ingress:
+  className: "traefik"
+  enabled: true
+  url: media.test.pitlor.dev
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Media Server
+    gethomepage.dev/icon: plex.png
+    gethomepage.dev/name: Plex
+pms:
+  storageClassName: nas

@@ -1,14 +1,14 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: {{ .Values.nasStorageClassName }}
+  name: {{ .Values.nas.storageClassName }}
 provisioner: smb.csi.k8s.io
 parameters:
-  source: //{{ .Values.nasIpAddress }}/{{ .Values.nasHomelabDataFolder }}/
+  source: //{{ .Values.nas.ipAddress }}/{{ .Values.nas.shareName }}/
   subDir: "${pvc.metadata.name}"
-  csi.storage.k8s.io/provisioner-secret-name: {{ .Values.nasCredentialsName }}
+  csi.storage.k8s.io/provisioner-secret-name: {{ .Values.nas.credentialsName }}
   csi.storage.k8s.io/provisioner-secret-namespace: {{ .Release.Namespace }}
-  csi.storage.k8s.io/node-stage-secret-name: {{ .Values.nasCredentialsName }}
+  csi.storage.k8s.io/node-stage-secret-name: {{ .Values.nas.credentialsName }}
   csi.storage.k8s.io/node-stage-secret-namespace: {{ .Release.Namespace }}
 reclaimPolicy: Delete
 volumeBindingMode: Immediate

@@ -1,0 +1,33 @@
+env:
+  TIMEZONE: America/New_York
+ingress:
+  main:
+    className: "traefik"
+    enabled: true
+    hosts:
+      - host: recipes.test.pitlor.dev
+        paths:
+          - path: /
+            pathType: Prefix
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: Recipes
+      gethomepage.dev/icon: tandoor.png
+      gethomepage.dev/name: Tandoor
+persistence:
+  config:
+    enabled: true
+    storageClass: nas
+    accessMode: ReadWriteOnce
+    size: 2Gi
+  media:
+    enabled: true
+    storageClass: nas
+    accessMode: ReadWriteOnce
+    size: 2Gi
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+      storageClass: nas

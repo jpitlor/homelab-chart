@@ -1,0 +1,12 @@
+dependencies:
+- name: csi-driver-smb
+  repository: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts
+  version: v1.16.0
+- name: cloudnative-pg
+  repository: https://cloudnative-pg.github.io/charts/
+  version: 0.23.0
+- name: prometheus-operator-crds
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 17.0.2
+digest: sha256:c3b9e9706b96bde95d4d55211ed9e690b47e32af39adf6d480208ba01c0f841d
+generated: "2025-01-15T19:33:02.175424036-05:00"

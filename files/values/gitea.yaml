@@ -1,0 +1,28 @@
+gitea:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  config:
+    server:
+      ENABLE_PPROF: true
+persistence:
+  enabled: true
+  storageClass: nas
+postgresql:
+  persistence:
+    enabled: true
+    storageClass: nas
+ingress:
+  className: "traefik"
+  enabled: true
+  hosts:
+    - host: code.test.pitlor.dev
+      paths:
+        - path: /
+          pathType: Prefix
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Code Hosting
+    gethomepage.dev/icon: gitea.png
+    gethomepage.dev/name: Gitea

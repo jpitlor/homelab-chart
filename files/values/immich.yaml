@@ -1,0 +1,25 @@
+immich:
+  metrics:
+    enabled: true
+  persistence:
+    library:
+      existingClaim: immich-library-pvc
+image:
+  tag: v1.123.0
+redis:
+  enabled: false
+server:
+  ingress:
+    main:
+      className: "traefik"
+      enabled: true
+      hosts:
+        - host: photos.test.pitlor.dev
+          paths:
+            - path: /
+              pathType: Prefix
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Photos
+        gethomepage.dev/icon: immich.png
+        gethomepage.dev/name: Immich

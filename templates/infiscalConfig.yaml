@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: infiscal-config
-type: Opaque
-stringData:
-  AUTH_SECRET: ""
-  ENCRYPTION_KEY: ""
-  SITE_URL: "https://vault.pitlor.local"

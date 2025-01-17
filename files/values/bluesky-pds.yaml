@@ -1,0 +1,21 @@
+ingress:
+  className: "traefik"
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Social Media data server
+    gethomepage.dev/icon: bluesky.png
+    gethomepage.dev/name: Bluesky
+  hosts:
+    - host: tweet.test.pitlor.dev
+      paths:
+        - path: /
+          pathType: Prefix
+    - host: "*.tweet.test.pitlor.dev"
+      paths:
+        - path: /
+          pathType: Prefix
+pds:
+  config:
+    hostname: tweet.test.pitlor.dev
+  dataStorage:
+    storageClass: nas

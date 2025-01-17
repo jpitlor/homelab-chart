@@ -1,0 +1,21 @@
+fullNameOverride: grafana
+persistence:
+  enabled: true
+  storageClassName: nas
+ingress:
+  className: "traefik"
+  enabled: true
+  hosts:
+    - logs.test.pitlor.dev
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Status Dashboards and Logs
+    gethomepage.dev/icon: grafana.png
+    gethomepage.dev/name: Grafana
+dataSource:
+  - name: Prometheus
+    type: prometheus
+    url: 'http://prometheus.homelab.svc.cluster.local'
+  - name: Loki
+    type: loki
+    url: 'http://loki.homelab.svc.cluster.local'

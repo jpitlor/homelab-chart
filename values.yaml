@@ -1,305 +1,78 @@
-nasStorageClassName: nas
-nasCredentialsName: nas-credentials
-nasIpAddress: 192.168.0.31
-nasUsername: docker_containers
-nasHomelabDataFolder: Homelab
+nas:
+  storageClassName: nas
+  credentialsName: nas-credentials
+  ipAddress: 192.168.0.31
+  username: docker_containers
+  password: changeme
+  shareName: Homelab
 
-homepage:
-  config:
-    widgets:
-      - kubernetes:
-          cluster:
-            show: true
-            cpu: true
-            memory: true
-            showLabel: true
-            label: "cluster"
-          nodes:
-            show: true
-            cpu: true
-            memory: true
-            showLabel: true
-      - search:
-          provider: google
-          target: _blank
-    kubernetes:
-      mode: cluster
-  serviceAccount:
-    create: true
-    name: homepage
-  enableRbac: true
-  ingress:
-    main:
-      className: "traefik"
-      enabled: true
-      hosts:
-        - host: homepage.pitlor.local
-          paths:
-            - path: /
-              pathType: Prefix
+externalApplications:
+  - listenToHost: imessage.test.pitlor.dev
+    forwardToHost: http://192.168.0.165:1234
+  - listenToHost: iot.test.pitlor.dev
+    forwardToHost: http://192.168.0.6:8123
 
-gitea:
-  gitea:
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-    config:
-      server:
-        ENABLE_PPROF: true
-  persistence:
+applications:
+  # Monitoring
+  - name: grafana
+    version: 8.6.2
+    repository: https://grafana.github.io/helm-charts
     enabled: true
-    storageClass: nas
-  postgresql:
-    persistence:
-      enabled: true
-      storageClass: nas
-  ingress:
-    className: "traefik"
+  - name: alloy
+    version: 0.10.1
+    repository: https://grafana.github.io/helm-charts
     enabled: true
-    hosts:
-      - host: code.test.pitlor.dev
-        paths:
-          - path: /
-            pathType: Prefix
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: Code Hosting
-      gethomepage.dev/icon: gitea.png
-      gethomepage.dev/name: Gitea
+  - name: loki
+    version: 6.24.0
+    repository: https://grafana.github.io/helm-charts
+    enabled: true
+  - name: prometheus
+    version: 26.0.1
+    repository: https://prometheus-community.github.io/helm-charts
+    enabled: true
 
-vaultwarden:
-  persistence:
+  # Services
+  - name: bluesky-pds
+    version: 0.2.0
+    repository: https://charts.nerkho.ch
     enabled: true
-    storageClass: nas
-  postgresql:
+  - name: infisical-standalone
+    version: 1.4.0
+    repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
     enabled: true
-    primary:
-      persistence:
-        enabled: true
-        storageClass: nas
-  ingress:
-    main:
-      className: "traefik"
-      enabled: true
-      hosts:
-        - host: passwords.test.pitlor.dev
-          paths:
-            - path: /
-              pathType: Prefix
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/description: Passwords
-        gethomepage.dev/icon: vaultwarden.png
-        gethomepage.dev/name: Vaultwarden
-
-grafana:
-  fullNameOverride: grafana
-  persistence:
-    enabled: true
-    storageClassName: nas
-  ingress:
-    className: "traefik"
-    enabled: true
-    hosts:
-      - logs.test.pitlor.dev
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: Status Dashboards and Logs
-      gethomepage.dev/icon: grafana.png
-      gethomepage.dev/name: Grafana
-  dataSource:
-    - name: Prometheus
-      type: prometheus
-      url: 'http://prometheus.homelab.svc.cluster.local'
-    - name: Loki
-      type: loki
-      url: 'http://loki.homelab.svc.cluster.local'
-
-alloy:
-  configMap:
-    create: false
-    name: alloy-config
-    key: config.alloy
-
-immich:
-  immich:
-    metrics:
-      enabled: true
-    persistence:
-      library:
-        existingClaim: immich-library-pvc
-  image:
-    tag: 0.8.4
-  redis:
-    enabled: true
-  postgresql:
-    enabled: true
-    # TODO this is deprecated, also has no persistence
-  server:
-    ingress:
-      main:
-        className: "traefik"
-        enabled: true
-        hosts:
-          - host: photos.test.pitlor.dev
-            paths:
-              - path: /
-                pathType: Prefix
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Photos
-          gethomepage.dev/icon: immich.png
-          gethomepage.dev/name: Immich
-  machine-learning:
-    persistence:
-      cache:
-        storageClass: nas
-
-tandoor:
-  env:
-    TIMEZONE: America/New_York
-  ingress:
-    main:
-      className: "traefik"
-      enabled: true
-      hosts:
-        - host: recipes.test.pitlor.dev
-          paths:
-            - path: /
-              pathType: Prefix
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/description: Recipes
-        gethomepage.dev/icon: tandoor.png
-        gethomepage.dev/name: Tandoor
-  persistence:
-    config:
-      enabled: true
-      storageClass: nas
-    media:
-      enabled: true
-      storageClass: nas
-  postgresql:
-    enabled: true
-    primary:
-      persistence:
-        enabled: true
-        storageClass: nas
-
-# TODO find a helm chart for this
-#guacamole:
-#  ingress:
-#    className: "traefik"
-#    enabled: true
-#    hosts:
-#      - host: rdp.test.pitlor.dev
-#        paths: [/]
-#    annotations:
-#      gethomepage.dev/enabled: "true"
-#      gethomepage.dev/description: Remote Desktop
-#      gethomepage.dev/icon: guacamole.png
-#      gethomepage.dev/name: Guacamole
-
-nextcloud:
-  redis:
-    enabled: true
-    global:
-      storageClass: nas
-    master:
-      persistence:
-        enabled: true
-    replica:
-      persistence:
-        enabled: true
-  internalDatabase:
+  - name: minecraft
+    version: 4.23.2
+    repository: https://itzg.github.io/minecraft-server-charts/
     enabled: false
-  externalDatabase:
-    enabled: true
-    type: mysql
-  mariadb:
-    enabled: true
-    global:
-      defaultStorageClass: nas
-    primary:
-      persistence:
-        enabled: true
-        storageClass: nas
-  persistence:
-    enabled: true
-    storageClass: nas
-    nextcloudData:
-      enabled: true
-      storageClass: nas
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-  ingress:
-    className: "traefik"
-    enabled: true
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: File Server
-      gethomepage.dev/icon: nextcloud.png
-      gethomepage.dev/name: NextCloud
-  nextcloud:
-    host: files.test.pitlor.dev
 
-#kavita:
-#  # TODO fill this in
-
-plex-media-server:
-  ingress:
-    className: "traefik"
+  # Applications
+  - name: homepage
+    repository: https://jameswynn.github.io/helm-charts
+    version: 2.0.1
     enabled: true
-    url: media.test.pitlor.dev
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: Media Server
-      gethomepage.dev/icon: plex.png
-      gethomepage.dev/name: Plex
-  pms:
-    storageClassName: nas
-
-
-# This is commented out for now because I'm not actively playing Minecraft
-#minecraft:
-#  minecraftServer:
-#    eula: true
-
-bluesky-pds:
-  ingress:
-    className: "traefik"
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: Social Media data server
-      gethomepage.dev/icon: bluesky.png
-      gethomepage.dev/name: Bluesky
-    hosts:
-      - host: tweet.test.pitlor.dev
-        paths:
-          - path: /
-            pathType: Prefix
-      - host: "*.tweet.test.pitlor.dev"
-        paths:
-          - path: /
-            pathType: Prefix
-  pds:
-    config:
-      hostname: tweet.test.pitlor.dev
-    dataStorage:
-      storageClass: nas
-
-# TODO - HA postgres
-infisical:
-  image:
-    tag: "v0.99.0-postgres"
-  ingress:
-    hostName: vault.pitlor.local
-    ingressClassName: traefik
-    annotations:
-      gethomepage.dev/enabled: "true"
-      gethomepage.dev/description: Secret Management
-      gethomepage.dev/icon: infiscal.png
-      gethomepage.dev/name: Infiscal
+  - name: gitea
+    repository: https://dl.gitea.io/charts
+    version: 10.6.0
+    enabled: true
+  - name: vaultwarden
+    version: 0.31.1
+    repository: https://guerzon.github.io/vaultwarden
+    enabled: true
+  - name: immich
+    version: 0.9.0
+    repository: https://immich-app.github.io/immich-charts
+    enabled: true
+  - name: tandoor
+    version: 0.9.8
+    repository: https://charts.gabe565.com
+    enabled: true
+  - name: nextcloud
+    version: 6.5.2
+    repository: https://nextcloud.github.io/helm/
+    enabled: true
+  - name: plex-media-server
+    version: 0.7.2
+    repository: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
+    enabled: true
+  # TODO: Coder
+  # TODO: Guacamole

@@ -4,4 +4,4 @@ metadata:
   name: alloy-config
 data:
   config.alloy: |-
-    {{ .Files.Get "files/config.alloy" }}
+    {{- .Files.Get "files/config.alloy" | nindent 4 }}

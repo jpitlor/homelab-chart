@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/homelab-containers.iml" filepath="$PROJECT_DIR$/.idea/homelab-containers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/homelab-chart.iml" filepath="$PROJECT_DIR$/.idea/homelab-chart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../homelab-configuration/homelab-configuration.iml" filepath="$PROJECT_DIR$/../homelab-configuration/homelab-configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../homelab-provisioner/homelab-provisioner.iml" filepath="$PROJECT_DIR$/../homelab-provisioner/homelab-provisioner.iml" />
     </modules>
   </component>
 </project>
