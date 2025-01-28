@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: infiscal-secrets
+  namespace: infiscal
 type: Opaque
 stringData:
   AUTH_SECRET: "abc123"

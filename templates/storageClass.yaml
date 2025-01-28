@@ -2,6 +2,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: {{ .Values.nas.storageClassName }}
+  namespace: homelab
 provisioner: smb.csi.k8s.io
 parameters:
   source: //{{ .Values.nas.ipAddress }}/{{ .Values.nas.shareName }}/
