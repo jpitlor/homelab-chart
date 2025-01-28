@@ -1,0 +1,513 @@
+---
+# Source: homelab-containers/templates/infiscal/infiscalConfig.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: infiscal-secrets
+type: Opaque
+stringData:
+  AUTH_SECRET: "abc123"
+  ENCRYPTION_KEY: "abc123"
+  SITE_URL: "https://vault.test.pitlor.dev"
+---
+# Source: homelab-containers/templates/storageClassCredentials.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nas-credentials
+stringData:
+  username: "docker_containers"
+  password: "changeme"
+---
+# Source: homelab-containers/templates/alloy/alloyConfig.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alloy-config
+data:
+  config.alloy: |-
+    prometheus.remote_rewrite "default" {
+        endpoint {
+            url = "http://grafana.homelab.svc.cluster.local/api/v1/write"
+        }
+    }
+    
+    discovery.kubernetes "pods" {
+        role = "pod"
+    }
+    
+    prometheus.scrape "pods" {
+        targets = discovery.kubernetes.pods.targets
+        forward_to = [prometheus.remote_rewrite.default.receiver]
+    }
+    
+    otelcol.exporter.otlp "default" {
+        client {
+            url = "http://grafana.homelab.svc.cluster.local/api/v1/write"
+        }
+    }
+---
+# Source: homelab-containers/templates/storageClass.yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nas
+provisioner: smb.csi.k8s.io
+parameters:
+  source: //192.168.0.31/Homelab/
+  subDir: "${pvc.metadata.name}"
+  csi.storage.k8s.io/provisioner-secret-name: nas-credentials
+  csi.storage.k8s.io/provisioner-secret-namespace: default
+  csi.storage.k8s.io/node-stage-secret-name: nas-credentials
+  csi.storage.k8s.io/node-stage-secret-namespace: default
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0774
+  - file_mode=0774
+  - uid=1001
+  - gid=1001
+---
+# Source: homelab-containers/templates/immich/immichStorageClaim.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-library-pvc
+spec:
+  resources:
+    requests:
+      storage: 10Gi  # TODO can this be lower/dynamic?
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nas
+---
+# Source: homelab-containers/templates/immich/immichPosgres.yaml
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-postgres
+spec:
+  # At the time of writing, immich is only compatible with pgvecto.rs <0.4. Latest postgres image with that version is 16.5.
+  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0@sha256:be3f025d79aa1b747817f478e07e71be43236e14d00d8a9eb3914146245035ba
+  instances: 1
+
+  postgresql:
+    shared_preload_libraries:
+      - "vectors.so"
+
+  managed:
+    roles:
+      - name: immich
+        superuser: true
+        login: true
+
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      secret:
+        name: immich-postgres-user
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS "vectors";
+        - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
+
+  storage:
+    size: 4Gi
+    storageClass: nas
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: grafana-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://grafana.github.io/helm-charts
+  chart: grafana
+  targetNamespace: grafana
+  valuesContent: |-
+    fullNameOverride: grafana
+    persistence:
+      enabled: true
+      storageClassName: nas
+    ingress:
+      className: "traefik"
+      enabled: true
+      hosts:
+        - logs.test.pitlor.dev
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Status Dashboards and Logs
+        gethomepage.dev/icon: grafana.png
+        gethomepage.dev/name: Grafana
+    dataSource:
+      - name: Prometheus
+        type: prometheus
+        url: 'http://prometheus.homelab.svc.cluster.local'
+      - name: Loki
+        type: loki
+        url: 'http://loki.homelab.svc.cluster.local'
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: alloy-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://grafana.github.io/helm-charts
+  chart: alloy
+  targetNamespace: alloy
+  valuesContent: |-
+    configMap:
+      create: false
+      name: alloy-config
+      key: config.alloy
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: loki-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://grafana.github.io/helm-charts
+  chart: loki
+  targetNamespace: loki
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: prometheus-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://prometheus-community.github.io/helm-charts
+  chart: prometheus
+  targetNamespace: prometheus
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: bluesky-pds-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://charts.nerkho.ch
+  chart: bluesky-pds
+  targetNamespace: bluesky-pds
+  valuesContent: |-
+    ingress:
+      className: "traefik"
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Social Media data server
+        gethomepage.dev/icon: bluesky.png
+        gethomepage.dev/name: Bluesky
+      hosts:
+        - host: tweet.test.pitlor.dev
+          paths:
+            - path: /
+              pathType: Prefix
+        - host: "*.tweet.test.pitlor.dev"
+          paths:
+            - path: /
+              pathType: Prefix
+    pds:
+      config:
+        hostname: tweet.test.pitlor.dev
+      dataStorage:
+        storageClass: nas
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: infisical-standalone-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+  chart: infisical-standalone
+  targetNamespace: infisical-standalone
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: homepage-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://jameswynn.github.io/helm-charts
+  chart: homepage
+  targetNamespace: homepage
+  valuesContent: |-
+    image:
+      tag: v0.10.8
+    config:
+      widgets:
+        - kubernetes:
+            cluster:
+              show: true
+              cpu: true
+              memory: true
+              showLabel: true
+              label: "cluster"
+            nodes:
+              show: true
+              cpu: true
+              memory: true
+              showLabel: true
+        - search:
+            provider: google
+            target: _blank
+      kubernetes:
+        mode: cluster
+    serviceAccount:
+      create: true
+      name: homepage
+    enableRbac: true
+    ingress:
+      main:
+        className: "traefik"
+        enabled: true
+        hosts:
+          - host: homepage.pitlor.local
+            paths:
+              - path: /
+                pathType: Prefix
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: gitea-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://dl.gitea.io/charts
+  chart: gitea
+  targetNamespace: gitea
+  valuesContent: |-
+    gitea:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      config:
+        server:
+          ENABLE_PPROF: true
+    persistence:
+      enabled: true
+      storageClass: nas
+    postgresql:
+      persistence:
+        enabled: true
+        storageClass: nas
+    ingress:
+      className: "traefik"
+      enabled: true
+      hosts:
+        - host: code.test.pitlor.dev
+          paths:
+            - path: /
+              pathType: Prefix
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Code Hosting
+        gethomepage.dev/icon: gitea.png
+        gethomepage.dev/name: Gitea
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: vaultwarden-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://guerzon.github.io/vaultwarden
+  chart: vaultwarden
+  targetNamespace: vaultwarden
+  valuesContent: |-
+    persistence:
+      enabled: true
+      storageClass: nas
+    postgresql:
+      enabled: true
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nas
+    ingress:
+      class: "traefik"
+      enabled: true
+      hostName: passwords.test.pitlor.dev
+      additionalAnnotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Passwords
+        gethomepage.dev/icon: vaultwarden.png
+        gethomepage.dev/name: Vaultwarden
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: immich-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://immich-app.github.io/immich-charts
+  chart: immich
+  targetNamespace: immich
+  valuesContent: |-
+    immich:
+      metrics:
+        enabled: true
+      persistence:
+        library:
+          existingClaim: immich-library-pvc
+    image:
+      tag: v1.123.0
+    redis:
+      enabled: false
+    server:
+      ingress:
+        main:
+          className: "traefik"
+          enabled: true
+          hosts:
+            - host: photos.test.pitlor.dev
+              paths:
+                - path: /
+                  pathType: Prefix
+          annotations:
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/description: Photos
+            gethomepage.dev/icon: immich.png
+            gethomepage.dev/name: Immich
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: tandoor-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://charts.gabe565.com
+  chart: tandoor
+  targetNamespace: tandoor
+  valuesContent: |-
+    env:
+      TIMEZONE: America/New_York
+    ingress:
+      main:
+        className: "traefik"
+        enabled: true
+        hosts:
+          - host: recipes.test.pitlor.dev
+            paths:
+              - path: /
+                pathType: Prefix
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Recipes
+          gethomepage.dev/icon: tandoor.png
+          gethomepage.dev/name: Tandoor
+    persistence:
+      config:
+        enabled: true
+        storageClass: nas
+        accessMode: ReadWriteOnce
+        size: 2Gi
+      media:
+        enabled: true
+        storageClass: nas
+        accessMode: ReadWriteOnce
+        size: 2Gi
+    postgresql:
+      enabled: true
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nas
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nextcloud-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://nextcloud.github.io/helm/
+  chart: nextcloud
+  targetNamespace: nextcloud
+  valuesContent: |-
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: mysql
+    mariadb:
+      enabled: true
+      global:
+        defaultStorageClass: nas
+      primary:
+        persistence:
+          enabled: true
+          storageClass: nas
+    persistence:
+      enabled: true
+      storageClass: nas
+      nextcloudData:
+        enabled: true
+        storageClass: nas
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    ingress:
+      className: "traefik"
+      enabled: true
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: File Server
+        gethomepage.dev/icon: nextcloud.png
+        gethomepage.dev/name: NextCloud
+    nextcloud:
+      host: files.test.pitlor.dev
+---
+# Source: homelab-containers/templates/applicationCharts.yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: plex-media-server-chart-release-name
+  namespace: homelab
+spec:
+  createNamespace: true
+  repo: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
+  chart: plex-media-server
+  targetNamespace: plex-media-server
+  valuesContent: |-
+    ingress:
+      className: "traefik"
+      enabled: true
+      url: media.test.pitlor.dev
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Media Server
+        gethomepage.dev/icon: plex.png
+        gethomepage.dev/name: Plex
+    pms:
+      storageClassName: nas

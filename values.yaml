@@ -13,7 +13,6 @@ externalApplications:
     forwardToHost: http://192.168.0.6:8123
 
 applications:
-  # Monitoring
   - name: grafana
     version: 8.6.2
     repository: https://grafana.github.io/helm-charts
@@ -30,8 +29,6 @@ applications:
     version: 26.0.1
     repository: https://prometheus-community.github.io/helm-charts
     enabled: true
-
-  # Services
   - name: bluesky-pds
     version: 0.2.0
     repository: https://charts.nerkho.ch
@@ -44,8 +41,6 @@ applications:
     version: 4.23.2
     repository: https://itzg.github.io/minecraft-server-charts/
     enabled: false
-
-  # Applications
   - name: homepage
     repository: https://jameswynn.github.io/helm-charts
     version: 2.0.1

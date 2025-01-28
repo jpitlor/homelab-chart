@@ -9,4 +9,4 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  storageClassName: {{ .Values.nasStorageClassName }}
+  storageClassName: {{ .Values.nas.storageClassName }}

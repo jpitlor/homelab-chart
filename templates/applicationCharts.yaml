@@ -2,17 +2,13 @@
 {{- range $index, $application := .Values.applications }}
 {{- if $application.enabled -}}
 
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{ $application.name }}
----
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: {{ $application.name }}-chart-{{ $.Release.Name }}
-  namespace: kube-system
+  namespace: homelab
 spec:
+  createNamespace: true
   repo: {{ $application.repository }}
   chart: {{ $application.name }}
   targetNamespace: {{ $application.name }}
