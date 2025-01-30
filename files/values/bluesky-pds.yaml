@@ -17,5 +17,8 @@ ingress:
 pds:
   config:
     hostname: tweet.test.pitlor.dev
+    secrets:
+      existingSecret: bluesky-secrets
+    pdsEmailFromAddress: "noreply@pitlor.dev"
   dataStorage:
     storageClass: nas

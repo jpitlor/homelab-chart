@@ -10,7 +10,7 @@ metadata:
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: {{ $application.name }}-chart-{{ $.Release.Name }}
+  name: {{ $application.name | trunc 5 }}-{{ $.Release.Name | trunc 5 }}
   namespace: kube-system
 spec:
   repo: {{ $application.repository }}

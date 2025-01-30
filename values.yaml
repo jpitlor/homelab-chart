@@ -6,6 +6,12 @@ nas:
   password: changeme
   shareName: Homelab
 
+blueskyPds:
+  jwtSecret: changeme
+  adminPassword: changeme
+  plcRotationKey: changeme
+  emailSmtpUrl: changeme
+
 externalApplications:
   - listenToHost: imessage.test.pitlor.dev
     forwardToHost: http://192.168.0.165:1234

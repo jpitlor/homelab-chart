@@ -1,5 +1,6 @@
-image:
-  rootless: false
+securityContext:
+  runAsUser: 1028
+  runAsGroup: 100
 gitea:
   metrics:
     enabled: true

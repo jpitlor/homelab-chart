@@ -1,4 +1,4 @@
-DOMAIN: passwords.test.pitlor.dev
+DOMAIN: https://passwords.test.pitlor.dev
 persistence:
   enabled: true
   storageClass: nas
