@@ -1,13 +1,9 @@
-DOMAIN: https://passwords.test.pitlor.dev
-persistence:
-  enabled: true
-  storageClass: nas
-postgresql:
-  enabled: true
-  primary:
-    persistence:
-      enabled: true
-      storageClass: nas
+domain: https://passwords.test.pitlor.dev
+storage:
+  data:
+    class: nas
+  attachments:
+    class: nas
 ingress:
   class: "traefik"
   enabled: true
