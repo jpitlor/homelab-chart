@@ -1,3 +1,5 @@
+image:
+  rootless: false
 gitea:
   metrics:
     enabled: true
@@ -16,6 +18,8 @@ postgresql:
 ingress:
   className: "traefik"
   enabled: true
+  nginx:
+    enabled: false
   hosts:
     - host: code.test.pitlor.dev
       paths:

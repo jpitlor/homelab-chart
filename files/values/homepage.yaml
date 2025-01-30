@@ -21,7 +21,6 @@ config:
     mode: cluster
 serviceAccount:
   create: true
-  name: homepage
 enableRbac: true
 ingress:
   main:

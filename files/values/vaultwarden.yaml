@@ -1,3 +1,4 @@
+DOMAIN: passwords.test.pitlor.dev
 persistence:
   enabled: true
   storageClass: nas
@@ -10,7 +11,7 @@ postgresql:
 ingress:
   class: "traefik"
   enabled: true
-  hostName: passwords.test.pitlor.dev
+  hostname: passwords.test.pitlor.dev
   additionalAnnotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Passwords
