@@ -1,7 +1,8 @@
 # TODO - HA postgres and redis
-autoDatabaseSchemaMigration: true
-image:
-  tag: "v0.99.0-postgres"
+infisical:
+  autoDatabaseSchemaMigration: true
+  image:
+    tag: "v0.99.0-postgres"
 ingress:
   hostName: vault.test.pitlor.dev
   ingressClassName: traefik
@@ -11,4 +12,6 @@ ingress:
     gethomepage.dev/icon: infiscal.png
     gethomepage.dev/name: Infiscal
 redis:
-  enabled: false
+  enabled: true
+postgresql:
+  enabled: true

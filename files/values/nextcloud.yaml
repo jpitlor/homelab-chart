@@ -2,9 +2,16 @@ internalDatabase:
   enabled: false
 externalDatabase:
   enabled: true
+  database: nextcloud
+  user: nextcloud
+  password: nextcloud
   type: mysql
 mariadb:
   enabled: true
+  auth:
+    database: nextcloud
+    username: nextcloud
+    password: nextcloud
   global:
     defaultStorageClass: nas
   primary:

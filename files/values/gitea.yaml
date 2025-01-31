@@ -1,6 +1,7 @@
 securityContext:
   runAsUser: 1028
   runAsGroup: 100
+  fsGroup: 100
 gitea:
   metrics:
     enabled: true
