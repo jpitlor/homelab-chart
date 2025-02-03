@@ -17,4 +17,3 @@ allowVolumeExpansion: true
 mountOptions:
   - dir_mode=0774
   - file_mode=0774
-  - uid=1028

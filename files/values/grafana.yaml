@@ -1,6 +1,4 @@
 fullNameOverride: grafana
-securityContext:
-  runAsUser: 1028
 persistence:
   enabled: true
   storageClassName: nas
