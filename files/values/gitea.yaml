@@ -9,7 +9,14 @@ gitea:
 persistence:
   enabled: true
   storageClass: nas
+redis-cluster:
+  enabled: false
+redis:
+  enabled: true
+postgresql-ha:
+  enabled: false
 postgresql:
+  enabled: true
   persistence:
     enabled: true
     storageClass: nas
