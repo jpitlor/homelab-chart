@@ -12,6 +12,10 @@ blueskyPds:
   plcRotationKey: changeme
   emailSmtpUrl: changeme
 
+infisical:
+  encryptionKey: changeme
+  authSecret: changeme
+
 externalApplications:
   - listenToHost: imessage.test.pitlor.dev
     forwardToHost: http://192.168.0.165:1234

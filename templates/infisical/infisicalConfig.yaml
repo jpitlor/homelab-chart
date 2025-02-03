@@ -5,6 +5,6 @@ metadata:
   namespace: infisical-standalone
 type: Opaque
 stringData:
-  AUTH_SECRET: "abc123"
-  ENCRYPTION_KEY: "abc123"
+  AUTH_SECRET: {{ .Values.infisical.authSecret | required "No auth secret provided" | quote }}
+  ENCRYPTION_KEY: {{ .Values.infisical.encryptionKey | required "No encryption key provided" | quote }}
   SITE_URL: "https://vault.test.pitlor.dev"
