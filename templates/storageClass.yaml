@@ -15,5 +15,5 @@ reclaimPolicy: Delete
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
 mountOptions:
-  - dir_mode=0774
-  - file_mode=0774
+  - dir_mode=0777
+  - file_mode=0777
