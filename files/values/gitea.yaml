@@ -1,3 +1,5 @@
+image:
+  rootless: false
 gitea:
   metrics:
     enabled: true

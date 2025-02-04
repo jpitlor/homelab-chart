@@ -1,7 +1,6 @@
 fullNameOverride: grafana
 persistence:
-  enabled: true
-  storageClassName: nas
+  enabled: false
 ingress:
   className: "traefik"
   enabled: true
@@ -19,3 +18,11 @@ dataSource:
   - name: Loki
     type: loki
     url: 'http://loki.homelab.svc.cluster.local'
+grafana.ini:
+  database:
+    type: postgres
+    host: grafana-postgres-rw:5432
+    name: grafana
+    user: grafana
+    password: grafana
+    ssl_mode: require
