@@ -9,7 +9,7 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: {{ $application.name | trunc 5 }}-{{ $.Release.Name | trunc 5 }}
-  namespace: kube-system
+  namespace: homelab
 spec:
   repo: {{ $application.repository }}
   chart: {{ $application.name }}

@@ -30,4 +30,4 @@ postgresql:
   primary:
     persistence:
       enabled: true
-      storageClass: nas
+      storageClass: postgresql
