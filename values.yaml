@@ -1,11 +1,17 @@
 nas:
-  nasStorageClassName: nas
-  postgresqlStorageClassName: postgresql
   credentialsName: nas-credentials
   ipAddress: 192.168.0.31
   username: docker_containers
   password: changeme
   shareName: Homelab
+
+storageClasses:
+  - name: nas
+    mode: 777
+    uid: 1000
+  - name: postgresql
+    mode: 700
+    uid: 26
 
 blueskyPds:
   jwtSecret: changeme

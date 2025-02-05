@@ -1,7 +1,5 @@
-{{ $lastIndex := sub (len .Values.applications) 1 }}
 {{- range $index, $application := .Values.applications }}
 {{- if $application.enabled -}}
-
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -20,10 +18,6 @@ spec:
   valuesContent: |-
 {{ $.Files.Get (printf "files/values/%s.yaml" $application.name) | indent 4 }}
   {{- end }}
-
-{{- if ne $index $lastIndex }}
 ---
-{{- end }}
-
 {{- end }}
 {{- end }}
