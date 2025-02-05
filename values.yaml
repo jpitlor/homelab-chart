@@ -1,5 +1,6 @@
 nas:
-  storageClassName: nas
+  nasStorageClassName: nas
+  postgresqlStorageClassName: postgresql
   credentialsName: nas-credentials
   ipAddress: 192.168.0.31
   username: docker_containers
