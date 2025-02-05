@@ -22,7 +22,7 @@ ingress:
     className: "traefik"
     enabled: true
     hosts:
-      - host: homepage.pitlor.local
+      - host: homepage.test.pitlor.dev
         paths:
           - path: /
             pathType: Prefix
