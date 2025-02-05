@@ -1,19 +1,14 @@
 image:
   tag: v0.10.8
 config:
+  bookmarks: []
+  services: []
   widgets:
     - kubernetes:
-        cluster:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-          label: "cluster"
         nodes:
           show: true
           cpu: true
           memory: true
-          showLabel: true
     - search:
         provider: google
         target: _blank

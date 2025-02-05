@@ -9,8 +9,8 @@ ingress:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Secret Management
-    gethomepage.dev/icon: infiscal.png
-    gethomepage.dev/name: Infiscal
+    gethomepage.dev/icon: infisical.png
+    gethomepage.dev/name: Infisical
 redis:
   enabled: true
 postgresql:

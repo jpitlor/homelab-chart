@@ -27,10 +27,18 @@ infisical:
   authSecret: changeme
 
 externalApplications:
-  - listenToHost: imessage.test.pitlor.dev
-    forwardToHost: http://192.168.0.165:1234
-  - listenToHost: iot.test.pitlor.dev
-    forwardToHost: http://192.168.0.6:8123
+  - name: iMessage
+    description: Messaging for iPhone users
+    icon: apple.png
+    listenToHost: imessage.test.pitlor.dev
+    forwardToIp: 192.168.0.165
+    forwardToPort: 1234
+  - name: HomeAssistant
+    description: Smart home management
+    icon: home-assistant.png
+    listenToHost: iot.test.pitlor.dev
+    forwardToIp: 192.168.0.6
+    forwardToPort: 8123
 
 applications:
   - name: grafana

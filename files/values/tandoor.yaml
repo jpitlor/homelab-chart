@@ -12,18 +12,16 @@ ingress:
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Recipes
-      gethomepage.dev/icon: tandoor.png
+      gethomepage.dev/icon: tandoor-recipes.png
       gethomepage.dev/name: Tandoor
 persistence:
   config:
     enabled: true
     storageClass: nas
-    accessMode: ReadWriteOnce
     size: 2Gi
   media:
     enabled: true
     storageClass: nas
-    accessMode: ReadWriteOnce
     size: 2Gi
 postgresql:
   enabled: true

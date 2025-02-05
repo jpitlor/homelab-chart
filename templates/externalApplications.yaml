@@ -1,0 +1,57 @@
+{{ range .Values.externalApplications }}
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: {{ .name }}-service-endpoints
+  labels:
+    kubernetes.io/service-name: {{ .name }}-service
+    endpointslice.kubernetes.io/managed-by: dev.pitlor
+addressType: IPv4
+ports:
+  - name: http
+    appProtocol: http
+    protocol: TCP
+    port: {{ .forwardToPort }}
+endpoints:
+  - addresses:
+      - {{ .forwardToIp | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}-service
+  namespace: homelab
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: {{ .forwardToPort }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .name }}-ingress
+  namespace: homelab
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: {{ .listenToHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ .name }}-service
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: {{ .description }}
+    gethomepage.dev/icon: {{ .icon }}
+    gethomepage.dev/name: {{ .name }}
+---
+{{ end }}
