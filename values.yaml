@@ -12,6 +12,9 @@ storageClasses:
   - name: postgresql
     mode: 700
     uid: 26
+  - name: bitnami-postgres
+    mode: 700
+    uid: 1001
 
 blueskyPds:
   jwtSecret: changeme

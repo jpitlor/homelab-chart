@@ -25,3 +25,9 @@ server:
         gethomepage.dev/description: Photos
         gethomepage.dev/icon: immich.png
         gethomepage.dev/name: Immich
+postgresql:
+  enabled: false
+  global:
+    postgresql:
+      auth:
+        existingSecret: immich-postgres-secret

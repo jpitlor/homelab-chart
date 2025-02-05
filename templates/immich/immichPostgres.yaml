@@ -25,7 +25,7 @@ spec:
       database: immich
       owner: immich
       secret:
-        name: immich-postgres-user
+        name: immich-postgres-secret
       postInitSQL:
         - CREATE EXTENSION IF NOT EXISTS "vectors";
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
