@@ -1,5 +1,5 @@
 env:
-  DB_HOSTNAME: immich-postgres-1
+  DB_HOSTNAME: immich-postgres-rw
 immich:
   metrics:
     enabled: true

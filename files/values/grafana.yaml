@@ -1,4 +1,4 @@
-assertNoLeakedSecrets: falses
+assertNoLeakedSecrets: false
 fullNameOverride: grafana
 persistence:
   enabled: false
@@ -22,7 +22,7 @@ dataSource:
 grafana.ini:
   database:
     type: postgres
-    host: grafana-postgres-1:5432
+    host: grafana-postgres-rw:5432
     name: grafana
     user: grafana
     password: grafana
