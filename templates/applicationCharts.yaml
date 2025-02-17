@@ -14,6 +14,7 @@ spec:
   repo: {{ $application.repository }}
   chart: {{ $application.name }}
   targetNamespace: {{ $application.name }}
+  timeout: 10m
   {{- if $.Files.Get (printf "files/values/%s.yaml" $application.name) }}
   valuesContent: |-
 {{ $.Files.Get (printf "files/values/%s.yaml" $application.name) | indent 4 }}

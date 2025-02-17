@@ -22,4 +22,4 @@ pds:
       existingSecret: bluesky-secrets
     pdsEmailFromAddress: "noreply@pitlor.dev"
   dataStorage:
-    storageClass: nas
+    storageClass: local-path  # TODO: Implement Velero backups to the NAS - this can't go directly on the NAS because of SQLite locking issues

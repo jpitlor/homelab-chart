@@ -19,10 +19,12 @@ persistence:
     enabled: true
     storageClass: nas
     size: 2Gi
+    accessMode: ReadWriteOnce
   media:
     enabled: true
     storageClass: nas
     size: 2Gi
+    accessMode: ReadWriteOnce
 postgresql:
   enabled: true
   primary:
