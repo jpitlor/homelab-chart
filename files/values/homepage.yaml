@@ -1,14 +1,19 @@
 image:
-  tag: v0.10.8
+  tag: v1.0.4
+env:
+  - name: HOMEPAGE_ALLOWED_HOSTS
+    value: *
 config:
-  bookmarks: []
-  services: []
+  title: Pitlor Homelab
+  description: A homepage aggregating all of our homelab services
+  theme: light
+  color: slate
+  headerStyle: clean
+  language: en-US
+  hideVersion: true
+  disableUpdateCheck: true
+  statusStyle: dot
   widgets:
-    - kubernetes:
-        nodes:
-          show: true
-          cpu: true
-          memory: true
     - search:
         provider: google
         target: _blank

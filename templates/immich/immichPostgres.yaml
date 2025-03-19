@@ -33,4 +33,4 @@ spec:
 
   storage:
     size: 4Gi
-    storageClass: {{ .Values.nas.postgresqlStorageClassName }}
+    storageClass: postgresql

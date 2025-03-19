@@ -1,8 +1,10 @@
 domain: https://passwords.test.pitlor.dev
 storage:
   data:
+    name: vaultwarden-data
     class: nas
   attachments:
+    name: vaultwarden-attachments
     class: nas
 ingress:
   class: "traefik"

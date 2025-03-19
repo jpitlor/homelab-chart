@@ -9,7 +9,7 @@ ingress:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Secret Management
-    gethomepage.dev/icon: infisical.png
+    gethomepage.dev/icon: sh-infisical.png
     gethomepage.dev/name: Infisical
 redis:
   enabled: true

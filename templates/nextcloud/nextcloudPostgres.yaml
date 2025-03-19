@@ -1,8 +1,8 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: grafana-postgres
-  namespace: grafana
+  name: nextcloud-postgres
+  namespace: nextcloud
 spec:
   instances: 1
   postgresUID: 0
@@ -10,16 +10,16 @@ spec:
 
   managed:
     roles:
-      - name: grafana
+      - name: nextcloud
         superuser: true
         login: true
 
   bootstrap:
     initdb:
-      database: grafana
-      owner: grafana
+      database: nextcloud
+      owner: nextcloud
       secret:
-        name: grafana-postgres-secret
+        name: nextcloud-postgres-secret
 
   storage:
     size: 4Gi
