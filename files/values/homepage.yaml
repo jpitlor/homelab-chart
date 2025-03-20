@@ -2,17 +2,20 @@ image:
   tag: v1.0.4
 env:
   - name: HOMEPAGE_ALLOWED_HOSTS
-    value: *
+    value: '*'
 config:
-  title: Pitlor Homelab
-  description: A homepage aggregating all of our homelab services
-  theme: light
-  color: slate
-  headerStyle: clean
-  language: en-US
-  hideVersion: true
-  disableUpdateCheck: true
-  statusStyle: dot
+  bookmarks: {}
+  services: {}
+  settings:
+    title: Pitlor Homelab
+    description: A homepage aggregating all of our homelab services
+    theme: light
+    color: slate
+    headerStyle: clean
+    language: en-US
+    hideVersion: true
+    disableUpdateCheck: true
+    statusStyle: dot
   widgets:
     - search:
         provider: google
