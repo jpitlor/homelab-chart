@@ -25,6 +25,7 @@ server:
         gethomepage.dev/description: Photos
         gethomepage.dev/icon: immich.png
         gethomepage.dev/name: Immich
+        gethomepage.dev/siteMonitor: https://photos.test.pitlor.dev
 postgresql:
   enabled: false
   global:

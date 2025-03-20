@@ -12,6 +12,7 @@ ingress:
     gethomepage.dev/description: Status Dashboards and Logs
     gethomepage.dev/icon: grafana.png
     gethomepage.dev/name: Grafana
+    gethomepage.dev/siteMonitor: https://logs.test.pitlor.dev
 dataSource:
   - name: Prometheus
     type: prometheus

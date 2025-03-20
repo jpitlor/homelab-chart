@@ -14,6 +14,7 @@ ingress:
       gethomepage.dev/description: Recipes
       gethomepage.dev/icon: tandoor-recipes.png
       gethomepage.dev/name: Tandoor
+      gethomepage.dev/siteMonitor: https://recipes.test.pitlor.dev
 persistence:
   config:
     enabled: true

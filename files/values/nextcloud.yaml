@@ -25,5 +25,6 @@ ingress:
     gethomepage.dev/description: File Server
     gethomepage.dev/icon: nextcloud.png
     gethomepage.dev/name: NextCloud
+    gethomepage.dev/siteMonitor: https://files.test.pitlor.dev
 nextcloud:
   host: files.test.pitlor.dev

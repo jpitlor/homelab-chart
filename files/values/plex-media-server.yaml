@@ -7,5 +7,6 @@ ingress:
     gethomepage.dev/description: Media Server
     gethomepage.dev/icon: plex.png
     gethomepage.dev/name: Plex
+    gethomepage.dev/siteMonitor: https://media.test.pitlor.dev
 pms:
   storageClassName: nas

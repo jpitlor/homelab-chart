@@ -6,6 +6,7 @@ ingress:
     gethomepage.dev/description: Social Media data server
     gethomepage.dev/icon: bluesky.png
     gethomepage.dev/name: Bluesky
+    gethomepage.dev/siteMonitor: https://tweet.test.pitlor.dev
   hosts:
     - host: tweet.test.pitlor.dev
       paths:
