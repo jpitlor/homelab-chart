@@ -17,7 +17,7 @@ spec:
   timeout: 10m
   {{- if $.Files.Get (printf "files/values/%s.yaml" $application.name) }}
   valuesContent: |-
-{{ $.Files.Get (printf "files/values/%s.yaml" $application.name) | indent 4 }}
+{{ tpl ($.Files.Get (printf "files/values/%s.yaml" $application.name)) $ | indent 4 }}
   {{- end }}
 ---
 {{- end }}
