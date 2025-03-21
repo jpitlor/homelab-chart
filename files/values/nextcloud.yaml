@@ -5,8 +5,20 @@ externalDatabase:
   database: nextcloud
   user: nextcloud
   password: nextcloud
-  type: postgresql
-  host: nextcloud-postgres-rw:5432
+  type: mysql
+# TODO: Migrate to PG? Running into https://github.com/nextcloud/helm/issues/10
+mariadb:
+  enabled: true
+  auth:
+    database: nextcloud
+    username: nextcloud
+    password: nextcloud
+  global:
+    defaultStorageClass: nas
+  primary:
+    persistence:
+      enabled: true
+      storageClass: nas
 persistence:
   enabled: true
   storageClass: nas
