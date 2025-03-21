@@ -2,9 +2,6 @@ internalDatabase:
   enabled: false
 externalDatabase:
   enabled: true
-  database: nextcloud
-  user: nextcloud
-  password: nextcloud
   type: mysql
 # TODO: Migrate to PG? Running into https://github.com/nextcloud/helm/issues/10
 mariadb:
