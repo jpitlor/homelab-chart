@@ -6,7 +6,7 @@ externalDatabase:
   user: nextcloud
   password: nextcloud
   type: postgresql
-  host: nextcloud-postgres-rw
+  host: nextcloud-postgres-rw:5432
 persistence:
   enabled: true
   storageClass: nas

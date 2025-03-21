@@ -1,0 +1,26 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: vaultwarden-postgres
+  namespace: vaultwarden
+spec:
+  instances: 1
+  postgresUID: 0
+  postgresGID: 0
+
+  managed:
+    roles:
+      - name: vaultwarden
+        superuser: true
+        login: true
+
+  bootstrap:
+    initdb:
+      database: vaultwarden
+      owner: vaultwarden
+      secret:
+        name: vaultwarden-postgres-secret
+
+  storage:
+    size: 4Gi
+    storageClass: postgresql

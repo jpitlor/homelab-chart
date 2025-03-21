@@ -1,11 +1,24 @@
+image:
+  tag: 1.33.2
 domain: https://passwords.test.pitlor.dev
 storage:
   data:
     name: vaultwarden-data
+    size: "15Gi"
+    accessMode: ReadWriteOnce
     class: nas
   attachments:
     name: vaultwarden-attachments
+    size: "5Gi"
+    accessMode: ReadWriteOnce
     class: nas
+database:
+  type: postgresql
+  host: vaultwarden-postgres-rw
+  port: 5432
+  username: vaultwarden
+  password: vaultwarden
+  dbName: vaultwarden
 ingress:
   class: "traefik"
   enabled: true
