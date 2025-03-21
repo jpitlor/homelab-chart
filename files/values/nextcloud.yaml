@@ -28,3 +28,10 @@ ingress:
     gethomepage.dev/siteMonitor: https://files.test.pitlor.dev
 nextcloud:
   host: files.test.pitlor.dev
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 600
+  periodSeconds: 100
+  timeoutSeconds: 10
+  failureThreshold: 5
+  successThreshold: 1
