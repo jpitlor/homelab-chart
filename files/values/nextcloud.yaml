@@ -2,20 +2,11 @@ internalDatabase:
   enabled: false
 externalDatabase:
   enabled: true
-  type: mysql
-# TODO: Migrate to PG? Running into https://github.com/nextcloud/helm/issues/10
-mariadb:
-  enabled: true
-  auth:
-    database: nextcloud
-    username: nextcloud
-    password: nextcloud
-  global:
-    defaultStorageClass: nas
-  primary:
-    persistence:
-      enabled: true
-      storageClass: nas
+  type: postgresql
+  host: "nextcloud-postgres-rw:5432"
+  database: nextcloud
+  user: nextcloud
+  password: nextcloud
 persistence:
   enabled: true
   storageClass: nas
