@@ -9,7 +9,6 @@ externalDatabase:
   password: nextcloud
 persistence:
   enabled: true
-  storageClass: nas
   nextcloudData:
     enabled: true
     storageClass: nas
