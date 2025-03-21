@@ -15,7 +15,7 @@ storage:
 database:
   type: postgresql
   host: vaultwarden-postgres-rw
-  port: 5432
+  port: "5432"
   username: vaultwarden
   password: vaultwarden
   dbName: vaultwarden
