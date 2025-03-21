@@ -9,10 +9,10 @@ config:
     - External Services:
       {{- range .Values.externalApplications }}
       - {{ .name }}:
-        icon: {{ .icon }}
-        description: {{ .description }}
-        href: https://{{ .listenToHost }}
-        serviceMonitor: https://{{ .listenToHost }}
+          icon: {{ .icon }}
+          description: {{ .description }}
+          href: https://{{ .listenToHost }}
+          serviceMonitor: https://{{ .listenToHost }}
       {{- end }}
   settings:
     title: Pitlor Homelab
