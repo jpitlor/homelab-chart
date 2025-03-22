@@ -27,6 +27,12 @@ ingress:
     gethomepage.dev/siteMonitor: https://files.test.pitlor.dev
 nextcloud:
   host: files.test.pitlor.dev
+  configs:
+    custom.config.php: |-
+      <?php
+      $CONFIG = array (
+        'check_data_directory_permissions' => false,
+      );
 startupProbe:
   enabled: true
   initialDelaySeconds: 600
