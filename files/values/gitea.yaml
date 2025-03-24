@@ -1,9 +1,13 @@
+image:
+  tag: 1.23.5
 gitea:
   metrics:
     enabled: true
     serviceMonitor:
       enabled: true
   config:
+    actions:
+      ENABLED: true
     server:
       ENABLE_PPROF: true
 persistence:
@@ -35,4 +39,4 @@ ingress:
     gethomepage.dev/description: Code Hosting
     gethomepage.dev/icon: gitea.png
     gethomepage.dev/name: Gitea
-    gethomepage.dev/siteMonitor: https://code.test.pitlor.dev
+    gethomepage.dev/href: https://code.test.pitlor.dev

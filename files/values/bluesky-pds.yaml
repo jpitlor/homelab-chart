@@ -1,3 +1,5 @@
+image:
+  tag: 0.4.107
 ingress:
   enabled: true
   className: "traefik"
@@ -6,7 +8,7 @@ ingress:
     gethomepage.dev/description: Social Media data server
     gethomepage.dev/icon: bluesky.png
     gethomepage.dev/name: Bluesky
-    gethomepage.dev/siteMonitor: https://tweet.test.pitlor.dev
+    gethomepage.dev/href: https://tweet.test.pitlor.dev
   hosts:
     - host: tweet.test.pitlor.dev
       paths:

@@ -2,7 +2,7 @@
 infisical:
   autoDatabaseSchemaMigration: true
   image:
-    tag: "v0.99.0-postgres"
+    tag: "v0.118.0-postgres"
 ingress:
   hostName: vault.test.pitlor.dev
   ingressClassName: traefik
@@ -11,7 +11,7 @@ ingress:
     gethomepage.dev/description: Secret Management
     gethomepage.dev/icon: sh-infisical.png
     gethomepage.dev/name: Infisical
-    gethomepage.dev/siteMonitor: https://vault.test.pitlor.dev
+    gethomepage.dev/href: https://vault.test.pitlor.dev
 redis:
   enabled: true
 postgresql:

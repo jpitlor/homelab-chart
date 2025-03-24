@@ -30,6 +30,9 @@ config:
         target: _blank
   kubernetes:
     mode: cluster
+    ingress: true
+    traefik: true
+    gateway: true
 serviceAccount:
   create: true
 enableRbac: true

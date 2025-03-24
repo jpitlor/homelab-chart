@@ -7,7 +7,7 @@ immich:
     library:
       existingClaim: immich-library-pvc
 image:
-  tag: v1.123.0
+  tag: v1.129.0
 redis:
   enabled: true
 server:
@@ -25,7 +25,7 @@ server:
         gethomepage.dev/description: Photos
         gethomepage.dev/icon: immich.png
         gethomepage.dev/name: Immich
-        gethomepage.dev/siteMonitor: https://photos.test.pitlor.dev
+        gethomepage.dev/href: https://photos.test.pitlor.dev
 postgresql:
   enabled: false
   global:

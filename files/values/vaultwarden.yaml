@@ -28,4 +28,4 @@ ingress:
     gethomepage.dev/description: Passwords
     gethomepage.dev/icon: vaultwarden.png
     gethomepage.dev/name: Vaultwarden
-    gethomepage.dev/siteMonitor: https://passwords.test.pitlor.dev
+    gethomepage.dev/href: https://passwords.test.pitlor.dev

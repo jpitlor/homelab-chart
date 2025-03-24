@@ -1,5 +1,7 @@
 env:
   TIMEZONE: America/New_York
+image:
+  tag: 1.5.33
 ingress:
   main:
     className: "traefik"
@@ -14,7 +16,7 @@ ingress:
       gethomepage.dev/description: Recipes
       gethomepage.dev/icon: tandoor-recipes.png
       gethomepage.dev/name: Tandoor
-      gethomepage.dev/siteMonitor: https://recipes.test.pitlor.dev
+      gethomepage.dev/href: https://recipes.test.pitlor.dev
 persistence:
   config:
     enabled: true

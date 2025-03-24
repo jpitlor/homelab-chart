@@ -1,3 +1,5 @@
+image:
+  tag: 31.0.2
 internalDatabase:
   enabled: false
 externalDatabase:
@@ -24,15 +26,9 @@ ingress:
     gethomepage.dev/description: File Server
     gethomepage.dev/icon: nextcloud.png
     gethomepage.dev/name: NextCloud
-    gethomepage.dev/siteMonitor: https://files.test.pitlor.dev
+    gethomepage.dev/href: https://files.test.pitlor.dev
 nextcloud:
   host: files.test.pitlor.dev
-  configs:
-    custom.config.php: |-
-      <?php
-      $CONFIG = array (
-        'check_data_directory_permissions' => false,
-      );
 startupProbe:
   enabled: true
   initialDelaySeconds: 600
