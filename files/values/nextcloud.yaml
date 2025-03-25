@@ -31,7 +31,7 @@ nextcloud:
   host: files.test.pitlor.dev
 startupProbe:
   enabled: true
-  initialDelaySeconds: 600
+  initialDelaySeconds: 1200
   periodSeconds: 100
   timeoutSeconds: 10
   failureThreshold: 5
