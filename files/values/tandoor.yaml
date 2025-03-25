@@ -1,7 +1,7 @@
 env:
   TZ: America/New_York
-  ALLOWED_HOSTS: *
-  SECRET_KEY: "#$tp%v6*(*ba01wcz(ip(i5vfz8z$f%qdio&q@anr1#$=%(m4c"
+  ALLOWED_HOSTS: "*"
+  SECRET_KEY: "Iwx42i1rte+BAcr2wyOzzdB+LWp09+qi7oUmIShH2njkp9KxVE"
 image:
   tag: 1.5.33
 ingress:
