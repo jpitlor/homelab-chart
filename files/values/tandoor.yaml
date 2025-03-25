@@ -1,6 +1,6 @@
 env:
-  TIMEZONE: America/New_York
-  ALLOWED_HOSTS: recipes.test.pitlor.dev
+  TZ: America/New_York
+  ALLOWED_HOSTS: *
 image:
   tag: 1.5.33
 ingress:
