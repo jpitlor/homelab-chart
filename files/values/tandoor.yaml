@@ -1,6 +1,7 @@
 env:
+  TIMEZONE: null
   TZ: America/New_York
-  ALLOWED_HOSTS: "*"
+  ALLOWED_HOSTS: "https://recipes.test.pitlor.dev"
   SECRET_KEY: "Iwx42i1rte+BAcr2wyOzzdB+LWp09+qi7oUmIShH2njkp9KxVE"
 image:
   tag: 1.5.33
@@ -19,6 +20,7 @@ ingress:
       gethomepage.dev/icon: tandoor-recipes.png
       gethomepage.dev/name: Tandoor
       gethomepage.dev/href: https://recipes.test.pitlor.dev
+      gethomepage.dev/ping: recipes.test.pitlor.dev
 persistence:
   config:
     enabled: true

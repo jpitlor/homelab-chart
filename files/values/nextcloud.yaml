@@ -27,6 +27,7 @@ ingress:
     gethomepage.dev/icon: nextcloud.png
     gethomepage.dev/name: NextCloud
     gethomepage.dev/href: https://files.test.pitlor.dev
+    gethomepage.dev/ping: files.test.pitlor.dev
 nextcloud:
   host: files.test.pitlor.dev
 startupProbe:

@@ -40,3 +40,4 @@ ingress:
     gethomepage.dev/icon: gitea.png
     gethomepage.dev/name: Gitea
     gethomepage.dev/href: https://code.test.pitlor.dev
+    gethomepage.dev/ping: code.test.pitlor.dev
