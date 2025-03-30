@@ -9,7 +9,6 @@ ingress:
     gethomepage.dev/icon: bluesky.png
     gethomepage.dev/name: Bluesky
     gethomepage.dev/href: https://tweet.test.pitlor.dev
-    gethomepage.dev/ping: tweet.test.pitlor.dev
   hosts:
     - host: tweet.test.pitlor.dev
       paths:

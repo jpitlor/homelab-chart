@@ -26,7 +26,6 @@ server:
         gethomepage.dev/icon: immich.png
         gethomepage.dev/name: Immich
         gethomepage.dev/href: https://photos.test.pitlor.dev
-        gethomepage.dev/ping: photos.test.pitlor.dev
 postgresql:
   enabled: false
   global:

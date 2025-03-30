@@ -12,7 +12,6 @@ ingress:
     gethomepage.dev/icon: sh-infisical.png
     gethomepage.dev/name: Infisical
     gethomepage.dev/href: https://vault.test.pitlor.dev
-    gethomepage.dev/ping: vault.test.pitlor.dev
 redis:
   enabled: true
 postgresql:

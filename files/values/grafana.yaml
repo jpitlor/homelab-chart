@@ -15,7 +15,6 @@ ingress:
     gethomepage.dev/icon: grafana.png
     gethomepage.dev/name: Grafana
     gethomepage.dev/href: https://logs.test.pitlor.dev
-    gethomepage.dev/ping: logs.test.pitlor.dev
 dataSource:
   - name: Prometheus
     type: prometheus

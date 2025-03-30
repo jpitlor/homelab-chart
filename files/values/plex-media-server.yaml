@@ -10,6 +10,5 @@ ingress:
     gethomepage.dev/icon: plex.png
     gethomepage.dev/name: Plex
     gethomepage.dev/href: https://media.test.pitlor.dev
-    gethomepage.dev/ping: media.test.pitlor.dev
 pms:
   storageClassName: nas
