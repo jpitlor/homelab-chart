@@ -81,10 +81,18 @@ spec:
         volumeMounts:
         - name: drive
           mountPath: /drive
+        startupProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          exec:
+            command:
+            - ping
+            - guacamole-postgres-rw
       volumes:
       - name: drive
         persistentVolumeClaim:
           claimName: guacamole-pvc
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
