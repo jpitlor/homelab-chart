@@ -78,6 +78,8 @@ spec:
           value: guacamole
         - name: POSTGRES_USER
           value: guacamole
+        - name: POSTGRESQL_AUTO_CREATE_ACCOUNTS
+          value: "true"
         volumeMounts:
         - name: drive
           mountPath: /drive
