@@ -86,8 +86,11 @@ spec:
           periodSeconds: 5
           exec:
             command:
-            - ping
-            - guacamole-postgres-rw
+            - timeout
+            - 1
+            - bash
+            - "-c"
+            - "cat < /dev/null > /dev/tcp/guacamole-postgres-rw/5432"
       volumes:
       - name: drive
         persistentVolumeClaim:
