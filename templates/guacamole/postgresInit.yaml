@@ -5,4 +5,4 @@ metadata:
   namespace: guacamole
 data:
   guacamole: |
-{{ $.Files.Get files/guacamole-postgres-init.sql | indent 4 }}
+{{ .Files.Get "files/guacamole-postgres-init.sql" | indent 4 }}
