@@ -87,19 +87,3 @@ spec:
   resources:
     requests:
       storage: 3Gi
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: guacamole-pv
-  labels:
-    type: csi
-spec:
-  storageClassName: nas
-  claimRef:
-    name: guacamole-pvc
-    namespace: guacamole
-  capacity:
-    storage: 3Gi
-  accessModes:
-    - ReadWriteOnce

@@ -68,35 +68,3 @@ spec:
   resources:
     requests:
       storage: 3Gi
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: guacd-record-pv
-  labels:
-    type: csi
-spec:
-  storageClassName: nas
-  claimRef:
-    name: guacd-record-pvc
-    namespace: guacamole
-  capacity:
-    storage: 3Gi
-  accessModes:
-    - ReadWriteOnce
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: guacd-drive-pv
-  labels:
-    type: csi
-spec:
-  storageClassName: nas
-  claimRef:
-    name: guacd-drive-pvc
-    namespace: guacamole
-  capacity:
-    storage: 3Gi
-  accessModes:
-    - ReadWriteOnce
