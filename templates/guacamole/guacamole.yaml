@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: guacamole-ingress
+  namespace: guacamole
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Web-Based Remote Desktop
+    gethomepage.dev/icon: guacamole.png
+    gethomepage.dev/name: Guacamole
+    gethomepage.dev/href: https://code.test.pitlor.dev
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: rdp.test.pitlor.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: guacamole
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guacamole
+  namespace: guacamole
+spec:
+  selector:
+    app: guacamole
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guacamole
+  namespace: guacamole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guacamole
+  template:
+    metadata:
+      labels:
+        app: guacamole
+    spec:
+      containers:
+      - name: guacamole
+        image: guacamole/guacamole:1.5.5
+        env:
+        - name: EXTENSIONS
+          value: auth-totp
+        - name: GUACD_HOSTNAME
+          value: guacd
+        - name: POSTGRES_DATABASE
+          value: guacamole
+        - name: POSTGRES_HOSTNAME
+          value: guacamole-postgres-rw
+        - name: POSTGRES_PASSWORD
+          value: guacamole
+        - name: POSTGRES_USER
+          value: guacamole
+        - name: POSTGRESQL_AUTO_CREATE_ACCOUNTS
+          value: false
+        volumeMounts:
+        - name: drive
+          mountPath: /drive
+      volumes:
+      - name: drive
+        persistentVolumeClaim:
+          claimName: guacamole-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: guacamole-pvc
+  namespace: guacamole
+spec:
+  storageClassName: nas
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: guacamole-pv
+spec:
+  storageClassName: nas
+  claimRef:
+    name: guacamole-pvc
+    namespace: guacamole
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce

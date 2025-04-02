@@ -97,7 +97,3 @@ applications:
     version: 0.7.2
     repository: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
     enabled: true
-  - name: guacamole
-    version: 1.4.1
-    repository: https://charts.beryju.io
-    enabled: true
