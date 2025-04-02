@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init
+  namespace: guacamole
+data:
+  guacamole: |
+{{ $.Files.Get files/guacamole-postgres-init.sql | indent 4 }}

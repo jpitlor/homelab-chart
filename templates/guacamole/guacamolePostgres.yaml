@@ -20,6 +20,10 @@ spec:
       owner: guacamole
       secret:
         name: guacamole-postgres-secret
+      postInitApplicationSQLRefs:
+        configMapRefs:
+        - name: postgres-init
+          key: guacamole
 
   storage:
     size: 4Gi
