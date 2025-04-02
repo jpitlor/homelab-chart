@@ -2,8 +2,8 @@ env:
   TIMEZONE: null
   TZ: America/New_York
   DEBUG: 1
-  ALLOWED_HOSTS: "https://recipes.test.pitlor.dev"
-  SECRET_KEY: "Iwx42i1rte+BAcr2wyOzzdB+LWp09+qi7oUmIShH2njkp9KxVE"
+  ALLOWED_HOSTS: "recipes.test.pitlor.dev"
+  SECRET_KEY: "{{ .Values.tandoor.secretKey }}"
 image:
   tag: 1.5.33
 ingress:

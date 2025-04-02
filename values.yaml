@@ -26,6 +26,9 @@ infisical:
   encryptionKey: changeme
   authSecret: changeme
 
+tandoor:
+  secretKey: changeme
+
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
