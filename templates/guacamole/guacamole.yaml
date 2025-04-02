@@ -4,11 +4,12 @@ metadata:
   name: guacamole-ingress
   namespace: guacamole
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: guacamole-add-path@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Web-Based Remote Desktop
     gethomepage.dev/icon: guacamole.png
     gethomepage.dev/name: Guacamole
-    gethomepage.dev/href: https://code.test.pitlor.dev
+    gethomepage.dev/href: https://rdp.test.pitlor.dev
 spec:
   ingressClassName: traefik
   rules:
@@ -22,6 +23,15 @@ spec:
             name: guacamole
             port:
               number: 8080
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: add-path
+  namespace: guacamole
+spec:
+  addPrefix:
+    prefix: /guacamole
 ---
 apiVersion: v1
 kind: Service
