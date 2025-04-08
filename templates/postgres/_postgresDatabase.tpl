@@ -84,4 +84,4 @@ spec:
         secretAccessKey:
           name: {{ .appName }}-minio-secret
           key: ACCESS_SECRET_KEY
-{{- end }}
+{{ end }}

@@ -9,4 +9,4 @@ spec:
   backupOwnerReference: self
   cluster:
     name: {{ .appName }}-postgres
-{{- end }}
+{{ end }}

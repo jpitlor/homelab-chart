@@ -8,4 +8,4 @@ type: kubernetes.io/basic-auth
 data:
   ACCESS_KEY_ID: {{ .appName | b64enc }}
   ACCESS_SECRET_KEY: {{ .appName | b64enc }}
-{{- end }}
+{{ end }}

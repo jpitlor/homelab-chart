@@ -8,4 +8,4 @@ type: kubernetes.io/basic-auth
 data:
   username: {{ .appName | b64enc }}
   password: {{ .appName | b64enc }}
-{{- end }}
+{{ end }}
