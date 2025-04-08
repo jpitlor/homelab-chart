@@ -7,7 +7,7 @@ metadata:
   namespace: homelab
 type: Opaque
 data:
-  CONSOLE_ACCESS_KEY: {{ .appName | b64enc }}
-  CONSOLE_SECRET_KEY: {{ .appName | b64enc }}
+  CONSOLE_ACCESS_KEY: {{ .postgres.appName | b64enc }}
+  CONSOLE_SECRET_KEY: {{ .postgres.appName | b64enc }}
 {{- end }}
 {{- end }}

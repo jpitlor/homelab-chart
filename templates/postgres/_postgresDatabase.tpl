@@ -67,7 +67,7 @@ spec:
   {{- end }}
 
   storage:
-    size: {{ .storageSize | default 4Gi }}
+    size: {{ .storageSize | default "4Gi" }}
     storageClass: postgresql
 
   backup:
