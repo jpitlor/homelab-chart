@@ -29,6 +29,15 @@ infisical:
 tandoor:
   secretKey: changeme
 
+guacamole:
+  postgres:
+    enabled: true
+    appName: guacamole
+    backupId: "2025-04-08"
+    postInitApplicationSQLRefs:
+      - name: postgres-init
+        key: guacamole
+
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
@@ -48,55 +57,98 @@ applications:
     version: 8.6.2
     repository: https://grafana.github.io/helm-charts
     enabled: true
+    postgres:
+      enabled: true
+      appName: grafana
+      backupId: "2025-04-08"
   - name: alloy
     version: 0.10.1
     repository: https://grafana.github.io/helm-charts
     enabled: true
+    postgres:
+      enabled: false
   - name: loki
     version: 6.24.0
     repository: https://grafana.github.io/helm-charts
     enabled: true
+    postgres:
+      enabled: false
   - name: prometheus
     version: 26.0.1
     repository: https://prometheus-community.github.io/helm-charts
     enabled: true
+    postgres:
+      enabled: false
   - name: bluesky-pds
     version: 0.2.0
     repository: https://charts.nerkho.ch
     enabled: true
+    postgres:
+      enabled: false
   - name: infisical-standalone
     version: 1.4.0
     repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
     enabled: true
+    postgres:
+      enabled: false
   - name: minecraft
     version: 4.23.2
     repository: https://itzg.github.io/minecraft-server-charts/
     enabled: false
+    postgres:
+      enabled: false
   - name: homepage
     repository: https://jameswynn.github.io/helm-charts
     version: 2.0.2
     enabled: true
+    postgres:
+      enabled: false
   - name: gitea
     repository: https://dl.gitea.io/charts
     version: 10.6.0
     enabled: true
+    postgres:
+      enabled: false
   - name: vaultwarden
     version: 0.31.1
     repository: https://guerzon.github.io/vaultwarden
     enabled: true
+    postgres:
+      enabled: true
+      appName: vaultwarden
+      backupId: "2025-04-08"
   - name: immich
     version: 0.9.0
     repository: https://immich-app.github.io/immich-charts
     enabled: true
+    postgres:
+      enabled: true
+      appName: immich
+      backupId: "2025-04-08"
+      imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0  # At the time of writing, immich is only compatible with pgvecto.rs <0.4. Latest postgres image with that version is 16.5.
+      sharedPreloadLibraries:
+        - "vectors.so"
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS "vectors";
+        - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
   - name: tandoor
     version: 0.9.8
     repository: https://charts.gabe565.com
     enabled: true
+    postgres:
+      enabled: false
   - name: nextcloud
     version: 6.5.2
     repository: https://nextcloud.github.io/helm/
     enabled: true
+    postgres:
+      enabled: true
+      appName: nextcloud
+      backupId: "2025-04-08"
   - name: plex-media-server
     version: 0.7.2
     repository: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
     enabled: true
+    postgres:
+      enabled: false

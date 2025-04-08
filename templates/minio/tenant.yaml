@@ -1,0 +1,48 @@
+apiVersion: minio.min.io/v2
+kind: Tenant
+metadata:
+  name: minio-tenant
+  namespace: homelab
+  annotations:
+    prometheus.io/path: /minio/v2/metrics/cluster
+    prometheus.io/port: "9000"
+    prometheus.io/scrape: "true"
+spec:
+  users:
+    - name: guacamole-minio-user  # Guacamole is a special snowflake since it doesn't have a chart
+    {{- range .Values.applications }}
+    {{- if .postgres.enabled }}
+    - name: {{ .postgres.appName }}-minio-user
+    {{- end }}
+    {{- end }}
+  buckets:
+    - name: "guacamole"
+      region: "us-east-1"
+      objectLock: true
+    {{- range .Values.applications }}
+    {{- if .postgres.enabled }}
+    - name: "{{ .postgres.appName }}"
+      region: "us-east-1"
+      objectLock: true
+    {{- end }}
+    {{- end }}
+  configuration:
+    name: minio-storage-configuration
+  env: [ ]  # https://github.com/minio/minio/tree/master/docs/config
+  image: quay.io/minio/minio:RELEASE.2025-04-03T14-56-28Z
+  mountPath: /export
+  serviceAccountName: "minio-service-account"
+  pools:
+    - servers: 1
+      name: minio-pool
+      volumesPerServer: 1
+      volumeClaimTemplate:
+        apiVersion: v1
+        kind: PersistentVolumeClaims
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 20Gi
+          storageClassName: nas

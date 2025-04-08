@@ -1,24 +1,28 @@
-{{- range $index, $application := .Values.applications }}
-{{- if $application.enabled -}}
+{{- range .Values.applications }}
+{{- if .enabled -}}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ $application.name }}
+  name: {{ .name }}
 ---
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: {{ $application.name | trunc 5 }}-{{ $.Release.Name | trunc 5 }}
+  name: {{ .name | trunc 5 }}-{{ $.Release.Name | trunc 5 }}
   namespace: homelab
 spec:
-  repo: {{ $application.repository }}
-  chart: {{ $application.name }}
-  targetNamespace: {{ $application.name }}
+  repo: {{ .repository }}
+  chart: {{ .name }}
+  targetNamespace: {{ .name }}
   timeout: 10m
-  {{- if $.Files.Get (printf "files/values/%s.yaml" $application.name) }}
+  {{- if $.Files.Get (printf "files/values/%s.yaml" .name) }}
   valuesContent: |-
-{{ tpl ($.Files.Get (printf "files/values/%s.yaml" $application.name)) $ | indent 4 }}
+{{ tpl ($.Files.Get (printf "files/values/%s.yaml" .name)) $ | indent 4 }}
   {{- end }}
+---
+{{- if .postgres.enabled -}}
+{{- template "dev.pitlor.homelab.postgres" .postgres }}
+{{- end }}
 ---
 {{- end }}
 {{- end }}

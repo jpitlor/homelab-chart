@@ -1,0 +1,13 @@
+{{- range .Values.applications }}
+{{- if .postgres.enabled }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .postgres.appName }}-minio-user
+  namespace: homelab
+type: Opaque
+data:
+  CONSOLE_ACCESS_KEY: {{ .appName | b64enc }}
+  CONSOLE_SECRET_KEY: {{ .appName | b64enc }}
+{{- end }}
+{{- end }}
