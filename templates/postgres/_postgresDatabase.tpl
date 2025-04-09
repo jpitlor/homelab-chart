@@ -45,9 +45,7 @@ spec:
       {{- if .postInitApplicationSQLRefs }}
       postInitApplicationSQLRefs:
         configMapRefs:
-          {{- range .postInitApplicationSQLRefs }}
-          - {{ . }}
-          {{- end }}
+{{ toYaml .postInitApplicationSQLRefs | indent 10 }}
       {{- end }}
     {{- end }}
   
