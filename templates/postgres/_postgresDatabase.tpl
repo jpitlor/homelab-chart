@@ -55,7 +55,7 @@ spec:
   externalClusters:
     - name: clusterBackup
       barmanObjectStore:
-        endpointUrl: "minio.homelab.svc.cluster.local"
+        endpointURL: "minio.homelab.svc.cluster.local"
         destinationPath: "s3://{{ .appName }}/postgresBackups-{{ .recoverFromBackupId }}"
         s3Credentials:
           accessKeyId:
@@ -73,7 +73,7 @@ spec:
   backup:
     retentionPolicy: "30d"
     barmanObjectStore:
-      endpointUrl: "minio.homelab.svc.cluster.local"
+      endpointURL: "minio.homelab.svc.cluster.local"
       destinationPath: "s3://{{ .appName }}/postgresBackups-{{ .backupId }}"
       wal:
         compression: gzip

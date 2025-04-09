@@ -35,6 +35,11 @@ kind: Ingress
 metadata:
   name: {{ .name | lower }}-ingress
   namespace: homelab
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: {{ .description }}
+    gethomepage.dev/icon: {{ .icon }}
+    gethomepage.dev/name: {{ .name }}
 spec:
   ingressClassName: traefik
   rules:
@@ -48,10 +53,5 @@ spec:
                   name: http
             path: /
             pathType: Prefix
-  annotations:
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/description: {{ .description }}
-    gethomepage.dev/icon: {{ .icon }}
-    gethomepage.dev/name: {{ .name }}
 ---
 {{ end }}
