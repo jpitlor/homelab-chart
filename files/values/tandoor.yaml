@@ -17,6 +17,7 @@ ingress:
           - path: /
             pathType: Prefix
     annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Recipes
       gethomepage.dev/icon: tandoor-recipes.png

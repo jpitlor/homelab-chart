@@ -22,6 +22,7 @@ ingress:
   className: "traefik"
   enabled: true
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: File Server
     gethomepage.dev/icon: nextcloud.png

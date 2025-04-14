@@ -5,6 +5,7 @@ ingress:
   enabled: true
   url: media.test.pitlor.dev
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Media Server
     gethomepage.dev/icon: plex.png

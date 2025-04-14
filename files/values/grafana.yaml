@@ -10,6 +10,7 @@ ingress:
   hosts:
     - logs.test.pitlor.dev
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Status Dashboards and Logs
     gethomepage.dev/icon: grafana.png

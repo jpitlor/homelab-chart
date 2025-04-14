@@ -35,6 +35,7 @@ ingress:
         - path: /
           pathType: Prefix
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Code Hosting
     gethomepage.dev/icon: gitea.png

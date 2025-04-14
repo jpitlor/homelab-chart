@@ -4,6 +4,7 @@ ingress:
   enabled: true
   className: "traefik"
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Social Media data server
     gethomepage.dev/icon: bluesky.png

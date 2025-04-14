@@ -40,6 +40,8 @@ ingress:
   main:
     className: "traefik"
     enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
     hosts:
       - host: homepage.test.pitlor.dev
         paths:
