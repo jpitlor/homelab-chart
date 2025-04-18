@@ -5,15 +5,6 @@ kind: Namespace
 metadata:
   name: {{ .name }}
 ---
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: increased-body-limit
-  namespace: {{ .name }}
-spec:
-  buffering:
-    maxRequestBodyBytes: 2000000000
----
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:

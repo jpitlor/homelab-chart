@@ -7,7 +7,7 @@ ingress:
   hostName: vault.test.pitlor.dev
   ingressClassName: traefik
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: homelab-increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Secret Management
     gethomepage.dev/icon: sh-infisical.png

@@ -40,7 +40,6 @@ spec:
         apiVersion: v1
         kind: PersistentVolumeClaims
         spec:
-          reclaimPolicy: Retain
           accessModes:
             - ReadWriteOnce
           resources:

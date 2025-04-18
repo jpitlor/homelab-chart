@@ -41,7 +41,7 @@ ingress:
     className: "traefik"
     enabled: true
     annotations:
-      traefik.ingress.kubernetes.io/router.middlewares: increased-body-limit@kubernetescrd
+      traefik.ingress.kubernetes.io/router.middlewares: homelab-increased-body-limit@kubernetescrd
     hosts:
       - host: homepage.test.pitlor.dev
         paths:
