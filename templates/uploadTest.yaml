@@ -52,7 +52,14 @@ spec:
       - name: uploadserver
         image: python:3.9.22
         command: ["/bin/sh"]
-        args: ["-c", "pip install uploadserver; uploadserver"]
+        args: ["-c", "pip install uploadserver; cd server; uploadserver"]
+        volumeMounts:
+        - mountPath: /server
+          name: server
+      volumes:
+      - name: server
+        emptyDir:
+          sizeLimit: 500Mi
 ---
 apiVersion: v1
 kind: Namespace
