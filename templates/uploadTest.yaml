@@ -49,7 +49,8 @@ spec:
         app: upload
     spec:
       containers:
-      - image: python:3.9.22
+      - name: uploadserver
+        image: python:3.9.22
         command: ["/bin/sh"]
         args: ["-c", "pip install uploadserver; uploadserver"]
 ---
