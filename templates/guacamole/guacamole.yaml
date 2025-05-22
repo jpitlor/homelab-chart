@@ -5,7 +5,6 @@ metadata:
   namespace: guacamole
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: guacamole-add-path@kubernetescrd
-    traefik.ingress.kubernetes.io/router.middlewares: homelab-increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Web-Based Remote Desktop
     gethomepage.dev/icon: guacamole.png

@@ -24,7 +24,6 @@ ingress:
   enabled: true
   hostname: passwords.test.pitlor.dev
   additionalAnnotations:
-    traefik.ingress.kubernetes.io/router.middlewares: homelab-increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Passwords
     gethomepage.dev/icon: vaultwarden.png

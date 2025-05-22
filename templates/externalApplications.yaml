@@ -36,7 +36,6 @@ metadata:
   name: {{ .name | lower }}-ingress
   namespace: homelab
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: homelab-increased-body-limit@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: {{ .description }}
     gethomepage.dev/icon: {{ .icon }}
