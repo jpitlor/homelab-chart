@@ -10,6 +10,7 @@ metadata:
 spec:
   users:
     - name: guacamole-minio-user  # Guacamole is a special snowflake since it doesn't have a chart
+    - name: bluesky-pds-minio-user # Bluesky backs up a different DB
     {{- range .Values.applications }}
     {{- if .postgres.enabled }}
     - name: {{ .postgres.appName }}-minio-user
@@ -17,6 +18,9 @@ spec:
     {{- end }}
   buckets:
     - name: "guacamole"
+      region: "us-east-1"
+      objectLock: true
+    - name: "bluesky-pds"
       region: "us-east-1"
       objectLock: true
     {{- range .Values.applications }}

@@ -1,0 +1,39 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: velero-chart
+  namespace: bluesky-pds
+spec:
+  repo: https://vmware-tanzu.github.io/helm-charts
+  chart: velero
+  version: 9.1.3
+  targetNamespace: bluesky-pds
+  valuesContent: |-
+    initContainers:
+      - name: velero-aws-plugin
+        image: velero/velero-plugin-for-aws:v1.10.0
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+    configuration:
+      backupStorageLocation:
+        - name: minio
+          provider: aws
+          bucket: bluesky-pds
+          default: true
+          credential:
+            name: bluesky-pds-minio-user
+            key: CONSOLE_SECRET_KEY
+          config:
+            region: us-east-1
+            s3ForcePathStyle: true
+            s3Url: minio.homelab.svc.cluster.local
+      volumeSnapshotLocation:
+        - name: blueskyPds
+          provider: aws
+          credential:
+            name: bluesky-pds-minio-user
+            key: CONSOLE_SECRET_KEY
+          config:
+            region: "us-east-1"
+            snapshotLocation: "s3://bluesky-pds/backups-{{ .Values.blueskyPds.backupId }}"

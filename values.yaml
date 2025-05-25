@@ -21,6 +21,7 @@ blueskyPds:
   adminPassword: changeme
   plcRotationKey: changeme
   emailSmtpUrl: changeme
+  backupId: "2025-04-08"
 
 infisical:
   encryptionKey: changeme
