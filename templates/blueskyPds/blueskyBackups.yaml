@@ -2,7 +2,7 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: velero-chart
-  namespace: bluesky-pds
+  namespace: homelab
 spec:
   repo: https://vmware-tanzu.github.io/helm-charts
   chart: velero
