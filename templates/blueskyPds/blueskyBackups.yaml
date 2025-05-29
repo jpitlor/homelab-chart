@@ -29,7 +29,7 @@ spec:
             s3ForcePathStyle: true
             s3Url: minio.homelab.svc.cluster.local
       volumeSnapshotLocation:
-        - name: blueskyPds
+        - name: bluesky-pds
           provider: aws
           credential:
             name: bluesky-pds-minio-user
