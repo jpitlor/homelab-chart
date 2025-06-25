@@ -21,7 +21,6 @@ server:
             - path: /
               pathType: Prefix
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: homelab-increased-body-limit@kubernetescrd
         gethomepage.dev/enabled: "true"
         gethomepage.dev/description: Photos
         gethomepage.dev/icon: immich.png
