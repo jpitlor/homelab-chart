@@ -1,3 +1,7 @@
+google:
+  key: changeme
+  secret: changeme
+
 nas:
   credentialsName: nas-credentials
   ipAddress: 192.168.0.31

@@ -30,6 +30,10 @@ spec:
     {{- if .recoverFromBackupId }}
     recovery:
       source: clusterBackup
+      {{- if .recoverFromBackupTime }}
+      recoveryTarget:
+        targetTime: {{ .recoverFromBackupTime | quote }}
+      {{- end }}
     {{- else }}
     initdb:
       database: {{ .appName }}
@@ -51,35 +55,21 @@ spec:
   
   {{- if .recoverFromBackupId }}
   externalClusters:
-    - name: clusterBackup
-      barmanObjectStore:
-        endpointURL: "minio.homelab.svc.cluster.local"
-        destinationPath: "s3://{{ .appName }}/postgresBackups-{{ .recoverFromBackupId }}"
-        s3Credentials:
-          accessKeyId:
-            name: {{ .appName }}-minio-secret
-            key: ACCESS_KEY_ID
-          secretAccessKey:
-            name: {{ .appName }}-minio-secret
-            key: ACCESS_SECRET_KEY
+    - name: source
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: {{ .appName }}-restore-store
+          serverName: {{ .appName }}-postgres
   {{- end }}
 
   storage:
     size: {{ .storageSize | default "4Gi" }}
     storageClass: postgresql
 
-  backup:
-    retentionPolicy: "30d"
-    barmanObjectStore:
-      endpointURL: "minio.homelab.svc.cluster.local"
-      destinationPath: "s3://{{ .appName }}/postgresBackups-{{ .backupId }}"
-      wal:
-        compression: gzip
-      s3Credentials:
-        accessKeyId:
-          name: {{ .appName }}-minio-secret
-          key: ACCESS_KEY_ID
-        secretAccessKey:
-          name: {{ .appName }}-minio-secret
-          key: ACCESS_SECRET_KEY
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: {{ .appName }}-backup-store
 {{ end }}
