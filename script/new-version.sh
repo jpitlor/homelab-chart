@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Uprev Chart.yaml
-yq -i ".version = \"$1\"" file.yaml
+yq -i ".version = \"$1\"" Chart.yaml
 git commit -am "Update version to $1"
 git push origin main
 
