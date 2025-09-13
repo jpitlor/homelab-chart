@@ -1,0 +1,29 @@
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: pvc-daily-backup
+  namespace: homelab
+spec:
+  # Cron schedule for daily backup at 2 AM
+  schedule: "0 2 * * *"
+  
+  # Template for the backup
+  template:
+    includedNamespaces:
+      - guacamole
+      {{- range .Values.applications }}
+      {{- if .enabled }}
+      - {{ .name }}
+      {{- end }}
+      {{- end }}
+    
+    includedResources:
+      - persistentvolumeclaims
+      - persistentvolumes
+    
+    storageLocation: gcs-backup-location
+    volumeSnapshotLocations:
+      - gcs-snapshot-location
+    
+    ttl: 720h0m0s
+    defaultVolumesToRestic: true

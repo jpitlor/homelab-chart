@@ -1,0 +1,17 @@
+{{ if .Values.velero.restoreFromBackupId }}
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: velero-restore
+  namespace: homelab
+spec:
+  backupName: {{ .Values.velero.restoreFromBackupId }}
+  restorePVs: true
+  includedNamespaces:
+    - guacamole
+    {{- range .Values.applications }}
+    {{- if .enabled }}
+    - {{ .name }}
+    {{- end }}
+    {{- end }}
+{{ end }}

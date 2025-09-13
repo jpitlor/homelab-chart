@@ -3,6 +3,7 @@ apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
   name: {{ .appName }}-backup-store
+  namespace: {{ .appName }}
 spec:
   retentionPolicy: "30d"
   configuration:

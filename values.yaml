@@ -1,6 +1,7 @@
 google:
   key: changeme
   secret: changeme
+  serviceAccountJson: changeme
 
 nas:
   credentialsName: nas-credentials

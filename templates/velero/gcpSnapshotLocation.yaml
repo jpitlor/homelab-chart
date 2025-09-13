@@ -1,0 +1,10 @@
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: gcs-snapshot-location
+  namespace: velero
+spec:
+  provider: gcp
+  config:
+    project: YOUR_GCP_PROJECT_ID
+    serviceAccount: /credentials/cloud
