@@ -9,39 +9,25 @@ spec:
   version: 10.1.2
   targetNamespace: homelab
   valuesContent: |-
-    # Velero configuration
     configuration:
       backupStorageLocation:
         - name: gcs-backup-location
           provider: gcp
-          bucket: homelab
-          prefix: app
-          config:
-            serviceAccount: /credentials/cloud
+          bucket: dev-pitlor-homelab-container-backups 
+          prefix: velero-metadata
+          credential:
+            name: velero-credentials
+            key: gcp
       volumeSnapshotLocation:
         - name: gcs-snapshot-location
           provider: gcp
-          config:
-            project: YOUR_GCP_PROJECT_ID
-            serviceAccount: /credentials/cloud
-    
-    # Credentials configuration
-    credentials:
-      existingSecret: cloud-credentials
-      secretContents: {}
-    
-    # Enable CSI snapshot support
+          credential:
+            name: velero-credentials
+            key: gcp
     snapshotsEnabled: true
-    
-    # Deploy node-agent (formerly restic) for file-level backups
-    deployNodeAgent: true
-    
-    # Enable metrics
     metrics:
       enabled: true
       scrapeInterval: 30s
-    
-    # Initialize providers
     initContainers:
       - name: velero-plugin-for-gcp
         image: velero/velero-plugin-for-gcp:v1.8.0

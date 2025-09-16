@@ -4,10 +4,7 @@ metadata:
   name: pvc-daily-backup
   namespace: homelab
 spec:
-  # Cron schedule for daily backup at 2 AM
   schedule: "0 2 * * *"
-  
-  # Template for the backup
   template:
     includedNamespaces:
       - guacamole
@@ -16,14 +13,10 @@ spec:
       - {{ .name }}
       {{- end }}
       {{- end }}
-    
     includedResources:
       - persistentvolumeclaims
       - persistentvolumes
-    
     storageLocation: gcs-backup-location
     volumeSnapshotLocations:
       - gcs-snapshot-location
-    
     ttl: 720h0m0s
-    defaultVolumesToRestic: true
