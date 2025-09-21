@@ -11,8 +11,8 @@ spec:
     destinationPath: "gs://dev-pitlor-homelab-container-backups/{{ .appName }}/postgresBackups-{{ .recoverFromBackupId }}"
     googleCredentials:
       applicationCredentials:
-        name: backup-creds
-        key: gcsCredentials
+        name: gcp-credentials
+        key: serviceAccountJson
     wal:
       compression: gzip
 {{- end }}

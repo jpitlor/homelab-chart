@@ -2,8 +2,6 @@ velero:
   restore: false
 
 google:
-  key: changeme
-  secret: changeme
   serviceAccountJson: changeme
 
 nas:
