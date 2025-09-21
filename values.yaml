@@ -1,3 +1,6 @@
+velero:
+  restore: false
+
 google:
   key: changeme
   secret: changeme
@@ -26,7 +29,6 @@ blueskyPds:
   adminPassword: changeme
   plcRotationKey: changeme
   emailSmtpUrl: changeme
-  backupId: "2025-04-08"
 
 infisical:
   encryptionKey: changeme

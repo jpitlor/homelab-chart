@@ -1,11 +1,11 @@
-{{ if .Values.velero.restoreFromBackupId }}
+{{ if .Values.velero.restore }}
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
   name: velero-restore
   namespace: homelab
 spec:
-  backupName: {{ .Values.velero.restoreFromBackupId }}
+  scheduleName: pvc-daily-backup
   restorePVs: true
   includedNamespaces:
     - guacamole
