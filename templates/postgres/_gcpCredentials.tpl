@@ -5,4 +5,4 @@ metadata:
   namespace: {{ .appName }}
 type: Opaque
 stringData:
-  serviceAccountJson: {{ .Values.google.serviceAccountJson | base64enc }}
+  serviceAccountJson: {{ .Values.google.serviceAccountJson | b64enc }}
