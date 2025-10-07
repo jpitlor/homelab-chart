@@ -1,9 +1,0 @@
-apiVersion: velero.io/v1
-kind: BackupStorageLocation
-metadata:
-  name: gcs-backup-location
-  namespace: homelab
-spec:
-  provider: velero.io/gcp
-  objectStorage:
-    bucket: {{ .Values.google.bucket }}
