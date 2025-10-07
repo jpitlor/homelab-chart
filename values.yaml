@@ -3,6 +3,7 @@ velero:
 
 google:
   serviceAccountJson: changeme
+  bucket: dev-pitlor-homelab-container-backups
 
 nas:
   credentialsName: nas-credentials
