@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: guacd
-        image: guacamole/guacd:1.5.5
+        image: guacamole/guacd:1.6.0
         volumeMounts:
         - name: drive
           mountPath: /drive

@@ -1,5 +1,5 @@
 image:
-  tag: 0.4.138
+  tag: 0.4.182
 ingress:
   enabled: true
   className: "traefik"

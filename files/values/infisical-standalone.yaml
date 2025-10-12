@@ -2,7 +2,7 @@
 infisical:
   autoDatabaseSchemaMigration: true
   image:
-    tag: "v0.118.0-postgres"
+    tag: "v0.149.0"
 ingress:
   hostName: vault.test.pitlor.dev
   ingressClassName: traefik

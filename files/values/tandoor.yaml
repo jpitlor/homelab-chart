@@ -6,7 +6,7 @@ env:
   CSRF_TRUSTED_ORIGINS: "https://recipes.test.pitlor.dev"
   SECRET_KEY: "{{ .Values.tandoor.secretKey }}"
 image:
-  tag: 1.5.33
+  tag: 2.3.2
 ingress:
   main:
     className: "traefik"

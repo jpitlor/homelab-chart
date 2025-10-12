@@ -7,7 +7,7 @@ immich:
     library:
       existingClaim: immich-library-pvc
 image:
-  tag: v1.129.0
+  tag: v2.0.1
 redis:
   enabled: true
 server:

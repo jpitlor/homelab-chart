@@ -1,5 +1,5 @@
 image:
-  tag: 1.33.2
+  tag: 1.34.3
 domain: https://passwords.test.pitlor.dev
 storage:
   data:

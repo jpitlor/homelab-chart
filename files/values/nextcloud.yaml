@@ -1,5 +1,5 @@
 image:
-  tag: 31.0.2
+  tag: 32.0.0
 internalDatabase:
   enabled: false
 externalDatabase:

@@ -1,7 +1,7 @@
 assertNoLeakedSecrets: false
 fullNameOverride: grafana
 image:
-  tag: 11.5.2
+  tag: 12.2.0
 persistence:
   enabled: false
 ingress:
