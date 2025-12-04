@@ -5,8 +5,13 @@ env:
   ALLOWED_HOSTS: "recipes.test.pitlor.dev"
   CSRF_TRUSTED_ORIGINS: "https://recipes.test.pitlor.dev"
   SECRET_KEY: "{{ .Values.tandoor.secretKey }}"
+  POSTGRES_HOST: "tandoor-postgres-rw:5432"
+  POSTGRES_PASSWORD: "tandoor"
+  POSTGRES_USER: "tandoor"
+  POSTGRES_DB: "tandoor"
+  DB_ENGINE: django.db.backends.postgresql
 image:
-  tag: 2.3.2
+  tag: 2.3.6
 ingress:
   main:
     className: "traefik"
@@ -34,8 +39,4 @@ persistence:
     size: 2Gi
     accessMode: ReadWriteOnce
 postgresql:
-  enabled: true
-  primary:
-    persistence:
-      enabled: true
-      storageClass: bitnami-postgres
+  enabled: false

@@ -19,9 +19,6 @@ storageClasses:
   - name: postgresql
     mode: 700
     uid: 26
-  - name: bitnami-postgres
-    mode: 700
-    uid: 1001
 
 blueskyPds:
   jwtSecret: changeme
@@ -125,20 +122,27 @@ applications:
       appName: vaultwarden
       backupId: "2025-04-08"
   - name: immich
-    version: 0.10.0
+    version: 0.10.3
     repository: https://immich-app.github.io/immich-charts
     enabled: true
     postgres:
       enabled: true
       appName: immich
       backupId: "2025-04-08"
-      imageName: ghcr.io/immich-app/postgres:14-vectorchord0.4.2-pgvectors0.2.0
+      imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
+      sharedPreloadLibraries:
+        - "vchord.so"
+      postInitSQL:
+        - CREATE EXTENSION vchord CASCADE;
+        - CREATE EXTENSION earthdistance CASCADE;
   - name: tandoor
     version: 0.9.9
     repository: https://charts.gabe565.com
     enabled: true
     postgres:
-      enabled: false
+      enabled: true
+      appName: tandoor
+      backupId: "2025-04-08"
   - name: nextcloud
     version: 8.4.1
     repository: https://nextcloud.github.io/helm/
