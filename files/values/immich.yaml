@@ -1,5 +1,8 @@
 env:
   DB_HOSTNAME: immich-postgres-rw
+  DB_USERNAME: immich
+  DB_PASSWORD: immich
+  DB_DATABASE_NAME: immich
 immich:
   metrics:
     enabled: true
@@ -8,7 +11,7 @@ immich:
       existingClaim: immich-library-pvc
 image:
   tag: v2.3.1
-redis:
+valkey:
   enabled: true
 server:
   ingress:
@@ -26,9 +29,3 @@ server:
         gethomepage.dev/icon: immich.png
         gethomepage.dev/name: Immich
         gethomepage.dev/href: https://photos.test.pitlor.dev
-postgresql:
-  enabled: false
-  global:
-    postgresql:
-      auth:
-        existingSecret: immich-postgres-secret
