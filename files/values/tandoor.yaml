@@ -11,7 +11,7 @@ env:
   POSTGRES_DB: "tandoor"
   DB_ENGINE: django.db.backends.postgresql
 image:
-  tag: 2.3.6
+  tag: 2.2.7
 ingress:
   main:
     className: "traefik"
@@ -40,10 +40,3 @@ persistence:
     accessMode: ReadWriteOnce
 postgresql:
   enabled: false
-service:
-  main:
-    ports:
-      http:
-        port: 80
-      static:
-        enabled: false
