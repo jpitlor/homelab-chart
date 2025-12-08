@@ -40,7 +40,7 @@ metadata:
     gethomepage.dev/description: {{ .description }}
     gethomepage.dev/icon: {{ .icon }}
     gethomepage.dev/name: {{ .name }}
-    gethomepage.dev/group: External Applications
+    gethomepage.dev/group: {{ .group }}
     gethomepage.dev/href: https://{{ .listenToHost }}
     gethomepage.dev/siteMonitor: https://{{ .listenToHost }}
     gethomepage.dev/pod-selector: ""

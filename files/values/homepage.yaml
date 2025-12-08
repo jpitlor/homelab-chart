@@ -16,6 +16,10 @@ config:
     hideVersion: true
     disableUpdateCheck: true
     statusStyle: dot
+    layout:
+      Apps:
+        style: row
+        columns: 4
   widgets:
     - search:
         provider: google

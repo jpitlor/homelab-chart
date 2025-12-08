@@ -46,12 +46,14 @@ externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
     icon: apple.png
+    group: Services
     listenToHost: imessage.test.pitlor.dev
     forwardToIp: 192.168.0.165
     forwardToPort: 1234
   - name: HomeAssistant
     description: Smart home management
     icon: home-assistant.png
+    group: Apps
     listenToHost: iot.test.pitlor.dev
     forwardToIp: 192.168.0.6
     forwardToPort: 8123
