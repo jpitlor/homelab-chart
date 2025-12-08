@@ -40,3 +40,10 @@ persistence:
     accessMode: ReadWriteOnce
 postgresql:
   enabled: false
+service:
+  main:
+    ports:
+      http:
+        port: 80
+      static:
+        enabled: false
