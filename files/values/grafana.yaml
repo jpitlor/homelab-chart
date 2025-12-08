@@ -14,7 +14,8 @@ ingress:
     gethomepage.dev/description: Status Dashboards and Logs
     gethomepage.dev/icon: grafana.png
     gethomepage.dev/name: Grafana
-    gethomepage.dev/href: https://logs.test.pitlor.dev
+    gethomepage.dev/group: System Administration
+    gethomepage.dev/pod-selector: ""
 dataSource:
   - name: Prometheus
     type: prometheus

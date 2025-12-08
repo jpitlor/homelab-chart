@@ -28,4 +28,5 @@ ingress:
     gethomepage.dev/description: Passwords
     gethomepage.dev/icon: vaultwarden.png
     gethomepage.dev/name: Vaultwarden
-    gethomepage.dev/href: https://passwords.test.pitlor.dev
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""

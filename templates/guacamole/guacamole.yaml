@@ -9,7 +9,8 @@ metadata:
     gethomepage.dev/description: Web-Based Remote Desktop
     gethomepage.dev/icon: guacamole.png
     gethomepage.dev/name: Guacamole
-    gethomepage.dev/href: https://rdp.test.pitlor.dev
+    gethomepage.dev/group: System Administration
+    gethomepage.dev/pod-selector: ""
 spec:
   ingressClassName: traefik
   rules:

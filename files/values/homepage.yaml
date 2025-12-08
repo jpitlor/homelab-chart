@@ -5,15 +5,7 @@ env:
     value: '*'
 config:
   bookmarks: {}
-  services:
-    - External Services:
-      {{- range .Values.externalApplications }}
-      - {{ .name }}:
-          icon: {{ .icon }}
-          description: {{ .description }}
-          href: https://{{ .listenToHost }}
-          serviceMonitor: https://{{ .listenToHost }}
-      {{- end }}
+  services: {}
   settings:
     title: Pitlor Homelab
     description: A homepage aggregating all of our homelab services

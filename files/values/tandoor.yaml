@@ -26,7 +26,8 @@ ingress:
       gethomepage.dev/description: Recipes
       gethomepage.dev/icon: tandoor-recipes.png
       gethomepage.dev/name: Tandoor
-      gethomepage.dev/href: https://recipes.test.pitlor.dev
+      gethomepage.dev/group: Apps
+      gethomepage.dev/pod-selector: ""
 persistence:
   config:
     enabled: true

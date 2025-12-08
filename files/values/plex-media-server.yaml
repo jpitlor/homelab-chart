@@ -9,6 +9,7 @@ ingress:
     gethomepage.dev/description: Media Server
     gethomepage.dev/icon: plex.png
     gethomepage.dev/name: Plex
-    gethomepage.dev/href: https://media.test.pitlor.dev
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
 pms:
   storageClassName: nas

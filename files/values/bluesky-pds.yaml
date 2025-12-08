@@ -8,7 +8,8 @@ ingress:
     gethomepage.dev/description: Social Media data server
     gethomepage.dev/icon: bluesky.png
     gethomepage.dev/name: Bluesky
-    gethomepage.dev/href: https://tweet.test.pitlor.dev
+    gethomepage.dev/group: Services
+    gethomepage.dev/pod-selector: ""
   hosts:
     - host: tweet.test.pitlor.dev
       paths:

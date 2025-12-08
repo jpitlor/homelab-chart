@@ -23,7 +23,8 @@ server:
         gethomepage.dev/description: Photos
         gethomepage.dev/icon: immich.png
         gethomepage.dev/name: Immich
-        gethomepage.dev/href: https://photos.test.pitlor.dev
+        gethomepage.dev/group: Apps
+        gethomepage.dev/pod-selector: ""
   controllers:
     main:
       containers:

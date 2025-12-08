@@ -11,7 +11,8 @@ ingress:
     gethomepage.dev/description: Secret Management
     gethomepage.dev/icon: sh-infisical.png
     gethomepage.dev/name: Infisical
-    gethomepage.dev/href: https://vault.test.pitlor.dev
+    gethomepage.dev/group: System Administration
+    gethomepage.dev/pod-selector: ""
 redis:
   enabled: true
 postgresql:

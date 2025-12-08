@@ -39,4 +39,5 @@ ingress:
     gethomepage.dev/description: Code Hosting
     gethomepage.dev/icon: gitea.png
     gethomepage.dev/name: Gitea
-    gethomepage.dev/href: https://code.test.pitlor.dev
+    gethomepage.dev/group: Software Development
+    gethomepage.dev/pod-selector: ""

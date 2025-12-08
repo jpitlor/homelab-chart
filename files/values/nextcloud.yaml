@@ -26,7 +26,8 @@ ingress:
     gethomepage.dev/description: File Server
     gethomepage.dev/icon: nextcloud.png
     gethomepage.dev/name: NextCloud
-    gethomepage.dev/href: https://files.test.pitlor.dev
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
 nextcloud:
   host: files.test.pitlor.dev
 startupProbe:
