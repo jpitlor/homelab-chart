@@ -1,1 +1,1 @@
-{{- template "dev.pitlor.homelab.postgres" .Values.guacamole.postgres }}
+{{- template "dev.pitlor.homelab.postgres" .Values.postgres.guacamole }}

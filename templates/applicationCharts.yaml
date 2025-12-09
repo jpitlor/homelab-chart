@@ -20,8 +20,10 @@ spec:
 {{ tpl ($.Files.Get (printf "files/values/%s.yaml" .name)) $ | indent 4 }}
   {{- end }}
 ---
-{{- if .postgres.enabled -}}
-{{- template "dev.pitlor.homelab.postgres" .postgres }}
+{{- with index $.Values.postgres .name }}
+{{- if .enabled -}}
+{{- template "dev.pitlor.homelab.postgres" . }}
+{{- end }}
 {{- end }}
 ---
 {{ end }}
