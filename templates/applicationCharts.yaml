@@ -23,7 +23,7 @@ spec:
 {{- $name := .name -}}
 {{- with index $.Values.postgres .name }}
 {{- if . -}}
-{{- template "dev.pitlor.homelab.postgres" (set . "appName" $name) }}
+{{- template "dev.pitlor.homelab.postgres" (list $ (set . "appName" $name)) }}
 {{- end }}
 {{- end }}
 ---

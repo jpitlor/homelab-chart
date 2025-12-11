@@ -1,75 +1,77 @@
 {{- define "dev.pitlor.homelab.postgresDatabase" }}
+{{- $globalScope := first . }}
+{{- $appPgConfig := last . }}
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: {{ .appName }}-postgres
-  namespace: {{ .appName }}
+  name: {{ $appPgConfig.appName }}-postgres
+  namespace: {{ $appPgConfig.appName }}
 spec:
-  {{ if .imageName }}
-  imageName: {{ .imageName }}
+  {{ if $appPgConfig.imageName }}
+  imageName: {{ $appPgConfig.imageName }}
   {{ end }}
   instances: 1
   postgresUID: 0
   postgresGID: 0
 
-  {{- if .sharedPreloadLibraries }}
+  {{- if $appPgConfig.sharedPreloadLibraries }}
   postgresql:
     shared_preload_libraries:
-      {{- range .sharedPreloadLibraries }}
+      {{- range $appPgConfig.sharedPreloadLibraries }}
       - {{ . }}
       {{- end }}
   {{- end }}
 
   managed:
     roles:
-      - name: {{ .appName }}
+      - name: {{ $appPgConfig.appName }}
         superuser: true
         login: true
 
   bootstrap:
-    {{- if .recoverFromBackupId }}
+    {{- if $appPgConfig.recoverFromBackupId }}
     recovery:
       source: clusterBackup
-      {{- if .recoverFromBackupTime }}
+      {{- if $appPgConfig.recoverFromBackupTime }}
       recoveryTarget:
-        targetTime: {{ .recoverFromBackupTime | quote }}
+        targetTime: {{ $appPgConfig.recoverFromBackupTime | quote }}
       {{- end }}
     {{- else }}
     initdb:
-      database: {{ .appName }}
-      owner: {{ .appName }}
+      database: {{ $appPgConfig.appName }}
+      owner: {{ $appPgConfig.appName }}
       secret:
-        name: {{ .appName }}-postgres-secret
-      {{- if .postInitSQL }}
+        name: {{ $appPgConfig.appName }}-postgres-secret
+      {{- if $appPgConfig.postInitSQL }}
       postInitSQL:
-        {{- range .postInitSQL }}
+        {{- range $appPgConfig.postInitSQL }}
         - {{ . }}
         {{- end }}
       {{- end }}
-      {{- if .postInitApplicationSQLRefs }}
+      {{- if $appPgConfig.postInitApplicationSQLRefs }}
       postInitApplicationSQLRefs:
         configMapRefs:
-{{ toYaml .postInitApplicationSQLRefs | indent 10 }}
+{{ toYaml $appPgConfig.postInitApplicationSQLRefs | indent 10 }}
       {{- end }}
     {{- end }}
   
-  {{- if .recoverFromBackupId }}
+  {{- if $appPgConfig.recoverFromBackupId }}
   externalClusters:
     - name: source
       plugin:
         name: barman-cloud.cloudnative-pg.io
         parameters:
-          barmanObjectName: {{ .appName }}-restore-store
-          serverName: {{ .appName }}-postgres
+          barmanObjectName: {{ $appPgConfig.appName }}-restore-store
+          serverName: {{ $appPgConfig.appName }}-postgres
   {{- end }}
 
   storage:
-    size: {{ .storageSize | default "4Gi" }}
+    size: {{ $appPgConfig.storageSize | default "4Gi" }}
     storageClass: postgresql
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
       isWALArchiver: true
       parameters:
-        barmanObjectName: {{ .appName }}-backup-store
+        barmanObjectName: {{ $appPgConfig.appName }}-backup-store
 {{ end }}

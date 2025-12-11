@@ -1,3 +1,4 @@
+{{/* Scope is assumed to be `[Global Scope, App Postgres Config]` */}}
 {{- define "dev.pitlor.homelab.postgres" }}
 
 {{- template "dev.pitlor.homelab.gcpCredentials" . }}
