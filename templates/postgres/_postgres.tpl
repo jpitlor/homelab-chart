@@ -1,5 +1,7 @@
 {{- define "dev.pitlor.homelab.postgres" }}
 
+{{- template "dev.pitlor.homelab.gcpCredentials" . }}
+---
 {{- template "dev.pitlor.homelab.gcpBackupStore" . }}
 ---
 {{- template "dev.pitlor.homelab.gcpRestoreStore" . }}

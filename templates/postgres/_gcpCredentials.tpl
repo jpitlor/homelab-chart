@@ -1,3 +1,4 @@
+{{- define "dev.pitlor.homelab.gcpCredentials" }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -6,3 +7,4 @@ metadata:
 type: Opaque
 stringData:
   serviceAccountJson: {{ $.Values.google.serviceAccountJson | b64enc }}
+{{- end }}
