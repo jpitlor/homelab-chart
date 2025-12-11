@@ -111,16 +111,10 @@ applications:
 # override array items.
 postgres:
   grafana:
-    enabled: true
-    appName: grafana
     backupId: "2025-04-08"
   vaultwarden:
-    enabled: true
-    appName: vaultwarden
     backupId: "2025-04-08"
   immich:
-    enabled: true
-    appName: immich
     backupId: "2025-04-08"
     imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
     sharedPreloadLibraries:
@@ -129,16 +123,11 @@ postgres:
       - CREATE EXTENSION vchord CASCADE;
       - CREATE EXTENSION earthdistance CASCADE;
   tandoor:
-    enabled: true
-    appName: tandoor
     backupId: "2025-04-08"
   nextcloud:
-    enabled: true
-    appName: nextcloud
     backupId: "2025-04-08"
   guacamole:
-    enabled: true
-    appName: guacamole
+    appName: "guacamole"
     backupId: "2025-04-08"
     postInitApplicationSQLRefs:
       - name: postgres-init
