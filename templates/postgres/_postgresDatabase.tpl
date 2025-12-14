@@ -57,7 +57,7 @@ spec:
   
   {{- if $appPgConfig.recoverFromBackupId }}
   externalClusters:
-    - name: source
+    - name: clusterBackup
       plugin:
         name: barman-cloud.cloudnative-pg.io
         parameters:

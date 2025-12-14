@@ -8,5 +8,5 @@ metadata:
   namespace: {{ $appPgConfig.appName }}
 type: Opaque
 stringData:
-  serviceAccountJson: {{ $globalScope.Values.google.serviceAccountJson | b64enc }}
+  serviceAccountJson: {{ $globalScope.Values.google.serviceAccountJson }}
 {{- end }}
