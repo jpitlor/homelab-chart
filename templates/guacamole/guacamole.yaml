@@ -74,7 +74,7 @@ spec:
         - name: POSTGRES_DATABASE
           value: guacamole
         - name: POSTGRES_HOSTNAME
-          value: guacamole-postgres-rw
+          value: {{ template "dev.pitlor.homelab.postgres-name" (list $ "guacamole") }}
         - name: POSTGRES_PASSWORD
           value: guacamole
         - name: POSTGRES_USER
@@ -93,7 +93,7 @@ spec:
             - "1"
             - "bash"
             - "-c"
-            - "cat < /dev/null > /dev/tcp/guacamole-postgres-rw/5432"
+            - "cat < /dev/null > /dev/tcp/g{{ template "dev.pitlor.homelab.postgres-name" (list $ "guacamole") }}/5432"
       volumes:
       - name: drive
         persistentVolumeClaim:

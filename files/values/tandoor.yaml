@@ -5,7 +5,7 @@ env:
   ALLOWED_HOSTS: "recipes.test.pitlor.dev"
   CSRF_TRUSTED_ORIGINS: "https://recipes.test.pitlor.dev"
   SECRET_KEY: "{{ .Values.tandoor.secretKey }}"
-  POSTGRES_HOST: "tandoor-postgres-rw"
+  POSTGRES_HOST: {{ template "dev.pitlor.homelab.postgres-name" (list $ "tandoor") }}
   POSTGRES_PASSWORD: "tandoor"
   POSTGRES_USER: "tandoor"
   POSTGRES_DB: "tandoor"
