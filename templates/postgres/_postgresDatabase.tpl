@@ -4,7 +4,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: {{ $appPgConfig.appName }}-postgres
+  name: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.backupId }}
   namespace: {{ $appPgConfig.appName }}
 spec:
   {{ if $appPgConfig.imageName }}
