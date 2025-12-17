@@ -9,7 +9,7 @@ metadata:
 spec:
   retentionPolicy: "30d"
   configuration:
-    destinationPath: "gs://dev-pitlor-homelab-container-backups/{{ $appPgConfig.appName }}/postgresBackups-{{ $appPgConfig.backupId }}"
+    destinationPath: "gs://dev-pitlor-homelab-postgres-backups/{{ $appPgConfig.appName }}/postgresBackups-{{ $appPgConfig.backupId }}"
     googleCredentials:
       applicationCredentials:
         name: gcp-credentials
