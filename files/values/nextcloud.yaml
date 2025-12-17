@@ -5,7 +5,7 @@ internalDatabase:
 externalDatabase:
   enabled: true
   type: postgresql
-  host: "{{ template "dev.pitlor.homelab.postgres-name" (list $ "nextcloud") }}:5432"
+  host: "{{ template "dev.pitlor.homelab.postgres-name" (list . "nextcloud") }}:5432"
   database: nextcloud
   user: nextcloud
   password: nextcloud

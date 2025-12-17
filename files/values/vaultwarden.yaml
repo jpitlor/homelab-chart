@@ -14,7 +14,7 @@ storage:
     class: nas
 database:
   type: postgresql
-  host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "vaultwarden") }}
+  host: {{ template "dev.pitlor.homelab.postgres-name" (list . "vaultwarden") }}
   port: "5432"
   username: vaultwarden
   password: vaultwarden

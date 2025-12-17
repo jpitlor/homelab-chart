@@ -26,7 +26,7 @@ dataSource:
 grafana.ini:
   database:
     type: postgres
-    host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "grafana") }}:5432
+    host: {{ template "dev.pitlor.homelab.postgres-name" (list . "grafana") }}:5432
     name: grafana
     user: grafana
     password: grafana
