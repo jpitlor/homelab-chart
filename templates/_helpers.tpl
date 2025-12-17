@@ -1,1 +1,1 @@
-{{ define "dev.pitlor.homelab.postgres-name" }}{{ $globalScope := first . }}{{ $appName := last . }}{{ $appName }}-postgres-{{ (index $globalScope.Values.postgres $appName).backupId }}{{ end }}
+{{ define "dev.pitlor.homelab.postgres-name" }}{{ $globalScope := first . }}{{ $appName := last . }}{{ $appName }}-postgres-{{ (index $globalScope.Values.postgres $appName).backupId }}-1{{ end }}
