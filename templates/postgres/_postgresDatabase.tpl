@@ -4,7 +4,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: {{ template "dev.pitlor.homelab.postgres-name" (list $globalScope $appPgConfig.appName) }}
+  name: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.backupId }}
   namespace: {{ $appPgConfig.appName }}
 spec:
   {{ if $appPgConfig.imageName }}
