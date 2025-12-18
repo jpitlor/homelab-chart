@@ -2,7 +2,7 @@
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  name: velero-restore
+  name: velero-restore-{{ .Values.velero.version }}
   namespace: homelab
 spec:
   scheduleName: pvc-daily-backup

@@ -12,7 +12,7 @@ newBackupId=$(date +%F)
 kubectl get -n homelab HelmChart homelab-chart -o=jsonpath='{.spec.valuesContent}' > $valuesFile
 
 # First we need to tell Velero to update
-yq e -i ".velero.restore = true" $valuesFile
+yq e -i ".velero.restore = true | .velero.version = .velero.version + 1" $valuesFile
 
 # Then, adjust backup IDs
 applications=("grafana" "vaultwarden" "immich" "nextcloud" "blueskyPds" "guacamole")

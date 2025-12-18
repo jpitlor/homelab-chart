@@ -1,5 +1,6 @@
 velero:
   restore: false
+  version: 1
 
 google:
   serviceAccountJson: changeme
