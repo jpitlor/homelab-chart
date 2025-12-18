@@ -62,7 +62,7 @@ spec:
         name: barman-cloud.cloudnative-pg.io
         parameters:
           barmanObjectName: {{ $appPgConfig.appName }}-restore-store
-          serverName: {{ $appPgConfig.appName }}-postgres
+          serverName: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.recoverFromBackupId }}
   {{- end }}
 
   storage:
