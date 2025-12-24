@@ -10,7 +10,7 @@ spec:
   schedule: "0 0 0 * * *"  # Every day at midnight
   backupOwnerReference: self
   cluster:
-    name: {{ $appPgConfig.appName }}-postgres 
+    name: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.backupId }}
   method: plugin
   pluginConfiguration:
     name: barman-cloud.cloudnative-pg.io
