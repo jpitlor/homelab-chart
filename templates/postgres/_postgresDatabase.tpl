@@ -32,6 +32,10 @@ spec:
     {{- if $appPgConfig.recoverFromBackupId }}
     recovery:
       source: clusterBackup
+      database: {{ $appPgConfig.appName }}
+      owner: {{ $appPgConfig.appName }}
+      secret:
+        name: {{ $appPgConfig.appName }}-postgres-secret
       {{- if $appPgConfig.recoverFromBackupTime }}
       recoveryTarget:
         targetTime: {{ $appPgConfig.recoverFromBackupTime | quote }}
