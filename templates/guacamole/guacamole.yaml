@@ -93,7 +93,7 @@ spec:
             - "1"
             - "bash"
             - "-c"
-            - "cat < /dev/null > /dev/tcp/g{{ template "dev.pitlor.homelab.postgres-name" (list $ "guacamole") }}/5432"
+            - "cat < /dev/null > /dev/tcp/{{ template "dev.pitlor.homelab.postgres-name" (list $ "guacamole") }}/5432"
       volumes:
       - name: drive
         persistentVolumeClaim:
