@@ -1,0 +1,112 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mealie-ingress
+  namespace: mealie
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Recipe management
+    gethomepage.dev/icon: mealie.png
+    gethomepage.dev/name: Mealie
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: recipes.test.pitlor.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mealie
+            port:
+              number: 9000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mealie
+  namespace: mealie
+spec:
+  selector:
+    app: mealie
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+  namespace: mealie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie
+  template:
+    metadata:
+      labels:
+        app: mealie
+    spec:
+      containers:
+      - name: mealie
+        image: ghcr.io/mealie-recipes/mealie:v3.9.1
+        env:
+        - name: ALLOW_SIGNUP
+          value: false
+        - name: PUID
+          value: 1000
+        - name: PGID
+          value: 1000
+        - name: TZ
+          value: America/New_York
+        - name: BASE_URL
+          value: https://recipes.test.pitlor.dev
+        - name: DB_ENGINE
+          value: postgres
+        - name: POSTGRES_USER
+          value: mealie
+        - name: POSTGRES_PASSWORD
+          value: mealie
+        - name: POSTGRES_SERVER
+          value: {{ template "dev.pitlor.homelab.postgres-name" (list $ "mealie") }}
+        - name: POSTGRES_PORT
+          value: 5432
+        - name: POSTGRES_DB
+          value: mealie
+        volumeMounts:
+        - name: mealie_data
+          mountPath: /app/data/
+        startupProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          exec:
+            command:
+            - "timeout"
+            - "1"
+            - "bash"
+            - "-c"
+            - "cat < /dev/null > /dev/tcp/{{ template "dev.pitlor.homelab.postgres-name" (list $ "mealie") }}/5432"
+      volumes:
+      - name: mealie_data
+        persistentVolumeClaim:
+          claimName: mealie-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mealie-pvc
+  namespace: mealie
+spec:
+  storageClassName: nas
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

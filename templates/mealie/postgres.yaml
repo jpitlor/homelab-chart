@@ -1,0 +1,1 @@
+{{- template "dev.pitlor.homelab.postgres" (list $ .Values.postgres.mealie) }}

@@ -33,9 +33,6 @@ infisical:
   encryptionKey: changeme
   authSecret: changeme
 
-tandoor:
-  secretKey: changeme
-
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
@@ -97,10 +94,6 @@ applications:
     version: 0.10.3
     repository: https://immich-app.github.io/immich-charts
     enabled: true
-  - name: tandoor
-    version: 0.9.9
-    repository: https://charts.gabe565.com
-    enabled: true
   - name: nextcloud
     version: 8.4.1
     repository: https://nextcloud.github.io/helm/
@@ -125,8 +118,6 @@ postgres:
     postInitSQL:
       - CREATE EXTENSION vchord CASCADE;
       - CREATE EXTENSION earthdistance CASCADE;
-  tandoor:
-    backupId: "2025-04-08"
   nextcloud:
     backupId: "2025-04-08"
   guacamole:
@@ -135,4 +126,7 @@ postgres:
     postInitApplicationSQLRefs:
       - name: postgres-init
         key: guacamole
+  mealie:
+    appName: "mealie"
+    backupId: "2025-04-08"
   
