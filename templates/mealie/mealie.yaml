@@ -80,7 +80,7 @@ spec:
         - name: POSTGRES_DB
           value: mealie
         volumeMounts:
-        - name: mealie_data
+        - name: mealie-data
           mountPath: /app/data/
         startupProbe:
           initialDelaySeconds: 10
@@ -93,7 +93,7 @@ spec:
             - "-c"
             - "cat < /dev/null > /dev/tcp/{{ template "dev.pitlor.homelab.postgres-name" (list $ "mealie") }}/5432"
       volumes:
-      - name: mealie_data
+      - name: mealie-data
         persistentVolumeClaim:
           claimName: mealie-pvc
 
