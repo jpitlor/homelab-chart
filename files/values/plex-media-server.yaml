@@ -13,3 +13,5 @@ ingress:
     gethomepage.dev/pod-selector: ""
 pms:
   storageClassName: nas
+extraEnv:
+  PLEX_CLAIM: {{ .Values.plexMediaServer.claim }}
