@@ -16,6 +16,9 @@ storageClasses:
   - name: nas
     mode: 777
     uid: 1000
+  - name: nextcloud
+    mode: 770
+    uid: 0
   - name: postgresql
     mode: 700
     uid: 26
