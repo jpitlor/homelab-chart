@@ -1,5 +1,5 @@
 image:
-  tag: v1.42.2.10156-f737b826c
+  tag: 1.42.2.10156-f737b826c
 ingress:
   ingressClassName: "traefik"
   enabled: true
