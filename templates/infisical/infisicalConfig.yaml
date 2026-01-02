@@ -8,4 +8,4 @@ stringData:
   AUTH_SECRET: {{ .Values.infisical.authSecret | required "No auth secret provided" | quote }}
   ENCRYPTION_KEY: {{ .Values.infisical.encryptionKey | required "No encryption key provided" | quote }}
   SITE_URL: "https://vault.test.pitlor.dev"
-  DB_CONNECTION_URI: postgresql://infisical:infisical@{{ template "dev.pitlor.homelab.postgres-name" (list . "infisical") }}
+  DB_CONNECTION_URI: postgresql://infisical:infisical@{{ template "dev.pitlor.homelab.postgres-name" (list $ "infisical-standalone") }}
