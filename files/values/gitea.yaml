@@ -16,6 +16,7 @@ gitea:
       NAME: gitea
       USER: gitea
       PASSWD: gitea
+      SCHEMA: gitea
 persistence:
   enabled: true
 redis-cluster:
