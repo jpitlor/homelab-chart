@@ -1,4 +1,3 @@
-# TODO - HA postgres and redis
 infisical:
   autoDatabaseSchemaMigration: true
   image:
