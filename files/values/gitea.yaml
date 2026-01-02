@@ -10,9 +10,15 @@ gitea:
       ENABLED: true
     server:
       ENABLE_PPROF: true
+    database:
+      DB_TYPE: postgres
+      HOST: {{ template "dev.pitlor.homelab.postgres-name" (list . "gitea") }}
+      NAME: gitea
+      USER: gitea
+      PASSWD: gitea
+      SCHEMA: gitea
 persistence:
   enabled: true
-  storageClass: nas
 redis-cluster:
   enabled: false
 redis:
@@ -20,10 +26,7 @@ redis:
 postgresql-ha:
   enabled: false
 postgresql:
-  enabled: true
-  persistence:
-    enabled: true
-    storageClass: nas
+  enabled: false
 ingress:
   className: "traefik"
   enabled: true

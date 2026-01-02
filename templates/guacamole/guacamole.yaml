@@ -106,7 +106,6 @@ metadata:
   name: guacamole-pvc
   namespace: guacamole
 spec:
-  storageClassName: nas
   accessModes:
     - ReadWriteOnce
   resources:

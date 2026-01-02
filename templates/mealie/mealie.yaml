@@ -104,7 +104,6 @@ metadata:
   name: mealie-pvc
   namespace: mealie
 spec:
-  storageClassName: nas
   accessModes:
     - ReadWriteOnce
   resources:

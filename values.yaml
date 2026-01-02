@@ -19,9 +19,6 @@ storageClasses:
   - name: nextcloud
     mode: 770
     uid: 33
-  - name: postgresql
-    mode: 700
-    uid: 26
 
 blueskyPds:
   jwtSecret: changeme
@@ -122,6 +119,10 @@ postgres:
       - CREATE EXTENSION vchord CASCADE;
       - CREATE EXTENSION earthdistance CASCADE;
   nextcloud:
+    backupId: "2025-04-08"
+  gitea:
+    backupId: "2025-04-08"
+  infisical:
     backupId: "2025-04-08"
   guacamole:
     appName: "guacamole"

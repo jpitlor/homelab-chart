@@ -13,7 +13,6 @@ persistence:
   enabled: true
   nextcloudData:
     enabled: true
-    storageClass: nextcloud
 metrics:
   enabled: true
   serviceMonitor:

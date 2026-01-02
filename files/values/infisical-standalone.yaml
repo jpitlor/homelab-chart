@@ -16,4 +16,4 @@ ingress:
 redis:
   enabled: true
 postgresql:
-  enabled: true
+  enabled: false

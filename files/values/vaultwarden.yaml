@@ -6,12 +6,10 @@ storage:
     name: vaultwarden-data
     size: "15Gi"
     accessMode: ReadWriteOnce
-    class: nas
   attachments:
     name: vaultwarden-attachments
     size: "5Gi"
     accessMode: ReadWriteOnce
-    class: nas
 database:
   type: postgresql
   host: {{ template "dev.pitlor.homelab.postgres-name" (list . "vaultwarden") }}
