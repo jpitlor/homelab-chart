@@ -122,7 +122,8 @@ postgres:
     backupId: "2025-04-08"
   gitea:
     backupId: "2025-04-08"
-    createCustomSchema: true
+    postInitSQL:
+      - CREATE SCHEMA gitea;
   infisical-standalone:
     backupId: "2025-04-08"
   guacamole:

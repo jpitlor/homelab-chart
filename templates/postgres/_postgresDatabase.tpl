@@ -14,12 +14,6 @@ spec:
   postgresUID: 0
   postgresGID: 0
 
-  {{- if $appPgConfig.createCustomSchema }}
-  schemas:
-    - name: {{ $appPgConfig.appName }}
-      owner: {{ $appPgConfig.appName }}
-  {{- end }}
-
   {{- if $appPgConfig.sharedPreloadLibraries }}
   postgresql:
     shared_preload_libraries:
