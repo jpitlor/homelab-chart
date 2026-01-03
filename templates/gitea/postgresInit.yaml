@@ -4,5 +4,5 @@ metadata:
   name: postgres-init
   namespace: gitea
 data:
-  guacamole: |
+  gitea: |
 {{ .Files.Get "files/gitea-postgres-init.sql" | indent 4 }}
