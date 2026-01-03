@@ -122,9 +122,9 @@ postgres:
     backupId: "2025-04-08"
   gitea:
     backupId: "2025-04-08"
-    postInitSQL:
-      - "\\c gitea;"
-      - CREATE SCHEMA gitea;
+    postInitApplicationSQLRefs:
+      - name: postgres-init
+        key: gitea
   infisical-standalone:
     backupId: "2025-04-08"
   guacamole:
