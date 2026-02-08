@@ -19,5 +19,8 @@ server:
       gethomepage.dev/pod-selector: ""
     hosts:
       - auth.test.pitlor.dev
+    tls:
+      hosts:
+        - auth.test.pitlor.dev
 postgresql:
   enabled: false
