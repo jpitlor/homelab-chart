@@ -1,0 +1,20 @@
+coder:
+  ingress:
+    enable: true
+    host: https://develop.pitlor.dev
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: Remote Development
+      gethomepage.dev/icon: coder.png
+      gethomepage.dev/name: Coder
+      gethomepage.dev/group: Software Development
+      gethomepage.dev/pod-selector: ""
+  env:
+    - name: CODER_PG_CONNECTION_URL
+      value: "postgres://coder:coder@{{ template "dev.pitlor.homelab.postgres-name" (list . "coder") }}:5432"
+    - name: CODER_OAUTH2_GITHUB_DEFAULT_PROVIDER_ENABLE
+      value: "false"
+    - name: CODER_ACCESS_URL
+      value: "https://develop.pitlor.dev"
+    - name: CODER_PROMETHEUS_ADDRESS
+      value: "0.0.0.0:2112"
