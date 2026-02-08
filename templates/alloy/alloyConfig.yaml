@@ -1,4 +1,9 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: alloy
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: alloy-config
