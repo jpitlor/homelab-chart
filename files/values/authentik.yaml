@@ -1,0 +1,23 @@
+authentik:
+  secret_key: "wqfDYKQkOJTxKcRDXWacVeYD5e51AkxRjAbD/WV1bVLRVjtLBnVG8S4V3AoJbldrJdoXYwrF9L4IRvLO"
+  error_reporting:
+    enabled: true
+  postgresql:
+    host: {{ template "dev.pitlor.homelab.postgres-name" (list . "authentik") }}
+    user: authentik
+    password: authentik
+server:
+  ingress:
+    ingressClassName: traefik
+    enabled: true
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: SSO Authentication Provider
+      gethomepage.dev/icon: authentik.png
+      gethomepage.dev/name: Authentik
+      gethomepage.dev/group: Apps
+      gethomepage.dev/pod-selector: ""
+    hosts:
+      - auth.test.pitlor.dev
+postgresql:
+  enabled: false
