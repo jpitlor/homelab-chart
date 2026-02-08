@@ -1,7 +1,7 @@
 coder:  
   resources:
     requests:
-     cpu: 0m
+     cpu: 100m
   ingress:
     enable: true
     host: https://develop.test.pitlor.dev
