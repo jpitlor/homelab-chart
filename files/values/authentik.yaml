@@ -10,7 +10,6 @@ server:
   ingress:
     ingressClassName: traefik
     enabled: true
-    https: true
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: SSO Authentication Provider
