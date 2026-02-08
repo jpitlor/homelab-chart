@@ -20,7 +20,7 @@ server:
     hosts:
       - auth.test.pitlor.dev
     tls:
-      hosts:
-        - auth.test.pitlor.dev
+      - hosts:
+          - auth.test.pitlor.dev
 postgresql:
   enabled: false
