@@ -4,6 +4,7 @@ coder:
      cpu: 100m
   ingress:
     enable: true
+    className: traefik
     host: https://develop.test.pitlor.dev
     annotations:
       gethomepage.dev/enabled: "true"
