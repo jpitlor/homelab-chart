@@ -5,7 +5,7 @@ coder:
   ingress:
     enable: true
     className: traefik
-    host: https://develop.test.pitlor.dev
+    host: develop.test.pitlor.dev
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Remote Development
