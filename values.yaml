@@ -53,19 +53,19 @@ applications:
   - name: grafana
     version: 10.1.0
     repository: https://grafana.github.io/helm-charts
-    enabled: true
+    enabled: false
   - name: alloy
     version: 1.3.0
     repository: https://grafana.github.io/helm-charts
-    enabled: true
+    enabled: false
   - name: loki
     version: 6.42.0
     repository: https://grafana.github.io/helm-charts
-    enabled: true
+    enabled: false
   - name: prometheus
     version: 27.40.0
     repository: https://prometheus-community.github.io/helm-charts
-    enabled: true
+    enabled: false
   - name: bluesky-pds
     version: 0.4.0
     repository: https://charts.nerkho.ch
