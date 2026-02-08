@@ -1,7 +1,7 @@
 coder:
   ingress:
     enable: true
-    host: https://develop.pitlor.dev
+    host: https://develop.test.pitlor.dev
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/description: Remote Development
@@ -15,6 +15,6 @@ coder:
     - name: CODER_OAUTH2_GITHUB_DEFAULT_PROVIDER_ENABLE
       value: "false"
     - name: CODER_ACCESS_URL
-      value: "https://develop.pitlor.dev"
+      value: "https://develop.test.pitlor.dev"
     - name: CODER_PROMETHEUS_ADDRESS
       value: "0.0.0.0:2112"
