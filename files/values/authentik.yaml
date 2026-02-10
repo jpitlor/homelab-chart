@@ -21,6 +21,8 @@ server:
       gethomepage.dev/name: Authentik
       gethomepage.dev/group: Apps
       gethomepage.dev/pod-selector: ""
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
       - auth.test.pitlor.dev
 postgresql:
