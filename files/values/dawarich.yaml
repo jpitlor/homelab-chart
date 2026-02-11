@@ -4,6 +4,22 @@ image:
 env:
   timeZone: "America/New_York"
 
+oidc:
+  enabled: true
+  providerName: "OpenID Connect"
+  clientId:
+    existingSecret: null
+    existingSecretKeyName: "clientId"
+    value: ""
+  clientSecret:
+    existingSecret: null
+    existingSecretKeyName: "clientSecret"
+    value: ""
+  issuer: "https://foo"
+  redirectUri: "https://foo"
+  autoRegister: true
+  allowEmailPasswordRegistration: false
+
 dawarich:
   hosts:
     - location.test.pitlor.dev
