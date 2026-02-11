@@ -1,0 +1,35 @@
+image:
+  tag: 1.1.0
+
+env:
+  timeZone: "America/New_York"
+
+dawarich:
+  hosts:
+    - location.test.pitlor.dev
+
+postgresql:
+  host: {{ template "dev.pitlor.homelab.postgres-name" (list . "dawarich") }}
+  port: 5432
+
+  auth:
+    database: dawarich
+    password: dawarich
+    username: dawarich
+    postgresPassword: dawarich
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations: 
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Location History
+    gethomepage.dev/icon: dawarich.png
+    gethomepage.dev/name: Dawarich
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
+  hosts:
+    - host: location.test.pitlor.dev
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

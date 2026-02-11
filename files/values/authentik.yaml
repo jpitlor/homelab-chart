@@ -17,12 +17,7 @@ server:
       gethomepage.dev/name: Authentik
       gethomepage.dev/group: Apps
       gethomepage.dev/pod-selector: ""
-      cert-manager.io/cluster-issuer: letsencrypt
     hosts:
       - auth.test.pitlor.dev
-    tls:
-      - hosts:
-        - auth.test.pitlor.dev
-        secretName: authentik-tls-cert
 postgresql:
   enabled: false
