@@ -117,6 +117,7 @@ applications:
   - name: open-webui
     version: 12.8.1
     repository: https://helm.openwebui.com/
+    enabled: true
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.
