@@ -4,6 +4,23 @@ nodeSelector:
   gpu_instance: zotac09
 image:
   tag: v0.8.10-cuda
+ollama:
+  enabled: true
+  fullnameOverride: "ollama"
+  ollama:
+    gpu:
+      enabled: true
+      type: 'nvidia'
+      number: 1
+    models:
+      pull:
+        - qwen3.5:9b
+      run:
+        - qwen3.5:9b
+  runtimeClassName: nvidia
+  persistentVolume:
+    enabled: true
+    volumeName: "ollama-pvc"
 ingress:
   enabled: true
   host: ai.test.pitlor.dev
