@@ -5,6 +5,7 @@ nodeSelector:
 image:
   tag: v0.8.10-cuda
 ingress:
+  enabled: true
   host: ai.test.pitlor.dev
   annotations:
     gethomepage.dev/enabled: "true"
