@@ -69,11 +69,11 @@ applications:
   - name: bluesky-pds
     version: 0.4.0
     repository: https://charts.nerkho.ch
-    enabled: false
+    enabled: true
   - name: infisical-standalone
     version: 1.7.1
     repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
-    enabled: false
+    enabled: true
   - name: minecraft
     version: 5.0.0
     repository: https://itzg.github.io/minecraft-server-charts/
@@ -85,19 +85,19 @@ applications:
   - name: gitea
     repository: https://dl.gitea.io/charts
     version: 12.4.0
-    enabled: false
+    enabled: true
   - name: vaultwarden
     version: 0.34.4
     repository: https://guerzon.github.io/vaultwarden
-    enabled: false
+    enabled: true
   - name: immich
     version: 0.10.3
     repository: https://immich-app.github.io/immich-charts
-    enabled: false
+    enabled: true
   - name: nextcloud
     version: 8.4.1
     repository: https://nextcloud.github.io/helm/
-    enabled: false
+    enabled: true
   - name: plex-media-server
     version: 1.1.3
     repository: https://raw.githubusercontent.com/plexinc/pms-docker/gh-pages
@@ -105,7 +105,7 @@ applications:
   - name: coder
     version: 2.30.0
     repository: https://helm.coder.com/v2
-    enabled: false
+    enabled: true
   - name: authentik
     version: 2025.12.3
     repository: https://charts.goauthentik.io
@@ -114,6 +114,9 @@ applications:
     version: 2.1.0
     repository: https://charts.cogitri.dev
     enabled: true
+  - name: open-webui
+    version: 12.8.1
+    repository: https://helm.openwebui.com/
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.
@@ -156,4 +159,7 @@ postgres:
     backupId: "2025-04-08"
   dawarich:
     appName: "dawarich"
+    backupId: "2025-04-08"
+  open-webui:
+    appName: "open-webui"
     backupId: "2025-04-08"

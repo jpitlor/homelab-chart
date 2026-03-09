@@ -1,0 +1,15 @@
+enableOpenaiApi: false
+databaseUrl: postgres://open-webui:open-webui@{{ template "dev.pitlor.homelab.postgres-name" (list . "open-webui") }}:5432/open-webui
+nodeSelector:
+  gpu_instance: zotac09
+image:
+  tag: v0.8.10-cuda
+ingress:
+  host: ai.test.pitlor.dev
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Generative AI
+    gethomepage.dev/icon: open-webui.png
+    gethomepage.dev/name: Open WebUI
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
