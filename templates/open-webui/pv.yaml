@@ -4,5 +4,7 @@ metadata:
   name: ollama-pv
   namespace: open-webui
 spec:
+  accessModes:
+    - ReadWriteOnce
   capacity:
-      storage: 20Gi
+    storage: 20Gi
