@@ -6,7 +6,6 @@ image:
   tag: v0.8.10-cuda
 ollama:
   enabled: true
-  fullnameOverride: "ollama"
   ollama:
     gpu:
       enabled: true
@@ -20,7 +19,7 @@ ollama:
   runtimeClassName: nvidia
   persistentVolume:
     enabled: true
-    volumeName: "ollama-pvc"
+    volumeName: "ollama-pv"
 ingress:
   enabled: true
   host: ai.test.pitlor.dev
