@@ -8,7 +8,7 @@ metadata:
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png
     gethomepage.dev/name: Sunshine
-    gethomepage.dev/group: Apps
+    gethomepage.dev/group: Services
     gethomepage.dev/pod-selector: ""
 spec:
   ingressClassName: traefik
@@ -22,7 +22,7 @@ spec:
           service:
             name: sunshine
             port:
-              number: 9000
+              number: 47989
 ---
 apiVersion: v1
 kind: Service
