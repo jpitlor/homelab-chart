@@ -6,5 +6,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClass: local-path
   capacity:
     storage: 20Gi
