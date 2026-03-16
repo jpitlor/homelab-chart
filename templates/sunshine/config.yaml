@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sunshine-config
+  namespace: sunshine
+data:
+  sunshine_config.conf: {{ .Files.Get "files/sunshine_config.conf" }}

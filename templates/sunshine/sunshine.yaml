@@ -36,7 +36,7 @@ spec:
     - protocol: TCP
       port: 47990
       targetPort: 47990
-  type: LoadBalancer
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -67,6 +67,9 @@ spec:
           volumeMounts:
             - name: sunshine-data
               mountPath: /config
+            - name: sunshine-config
+              subPath: sunshine_config.conf
+              mountPath: /config/sunshine_config.conf
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -74,6 +77,9 @@ spec:
         - name: sunshine-data
           persistentVolumeClaim:
             claimName: sunshine-pvc
+        - name: sunshine-config
+          configMap:
+            name: sunshine-config
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
