@@ -1,94 +1,94 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: sunshine-ingress
-  namespace: sunshine
-  annotations:
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/description: Remote Games
-    gethomepage.dev/icon: sunshine.png
-    gethomepage.dev/name: Sunshine
-    gethomepage.dev/group: Services
-    gethomepage.dev/pod-selector: ""
-spec:
-  ingressClassName: traefik
-  rules:
-  - host: games.test.pitlor.dev
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: sunshine
-            port:
-              number: 47990
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sunshine
-  namespace: sunshine
-spec:
-  selector:
-    app: sunshine
-  ports:
-    - protocol: TCP
-      port: 47990
-      targetPort: 47990
-  type: ClusterIP
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: sunshine
-  namespace: sunshine
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: sunshine
-  template:
-    metadata:
-      labels:
-        app: sunshine
-    spec:
-      runtimeClassName: nvidia
-      containers:
-        - name: sunshine
-          image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
-              value: America/New_York
-          volumeMounts:
-            - name: sunshine-data
-              mountPath: /config
-            - name: sunshine-config
-              subPath: sunshine_config.conf
-              mountPath: /config/sunshine_config.conf
-          resources:
-            limits:
-              nvidia.com/gpu: "1"
-      volumes:
-        - name: sunshine-data
-          persistentVolumeClaim:
-            claimName: sunshine-pvc
-        - name: sunshine-config
-          configMap:
-            name: sunshine-config
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sunshine-pvc
-  namespace: sunshine
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: sunshine-ingress
+#   namespace: sunshine
+#   annotations:
+#     gethomepage.dev/enabled: "true"
+#     gethomepage.dev/description: Remote Games
+#     gethomepage.dev/icon: sunshine.png
+#     gethomepage.dev/name: Sunshine
+#     gethomepage.dev/group: Services
+#     gethomepage.dev/pod-selector: ""
+# spec:
+#   ingressClassName: traefik
+#   rules:
+#   - host: games.test.pitlor.dev
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: sunshine
+#             port:
+#               number: 47990
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: sunshine
+#   namespace: sunshine
+# spec:
+#   selector:
+#     app: sunshine
+#   ports:
+#     - protocol: TCP
+#       port: 47990
+#       targetPort: 47990
+#   type: ClusterIP
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: sunshine
+#   namespace: sunshine
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: sunshine
+#   template:
+#     metadata:
+#       labels:
+#         app: sunshine
+#     spec:
+#       runtimeClassName: nvidia
+#       containers:
+#         - name: sunshine
+#           image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
+#           env:
+#             - name: PUID
+#               value: "1000"
+#             - name: PGID
+#               value: "1000"
+#             - name: TZ
+#               value: America/New_York
+#           volumeMounts:
+#             - name: sunshine-data
+#               mountPath: /config
+#             - name: sunshine-config
+#               subPath: sunshine.conf
+#               mountPath: /config/sunshine.conf
+#           resources:
+#             limits:
+#               nvidia.com/gpu: "1"
+#       volumes:
+#         - name: sunshine-data
+#           persistentVolumeClaim:
+#             claimName: sunshine-pvc
+#         - name: sunshine-config
+#           configMap:
+#             name: sunshine-config
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: sunshine-pvc
+#   namespace: sunshine
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 2Gi

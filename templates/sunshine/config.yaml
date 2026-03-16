@@ -4,5 +4,5 @@ metadata:
   name: sunshine-config
   namespace: sunshine
 data:
-  sunshine_config.conf: |-
-{{ .Files.Get "files/sunshine_config.conf" | indent 4 }}
+  sunshine.conf: |-
+{{ .Files.Get "files/sunshine.conf" | indent 4 }}

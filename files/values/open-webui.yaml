@@ -4,6 +4,11 @@ image:
   tag: v0.8.10-cuda
 ollama:
   enabled: true
+  extraEnv: 
+    - name: CUDA_ERROR_LEVEL
+      value: "50"
+    - name: OLLAMA_DEBUG
+      value: "1"
   ollama:
     gpu:
       enabled: true
