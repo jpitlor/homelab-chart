@@ -22,7 +22,7 @@ spec:
           service:
             name: sunshine
             port:
-              number: 47989
+              number: 47990
 ---
 apiVersion: v1
 kind: Service
@@ -34,8 +34,8 @@ spec:
     app: sunshine
   ports:
     - protocol: TCP
-      port: 47989
-      targetPort: 47989
+      port: 47990
+      targetPort: 47990
   type: LoadBalancer
 ---
 apiVersion: apps/v1
@@ -53,26 +53,27 @@ spec:
       labels:
         app: sunshine
     spec:
+      runtimeClassName: nvidia
       containers:
         - name: sunshine
           image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
           env:
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
-          - name: TZ
-            value: America/New_York
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: America/New_York
           volumeMounts:
-          - name: sunshine-data
-            mountPath: /config
-      nodeSelector:
-        gpu_instance: zotac03
+            - name: sunshine-data
+              mountPath: /config
+          resources:
+            limits:
+              nvidia.com/gpu: "1"
       volumes:
         - name: sunshine-data
           persistentVolumeClaim:
             claimName: sunshine-pvc
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
