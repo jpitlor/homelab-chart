@@ -20,14 +20,35 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: sunshine
+            name: sunshine-games
+            port:
+              number: 47989
+      - path: /config
+        pathType: Prefix
+        backend:
+          service:
+            name: sunshine-config
             port:
               number: 47990
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: sunshine
+  name: sunshine-games
+  namespace: sunshine
+spec:
+  selector:
+    app: sunshine
+  ports:
+    - protocol: TCP
+      port: 47989
+      targetPort: 47989
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sunshine-config
   namespace: sunshine
 spec:
   selector:
