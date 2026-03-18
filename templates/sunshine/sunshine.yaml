@@ -24,6 +24,8 @@ metadata:
   namespace: sunshine
   annotations:
     traefik.ingress.kubernetes.io/router.middlewares: sunshine-strip-prefix@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+    traefik.ingress.kubernetes.io/service.serverstransport: insecure-transport@file
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png
