@@ -23,7 +23,6 @@ metadata:
   name: sunshine-config-ingress
   namespace: sunshine
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: sunshine-strip-prefix@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png
@@ -33,10 +32,10 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: games.test.pitlor.dev
+  - host: config.games.test.pitlor.dev
     http:
       paths:
-      - path: /config
+      - path: /
         pathType: Prefix
         backend:
           service:
@@ -51,16 +50,6 @@ metadata:
   namespace: sunshine
 spec:
   insecureSkipVerify: true
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: strip-prefix
-  namespace: sunshine
-spec:
-  stripPrefix:
-    prefixes:
-      - /config
 ---
 apiVersion: v1
 kind: Service
