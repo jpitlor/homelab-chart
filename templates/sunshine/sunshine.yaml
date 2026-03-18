@@ -25,7 +25,7 @@ metadata:
   annotations:
     # traefik.ingress.kubernetes.io/router.middlewares: sunshine-strip-prefix@kubernetescrd
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: insecure-transport@file
+    traefik.ingress.kubernetes.io/service.serverstransport: sunshine-insecure-transport@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png
@@ -45,6 +45,14 @@ spec:
             name: sunshine-config
             port:
               number: 47990
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: sunshine
+spec:
+  insecureSkipVerify: true
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
