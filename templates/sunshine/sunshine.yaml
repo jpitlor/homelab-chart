@@ -57,9 +57,6 @@ kind: Middleware
 metadata:
   name: strip-prefix
   namespace: sunshine
-  annotations:
-    traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: sunshine-insecure-transport@kubernetescrd
 spec:
   stripPrefix:
     prefixes:
@@ -84,6 +81,9 @@ kind: Service
 metadata:
   name: sunshine-config
   namespace: sunshine
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+    traefik.ingress.kubernetes.io/service.serverstransport: sunshine-insecure-transport@kubernetescrd
 spec:
   selector:
     app: sunshine
