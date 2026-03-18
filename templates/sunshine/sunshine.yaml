@@ -64,9 +64,11 @@ spec:
     app: sunshine
   ports:
     - protocol: TCP
+      name: sunshine-config
       port: 47990
       targetPort: 47990
     - protocol: TCP
+      name: sunshine-games
       port: 47989
       targetPort: 47989
   type: ClusterIP
