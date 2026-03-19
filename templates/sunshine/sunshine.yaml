@@ -63,14 +63,18 @@ spec:
   selector:
     app: sunshine
   ports:
+    {{- range (concat (seq 47984 47990) (list 48010)) }}
     - protocol: TCP
-      name: sunshine-config
-      port: 47990
-      targetPort: 47990
-    - protocol: TCP
-      name: sunshine-games
-      port: 47989
-      targetPort: 47989
+      name: sunshine-tcp-{{ . }}
+      port: {{ . }}
+      targetPort: {{ . }}
+    {{- end }}
+    {{- range (concat (seq 47998 48000) (list 48010)) }}
+    - protocol: UDP
+      name: sunshine-udp-{{ . }}
+      port: {{ . }}
+      targetPort: {{ . }}
+    {{- end }}
   type: ClusterIP
 ---
 apiVersion: apps/v1
