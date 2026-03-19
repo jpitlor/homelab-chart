@@ -75,7 +75,7 @@ spec:
       port: {{ . }}
       targetPort: {{ . }}
     {{- end }}
-  type: ClusterIP
+  type: NodePort48010
 ---
 apiVersion: apps/v1
 kind: Deployment
