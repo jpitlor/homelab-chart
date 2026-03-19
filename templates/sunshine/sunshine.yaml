@@ -10,7 +10,7 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
+        pathType: Exact
         backend:
           service:
             name: sunshine
@@ -20,9 +20,12 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: rewrite-redirect
+  name: host-at-slash-config
   namespace: sunshine
 spec:
+  stripPrefix:
+    prefixes:
+      - /config
   plugin:
     rewriteHeaders:
       rewrites:
@@ -36,7 +39,7 @@ metadata:
   name: sunshine-config-ingress
   namespace: sunshine
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: sunshine-rewrite-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: sunshine-host-at-slash-config@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png
