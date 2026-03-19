@@ -68,7 +68,7 @@ spec:
       name: sunshine-tcp-{{ . }}
       port: {{ . }}
       targetPort: {{ . }}
-    {{- end }}
+    {{ end }}
     {{- range (concat (untilStep 47998 48000 1) (list 48010)) }}
     - protocol: UDP
       name: sunshine-udp-{{ . }}
