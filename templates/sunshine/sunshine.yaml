@@ -75,7 +75,7 @@ spec:
       port: {{ . }}
       targetPort: {{ . }}
     {{- end }}
-  type: NodePort48010
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
