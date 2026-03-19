@@ -10,35 +10,12 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Exact
+        pathType: Prefix
         backend:
           service:
             name: sunshine
             port:
               number: 47989
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: add-config-prefix
-  namespace: sunshine
-spec:
-  plugin:
-    rewriteHeaders:
-      rewrites:
-        - header: Location
-          regex: "^(https?://games\\.test\\.pitlor\\.dev)(.*)"
-          replacement: "${1}/config${2}"
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: remove-config-prefix
-  namespace: sunshine
-spec:
-  stripPrefix:
-    prefixes:
-      - /config
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -46,7 +23,6 @@ metadata:
   name: sunshine-config-ingress
   namespace: sunshine
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: sunshine-add-config-prefix@kubernetescrd,sunshine-remove-config-prefix@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png
@@ -56,10 +32,10 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: games.test.pitlor.dev
+  - host: games-config.test.pitlor.dev
     http:
       paths:
-      - path: /config
+      - path: /
         pathType: Prefix
         backend:
           service:
