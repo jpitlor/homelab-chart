@@ -79,6 +79,32 @@ spec:
     {{- end }}
   type: NodePort
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: games
+  namespace: sunshine
+spec:
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi # This needs to be expanded by a lot when possible
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: home        
+  namespace: sunshine
+spec:
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -97,55 +123,130 @@ spec:
       runtimeClassName: nvidia
       containers:
         - name: sunshine
-          image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
-          command: ["/bin/sh", "-c"]
-          args:
-            - |
-              sleep 10
-              exec /usr/bin/sunshine
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
-              value: America/New_York
-            - name: DISPLAY
-              value: ":1"
-          volumeMounts:
-            - name: sunshine-data
-              mountPath: /config
-            - name: sunshine-config
-              subPath: sunshine.conf
-              mountPath: /config/sunshine.conf
-            - name: x11-socket
-              mountPath: /tmp/.X11-unix
-          resources:
-            limits:
-              nvidia.com/gpu: "1"
           securityContext:
-            capabilities:
-              drop:
-                - ALL
-              add:
-                - SYS_ADMIN
-        - name: vnc-server
-          image: consol/debian-xfce-vnc:v2.0.4
+            privileged: true
+          image: josh5/steam-headless:latest
+          resources:
+            requests:
+              nvidia.com/gpu: 1 
+            limits:
+              nvidia.com/gpu: 1 
           volumeMounts:
-            - name: x11-socket
-              mountPath: /tmp/.X11-unix
-            - name: sunshine-config
-              subPath: .xsessionrc
-              mountPath: /headless/.xsessionrc
+          - name: home-dir
+            mountPath: /home/default/
+          - name: games-dir
+            mountPath: /mnt/games/
+          - name: input-devices
+            mountPath: /dev/input/
+          - name: dshm
+            mountPath: /dev/shm
+          env: #Environmental Vars
+          - name: NAME
+            value: 'Homelab Games'
+          - name: TZ
+            value: 'America/New_York'
+          - name: USER_LOCALES
+            value: 'en_US.UTF-8 UTF-8'
+          - name: DISPLAY
+            value: ':55'
+          - name: DOCKER_RUNTIME
+            value: 'nvidia'
+          - name: PUID
+            value: '1000'
+          - name: PGID
+            value: '1000'
+          - name: UMASK
+            value: '000'
+          - name: USER_PASSWORD
+            value: 'password' #changeme
+          - name: MODE
+            value: 'primary'
+          - name: WEB_UI_MODE
+            value: 'none'
+          - name: ENABLE_VNC_AUDIO
+            value: 'false'
+          - name: PORT_NOVNC_WEB
+            value: '8083'
+          - name: NEKO_NAT1TO1
+            value: ''
+          - name: ENABLE_SUNSHINE
+            value: 'true'
+          - name: SUNSHINE_USER
+            value: 'sunshine'
+          - name: SUNSHINE_PASS
+            value: 'sunshine'
+          - name: ENABLE_EVDEV_INPUTS
+            value: 'true'
+          - name: NVIDIA_DRIVER_CAPABILITIES
+            value: 'all'
+          - name: NVIDIA_VISIBLE_DEVICES
+            value: 'all'
       volumes:
-        - name: sunshine-data
+        - name: home-dir
           persistentVolumeClaim:
-            claimName: sunshine-pvc
-        - name: sunshine-config
-          configMap:
-            name: sunshine-config
-        - name: x11-socket
-          emptyDir: {}
+            claimName: home
+        - name: games-dir
+          persistentVolumeClaim:
+            claimName: games
+        - name: input-devices
+          hostPath:
+            path: /dev/input/
+        - name: dshm
+          emptyDir:
+            medium: Memory
+      #   - name: sunshine
+      #     image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
+      #     command: ["/bin/sh", "-c"]
+      #     args:
+      #       - |
+      #         sleep 10
+      #         exec /usr/bin/sunshine
+      #     env:
+      #       - name: PUID
+      #         value: "1000"
+      #       - name: PGID
+      #         value: "1000"
+      #       - name: TZ
+      #         value: America/New_York
+      #       - name: DISPLAY
+      #         value: ":1"
+      #     volumeMounts:
+      #       - name: sunshine-data
+      #         mountPath: /config
+      #       - name: sunshine-config
+      #         subPath: sunshine.conf
+      #         mountPath: /config/sunshine.conf
+      #       - name: x11-socket
+      #         mountPath: /tmp/.X11-unix
+      #     securityContext:
+      #       capabilities:
+      #         drop:
+      #           - ALL
+      #         add:
+      #           - SYS_ADMIN
+      #   - name: vnc-server
+      #     image: consol/debian-xfce-vnc:v2.0.4
+      #     env:
+      #       - name: VNC_RESOLUTION
+      #         value: "1920x1080"
+      #     resources:
+      #       limits:
+      #         nvidia.com/gpu: "1"
+      #     volumeMounts:
+      #       - name: x11-socket
+      #         mountPath: /tmp/.X11-unix
+      #       - name: sunshine-config
+      #         subPath: .xsessionrc
+      #         mountPath: /headless/.xsessionrc
+      # volumes:
+      #   - name: sunshine-data
+      #     persistentVolumeClaim:
+      #       claimName: sunshine-pvc
+      #   - name: sunshine-config
+      #     configMap:
+      #       name: sunshine-config
+      #   - name: x11-socket
+      #     emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
