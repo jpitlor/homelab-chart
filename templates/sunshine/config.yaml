@@ -6,3 +6,5 @@ metadata:
 data:
   sunshine.conf: |-
 {{ .Files.Get "files/sunshine.conf" | indent 4 }}
+  .xsessionrc: |-
+    xhost +local:

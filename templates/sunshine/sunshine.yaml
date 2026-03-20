@@ -115,9 +115,6 @@ spec:
               mountPath: /config/sunshine.conf
             - name: x11-socket
               mountPath: /tmp/.X11-unix
-            - name: x11-cookie
-              mountPath: /home/lizard/.Xauthority
-              subPath: .Xauthority
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -132,9 +129,9 @@ spec:
           volumeMounts:
             - name: x11-socket
               mountPath: /tmp/.X11-unix
-            - name: x11-cookie
-              mountPath: /headless/.Xauthority
-              subPath: .Xauthority
+            - name: sunshine-config
+              subPath: .xsessionrc
+              mountPath: /headless/.xsessionrc
       volumes:
         - name: sunshine-data
           persistentVolumeClaim:
@@ -143,8 +140,6 @@ spec:
           configMap:
             name: sunshine-config
         - name: x11-socket
-          emptyDir: {}
-        - name: x11-cookie
           emptyDir: {}
 ---
 apiVersion: v1
