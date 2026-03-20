@@ -117,10 +117,9 @@ spec:
             limits:
               nvidia.com/gpu: "1"
           securityContext:
-            allowPrivilegeEscalation: true
             capabilities:
               add:
-              - "SYS_ADMIN"
+                - SYS_ADMIN
         # - name: vnc-server
         #   image: consol/debian-xfce-vnc:v2.0.4
       volumes:
