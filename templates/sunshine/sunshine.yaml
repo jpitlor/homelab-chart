@@ -111,9 +111,18 @@ spec:
             - name: sunshine-config
               subPath: sunshine.conf
               mountPath: /config/sunshine.conf
+            # - name: display-socket
+            #   mountPath: /mnt/display-socket
           resources:
             limits:
               nvidia.com/gpu: "1"
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities:
+              add:
+              - "SYS_ADMIN"
+        # - name: vnc-server
+        #   image: consol/debian-xfce-vnc:v2.0.4
       volumes:
         - name: sunshine-data
           persistentVolumeClaim:
@@ -121,6 +130,8 @@ spec:
         - name: sunshine-config
           configMap:
             name: sunshine-config
+        # - name: display-socket
+        #   emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
