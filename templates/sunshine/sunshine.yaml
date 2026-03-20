@@ -98,6 +98,11 @@ spec:
       containers:
         - name: sunshine
           image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              sleep 10
+              exec /usr/bin/sunshine
           env:
             - name: PUID
               value: "1000"
