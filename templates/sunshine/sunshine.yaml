@@ -105,14 +105,16 @@ spec:
               value: "1000"
             - name: TZ
               value: America/New_York
+            - name: DISPLAY
+              value: ":0"
           volumeMounts:
             - name: sunshine-data
               mountPath: /config
             - name: sunshine-config
               subPath: sunshine.conf
               mountPath: /config/sunshine.conf
-            # - name: display-socket
-            #   mountPath: /mnt/display-socket
+            - name: x11-socket
+              mountPath: /tmp/.X11-unix
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -120,8 +122,11 @@ spec:
             capabilities:
               add:
                 - SYS_ADMIN
-        # - name: vnc-server
-        #   image: consol/debian-xfce-vnc:v2.0.4
+        - name: vnc-server
+          image: consol/debian-xfce-vnc:v2.0.4
+          volumeMounts:
+            - name: x11-socket
+              mountPath: /tmp/.X11-unix
       volumes:
         - name: sunshine-data
           persistentVolumeClaim:
@@ -129,8 +134,8 @@ spec:
         - name: sunshine-config
           configMap:
             name: sunshine-config
-        # - name: display-socket
-        #   emptyDir: {}
+        - name: x11-socket
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
