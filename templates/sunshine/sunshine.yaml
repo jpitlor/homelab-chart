@@ -117,6 +117,7 @@ spec:
               mountPath: /tmp/.X11-unix
             - name: x11-cookie
               mountPath: /home/lizard/.Xauthority
+              subPath: .Xauthority
           resources:
             limits:
               nvidia.com/gpu: "1"
@@ -133,6 +134,7 @@ spec:
               mountPath: /tmp/.X11-unix
             - name: x11-cookie
               mountPath: /headless/.Xauthority
+              subPath: .Xauthority
       volumes:
         - name: sunshine-data
           persistentVolumeClaim:
