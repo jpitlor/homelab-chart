@@ -120,6 +120,8 @@ spec:
               nvidia.com/gpu: "1"
           securityContext:
             capabilities:
+              drop:
+                - ALL
               add:
                 - SYS_ADMIN
         - name: vnc-server
