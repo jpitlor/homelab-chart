@@ -182,7 +182,7 @@ spec:
           - name: NVIDIA_VISIBLE_DEVICES
             value: 'all'
           - name: NVIDIA_DRIVER_VERSION
-            value: 580.126.18
+            value: 580.126.09
       volumes:
         - name: home-dir
           persistentVolumeClaim:
