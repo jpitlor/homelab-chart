@@ -118,6 +118,10 @@ applications:
     version: 12.8.1
     repository: https://helm.openwebui.com/
     enabled: true
+  - name: homebox
+    version: 0.2.0
+    repository: https://bythehugo.github.io/homebox-helm/
+    enabled: true
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.
@@ -163,4 +167,7 @@ postgres:
     backupId: "2025-04-08"
   open-webui:
     appName: "open-webui"
+    backupId: "2025-04-08"
+  homebox:
+    appName: "homebox"
     backupId: "2025-04-08"
