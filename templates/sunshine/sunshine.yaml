@@ -140,7 +140,7 @@ spec:
             mountPath: /dev/input/
           - name: dshm
             mountPath: /dev/shm
-          env: #Environmental Vars
+          env:
           - name: NAME
             value: 'Homelab Games'
           - name: TZ
@@ -158,7 +158,7 @@ spec:
           - name: UMASK
             value: '000'
           - name: USER_PASSWORD
-            value: 'password' #changeme
+            value: 'password'
           - name: MODE
             value: 'primary'
           - name: WEB_UI_MODE
@@ -196,59 +196,6 @@ spec:
         - name: dshm
           emptyDir:
             medium: Memory
-      #   - name: sunshine
-      #     image: lizardbyte/sunshine:v2026.308.223622-ubuntu-24.04
-      #     command: ["/bin/sh", "-c"]
-      #     args:
-      #       - |
-      #         sleep 10
-      #         exec /usr/bin/sunshine
-      #     env:
-      #       - name: PUID
-      #         value: "1000"
-      #       - name: PGID
-      #         value: "1000"
-      #       - name: TZ
-      #         value: America/New_York
-      #       - name: DISPLAY
-      #         value: ":1"
-      #     volumeMounts:
-      #       - name: sunshine-data
-      #         mountPath: /config
-      #       - name: sunshine-config
-      #         subPath: sunshine.conf
-      #         mountPath: /config/sunshine.conf
-      #       - name: x11-socket
-      #         mountPath: /tmp/.X11-unix
-      #     securityContext:
-      #       capabilities:
-      #         drop:
-      #           - ALL
-      #         add:
-      #           - SYS_ADMIN
-      #   - name: vnc-server
-      #     image: consol/debian-xfce-vnc:v2.0.4
-      #     env:
-      #       - name: VNC_RESOLUTION
-      #         value: "1920x1080"
-      #     resources:
-      #       limits:
-      #         nvidia.com/gpu: "1"
-      #     volumeMounts:
-      #       - name: x11-socket
-      #         mountPath: /tmp/.X11-unix
-      #       - name: sunshine-config
-      #         subPath: .xsessionrc
-      #         mountPath: /headless/.xsessionrc
-      # volumes:
-      #   - name: sunshine-data
-      #     persistentVolumeClaim:
-      #       claimName: sunshine-pvc
-      #   - name: sunshine-config
-      #     configMap:
-      #       name: sunshine-config
-      #   - name: x11-socket
-      #     emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
