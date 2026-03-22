@@ -48,4 +48,4 @@ ingress:
     - host: location.test.pitlor.dev
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
