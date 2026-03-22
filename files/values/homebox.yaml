@@ -1,5 +1,5 @@
 image:
-  tag: v0.24.2
+  tag: 0.24.2
 
 env:
   HBOX_DATABASE_DRIVER: postgres
