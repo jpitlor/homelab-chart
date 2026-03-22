@@ -129,7 +129,7 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
-              cp /tmp/init.d/* /etc/conf-init.d/
+              cp /tmp/init.d/* /etc/cont-init.d/
               exec /entrypoint.sh
           resources:
             requests:
