@@ -104,7 +104,7 @@ metadata:
   name: ingest-pvc
   namespace: calibre-web-automated
 spec:
-  storageClassName: nas
+  # storageClassName: nas # TODO: move to NAS. I'm getting "mount: permission denied"
   accessModes:
     - ReadWriteOnce
   resources:
