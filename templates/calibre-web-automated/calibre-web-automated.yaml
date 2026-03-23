@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: recipes.test.pitlor.dev
+  - host: books.test.pitlor.dev
     http:
       paths:
       - path: /
