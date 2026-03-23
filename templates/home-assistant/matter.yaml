@@ -20,9 +20,6 @@ metadata:
   namespace: home-assistant
 spec:
   # network mode host???
-  securityContext:
-    appArmorProfile:
-      type: Unconfined
   replicas: 1
   selector:
     matchLabels:
@@ -32,6 +29,9 @@ spec:
       labels:
         app: matter
     spec:
+      securityContext:
+        appArmorProfile:
+          type: Unconfined
       containers:
         - name: mealie
           image: ghcr.io/matter-js/python-matter-server:8.1.2
