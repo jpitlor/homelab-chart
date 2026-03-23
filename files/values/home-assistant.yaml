@@ -6,6 +6,7 @@ securityContext:
 
 ingress:
   enabled: true
+  className: traefik
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/name: HomeAssistant
