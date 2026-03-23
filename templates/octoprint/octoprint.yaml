@@ -57,6 +57,8 @@ spec:
         - name: octoprint
           image: octoprint/octoprint:1.11.7
           env:
+            - name: OCTOPRINT_PORT 
+              value: "80"
             # - name: ENABLE_MJPG_STREAMER
             #   value: "true"
           # TODO: Mount USB camera and printer
