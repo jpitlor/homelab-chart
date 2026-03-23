@@ -126,7 +126,7 @@ applications:
   - name: music-assistant-server
     version: 0.1.9
     repository: http://lmatfy.github.io/charts
-    enabled: false
+    enabled: true
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.
