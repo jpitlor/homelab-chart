@@ -122,7 +122,11 @@ applications:
   - name: actualbudget
     version: 1.8.7
     repository: https://community-charts.github.io/helm-charts
-    enabled: true
+    enabled: false
+  - name: music-assistant-server
+    version: 0.1.9
+    repository: http://lmatfy.github.io/charts
+    enabled: false
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.

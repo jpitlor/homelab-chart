@@ -1,0 +1,26 @@
+image:
+  tag: 2.7.11
+
+env:
+  TZ: America/New_York
+
+ingress:
+  main:
+    enabled: true
+    className: traefik
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/name: Music Assistant
+      gethomepage.dev/description: Music Streaming
+      gethomepage.dev/icon: music-assistant.png
+      gethomepage.dev/group: Services
+      gethomepage.dev/pod-selector: ""
+    hosts:
+      - host: music.test.pitlor.dev
+        paths:
+          - path: /
+            pathType: Prefix
+
+persistence:
+  data:
+    enabled: true
