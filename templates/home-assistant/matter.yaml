@@ -36,7 +36,7 @@ spec:
         - name: mealie
           image: ghcr.io/matter-js/python-matter-server:8.1.2
           volumeMounts:
-            - name: mealie-data
+            - name: matter-data
               mountPath: /data/
       volumes:
         - name: matter-data
