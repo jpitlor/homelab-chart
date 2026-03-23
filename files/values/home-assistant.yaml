@@ -1,0 +1,58 @@
+image:
+  tag: 2026.3.3
+
+securityContext:
+  privileged: true
+
+ingress:
+  enabled: true
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: HomeAssistant
+    gethomepage.dev/description: Smart home management
+    gethomepage.dev/icon: home-assistant.png
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
+  hosts:
+    - host: iot.test.pitlor.dev
+      paths:
+        - path: /
+          pathType: Prefix
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 5Gi
+
+
+# additionalVolumes:
+#   - hostPath:
+#       path: >-
+#         /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20230509111242-if00
+#       type: CharDevice
+#     name: usb
+
+# additionalMounts:
+#   - mountPath: /dev/ttyACM0
+#     name: usb
+
+configuration:
+  enabled: true
+  forceInit: true
+  trusted_proxies:
+    - 10.42.0.0/16
+  templateConfig: |-
+    # Loads default set of integrations. Do not remove.
+    default_config:
+
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        - 10.42.0.0/16
+
+    frontend:
+      themes: !include_dir_merge_named themes
+
+    automation: !include automations.yaml
+    script: !include scripts.yaml
+    scene: !include scenes.yaml

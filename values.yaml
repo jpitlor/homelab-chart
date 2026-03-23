@@ -41,13 +41,6 @@ externalApplications:
     listenToHost: imessage.test.pitlor.dev
     forwardToIp: 192.168.0.165
     forwardToPort: 1234
-  - name: HomeAssistant
-    description: Smart home management
-    icon: home-assistant.png
-    group: Apps
-    listenToHost: iot.test.pitlor.dev
-    forwardToIp: 192.168.0.6
-    forwardToPort: 8123
 
 applications:
   - name: grafana
@@ -121,6 +114,10 @@ applications:
   - name: homebox
     version: 0.2.0
     repository: https://bythehugo.github.io/homebox-helm/
+    enabled: true
+  - name: home-assistant
+    version: 0.3.50
+    repository: http://pajikos.github.io/home-assistant-helm-chart/
     enabled: true
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you

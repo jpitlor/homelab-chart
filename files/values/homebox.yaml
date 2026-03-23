@@ -17,6 +17,13 @@ externalPostgresql:
 
 ingress:
   enabled: true
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Inventory
+    gethomepage.dev/icon: homebox.png
+    gethomepage.dev/name: Homebox
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
   hosts:
     - host: inventory.test.pitlor.dev
       paths:
