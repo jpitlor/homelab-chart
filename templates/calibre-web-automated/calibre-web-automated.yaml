@@ -66,8 +66,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: ingest
-              mountPath: /cwa-book-ingest
             - name: library
               mountPath: /calibre-library
             - name: plugins
@@ -76,9 +74,6 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: config-pvc
-        - name: ingest
-          persistentVolumeClaim:
-            claimName: ingest-pvc
         - name: library
           persistentVolumeClaim:
             claimName: library-pvc
@@ -92,19 +87,6 @@ metadata:
   name: config-pvc
   namespace: calibre-web-automated
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: ingest-pvc
-  namespace: calibre-web-automated
-spec:
-  # storageClassName: nas # TODO: move to NAS. I'm getting "mount: permission denied"
   accessModes:
     - ReadWriteOnce
   resources:
