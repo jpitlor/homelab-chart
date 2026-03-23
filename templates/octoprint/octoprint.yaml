@@ -58,7 +58,7 @@ spec:
           image: octoprint/octoprint:3.1.0
           env:
             - name: ENABLE_MJPG_STREAMER
-              value: true
+              value: "true"
           # TODO: Mount USB camera
           volumeMounts:
             - name: config
