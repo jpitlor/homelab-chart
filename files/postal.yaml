@@ -1,0 +1,39 @@
+version: 2
+
+postal:
+  web_hostname: email-send.test.pitlor.dev
+  web_protocol: https
+  smtp_hostname: email-send.test.pitlor.dev
+  smtp_relays:
+    - smtp://smtp.gmail.com:587
+
+main_db:
+  host: 127.0.0.1
+  username: root
+  password: postal
+  database: postal
+
+message_db:
+  host: 127.0.0.1
+  username: root
+  password: postal
+  prefix: postal
+
+smtp_server:
+  default_bind_address: "::"
+
+dns:
+  mx_records:
+    - mx.email-send.test.pitlor.dev
+  spf_include: spf.email-send.test.pitlor.dev
+  return_path_domain: rp.email-send.test.pitlor.dev
+  route_domain: routes.email-send.test.pitlor.dev
+  track_domain: track.email-send.test.pitlor.dev
+
+smtp:
+  host: 127.0.0.1
+  port: 2525
+  username: homelab
+  password: homelab
+  from_name: Pitlor Homelab
+  from_address: noreply@pitlor.dev

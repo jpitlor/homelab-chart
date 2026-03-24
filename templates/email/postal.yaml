@@ -1,0 +1,127 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: postal-ingress
+  namespace: email
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Email Distribution
+    gethomepage.dev/icon: postal.png
+    gethomepage.dev/name: Postal
+    gethomepage.dev/group: Services
+    gethomepage.dev/pod-selector: ""
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: email-send.test.pitlor.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: postal
+            port:
+              number: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postal
+  namespace: email
+spec:
+  selector:
+    app: postal
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postal
+  namespace: email
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postal
+  template:
+    metadata:
+      labels:
+        app: postal
+    spec:
+      containers:
+        - name: postal-web-server
+          image: ghcr.io/postalserver/postal:v3.3.5
+          command: ["postal", "web-server"]
+          volumeMounts:
+            - name: config-pvc
+              mountPath: /config
+            - name: postal-config
+              mountPath: /config
+              subPath: signing.key
+            - name: postal-config
+              mountPath: /config
+              subPath: postal.yaml
+        - name: postal-smtp-server
+          image: ghcr.io/postalserver/postal:v3.3.5
+          command: ["postal", "smtp-server"]
+          volumeMounts:
+            - name: config-pvc
+              mountPath: /config
+            - name: postal-config
+              mountPath: /config
+              subPath: signing.key
+            - name: postal-config
+              mountPath: /config
+              subPath: postal.yaml
+        - name: postal-worker
+          image: ghcr.io/postalserver/postal:v3.3.5
+          command: ["postal", "worker"]
+          volumeMounts:
+            - name: config-pvc
+              mountPath: /config
+            - name: postal-config
+              mountPath: /config
+              subPath: signing.key
+            - name: postal-config
+              mountPath: /config
+              subPath: postal.yaml
+        - name: mariadb
+          image: mariadb:12.2.2
+          env:
+            - name: MARIADB_DATABASE
+              value: postal
+            - name: MARIADB_ROOT_PASSWORD
+              value: postal
+      volumes:
+        - name: config-pvc
+          persistentVolumeClaim:
+            claimName: config-pvc
+        - name: config-map
+          configMap:
+            name: postal-config
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-pvc
+  namespace: email
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postal-config
+  namespace: email
+data:
+  signing.key: {{ .Values.postal.signingKey }}
+  postal.yaml: {{ .Files.Get "postal.yaml" }}

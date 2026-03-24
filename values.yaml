@@ -30,6 +30,9 @@ infisical:
   encryptionKey: changeme
   authSecret: changeme
 
+postal:
+  signingKey: changeme
+
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
