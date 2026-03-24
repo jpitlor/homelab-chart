@@ -1,0 +1,26 @@
+image:
+  tag: 10.11.6
+
+persistence:
+  config:
+    enabled: true
+    size: 5Gi
+  media:
+    enabled: true
+    size: 2Gi # TODO: This needs to be expanded
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Media Server
+    gethomepage.dev/icon: jellyfin.png
+    gethomepage.dev/name: Jellyfin
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
+  hosts:
+    - host: media.test.pitlor.dev
+      paths:
+        - path: /
+          pathType: Prefix

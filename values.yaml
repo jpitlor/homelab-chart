@@ -120,6 +120,10 @@ applications:
     version: 0.1.9
     repository: http://lmatfy.github.io/charts
     enabled: false
+  - name: jellyfin
+    version: 3.0.0
+    repository: https://jellyfin.github.io/jellyfin-helm
+    enabled: true
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.
