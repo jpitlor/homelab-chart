@@ -35,7 +35,7 @@ postfix:
   username: changeme
   password: changeme
 
-open-archiver:
+openArchiver:
   meiliMasterKey: changeme
   jwtSecret: changeme
   encryptionKey: changeme

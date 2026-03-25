@@ -120,7 +120,7 @@ spec:
 						- name: DATABASE_URL
 						  value: postgresql://open-archiver:open-archiver@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-archiver") }}:5432/open-archiver
 						- name: MEILI_MASTER_KEY
-						  value: {{ .Values.open-archiver.meiliMasterKey }}
+						  value: {{ .Values.openArchiver.meiliMasterKey }}
 						- name: MEILI_HOST
 						  value: http://meilisearch.email.svc.cluster.local:7700
 						- name: REDIS_HOST
@@ -136,11 +136,11 @@ spec:
 						- name: BODY_SIZE_LIMIT
 						  value: Infinity
 						- name: JWT_SECRET
-						  value: {{ .Values.open-archiver.jwtSecret }}
+						  value: {{ .Values.openArchiver.jwtSecret }}
 						- name: JWT_EXPIRES_IN
 						  value: "7d"
 						- name: ENCRYPTION_KEY
-						  value: {{ .Values.open-archiver.encryptionKey }}
+						  value: {{ .Values.openArchiver.encryptionKey }}
 						- name: TIKA_URL
 						  value: http://tika.email.svc.cluster.local:9998
           volumeMounts:
