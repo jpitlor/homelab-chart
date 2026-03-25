@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: open-archiver-ingress
-  namespace: mail
+  namespace: email
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Mail archive
@@ -28,7 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: open-archiver
-  namespace: mail
+  namespace: email
 spec:
   selector:
     app: open-archiver
@@ -42,7 +42,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: valkey
-  namespace: mail
+  namespace: email
 spec:
   selector:
     app: valkey
@@ -56,7 +56,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: meilisearch
-  namespace: mail
+  namespace: email
 spec:
   selector:
     app: meilisearch
@@ -70,7 +70,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tika
-  namespace: mail
+  namespace: email
 spec:
   selector:
     app: tika
@@ -84,7 +84,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: open-archiver
-  namespace: mail
+  namespace: email
 spec:
   replicas: 1
   selector:
@@ -102,15 +102,15 @@ spec:
             - name: NODE_ENV
               value: "production"
             - name: PORT_BACKEND
-              value: 4000
+              value: "4000"
             - name: PORT_FRONTEND
-              value: 3000
+              value: "3000"
             - name: APP_URL
               value: https://email-archive.test.pitlor.dev
             - name: ORIGIN
               value: https://email-archive.test.pitlor.dev
             - name: INGESTION_WORKER_CONCURRENCY
-              value: 5
+              value: "5"
             - name: POSTGRES_DB
               value: open-archiver
             - name: POSTGRES_USER
@@ -126,11 +126,11 @@ spec:
             - name: REDIS_HOST
               value: valkey.email.svc.cluster.local
             - name: REDIS_PORT
-              value: 6379
+              value: "6379"
             - name: REDIS_PASSWORD
               value: "open-archiver"
             - name: REDIS_TLS_ENABLED
-              value: false
+              value: "false"
             - name: STORAGE_TYPE
               value: local
             - name: BODY_SIZE_LIMIT
@@ -155,7 +155,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: valkey
-  namespace: mail
+  namespace: email
 spec:
   replicas: 1
   selector:
@@ -175,7 +175,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: meilisearch
-  namespace: mail
+  namespace: email
 spec:
   replicas: 1
   selector:
@@ -206,7 +206,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tika
-  namespace: mail
+  namespace: email
 spec:
   replicas: 1
   selector:
@@ -225,7 +225,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: meilisearch-pvc
-  namespace: mail
+  namespace: email
 spec:
   accessModes:
     - ReadWriteOnce
@@ -237,7 +237,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: open-archiver-pvc
-  namespace: mail
+  namespace: email
 spec:
   accessModes:
     - ReadWriteOnce
