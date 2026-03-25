@@ -183,6 +183,6 @@ postgres:
   homebox:
     appName: "homebox"
     backupId: "2025-04-08"
-  open-archiver:
+  openArchiver:
     appName: "open-archiver"
     backupId: "2025-04-08"
