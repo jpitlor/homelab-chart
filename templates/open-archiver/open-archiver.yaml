@@ -143,6 +143,8 @@ spec:
               value: {{ .Values.openArchiver.encryptionKey }}
             - name: TIKA_URL
               value: http://tika.email.svc.cluster.local:9998
+            - name: STORAGE_LOCAL_ROOT_PATH
+              value: /var/data/open-archiver
           volumeMounts:
             - name: data
               mountPath: /var/data/open-archiver
