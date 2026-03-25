@@ -193,7 +193,7 @@ spec:
           image: getmeili/meilisearch:v1.15
           env:
             - name: MEILI_MASTER_KEY
-              value: "meili"
+              value: "{{ .Values.openArchiver.meiliMasterKey }}"
             - name: MEILI_SCHEDULE_SNAPSHOT
               value: "86400"
           volumeMounts:
