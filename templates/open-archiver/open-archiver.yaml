@@ -122,9 +122,9 @@ spec:
             - name: MEILI_MASTER_KEY
               value: {{ .Values.openArchiver.meiliMasterKey }}
             - name: MEILI_HOST
-              value: http://meilisearch.email.svc.cluster.local:7700
+              value: http://meilisearch.open-archiver.svc.cluster.local:7700
             - name: REDIS_HOST
-              value: valkey.email.svc.cluster.local
+              value: valkey.open-archiver.svc.cluster.local
             - name: REDIS_PORT
               value: "6379"
             - name: REDIS_PASSWORD
@@ -142,7 +142,7 @@ spec:
             - name: ENCRYPTION_KEY
               value: {{ .Values.openArchiver.encryptionKey }}
             - name: TIKA_URL
-              value: http://tika.email.svc.cluster.local:9998
+              value: http://tika.open-archiver.svc.cluster.local:9998
             - name: STORAGE_LOCAL_ROOT_PATH
               value: /var/data/open-archiver
           volumeMounts:
