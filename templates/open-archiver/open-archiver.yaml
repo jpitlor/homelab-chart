@@ -245,4 +245,4 @@ spec:
     requests:
       storage: 5Gi
 ---
-{{- template "dev.pitlor.homelab.postgres" (list $ .Values.postgres.openArchiver) }}
+{{- template "dev.pitlor.homelab.postgres" (list $ (index .Values.postgres "open-archiver")) }}
