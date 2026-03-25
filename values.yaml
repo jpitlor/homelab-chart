@@ -35,6 +35,11 @@ postfix:
   username: changeme
   password: changeme
 
+open-archiver:
+  meiliMasterKey: changeme
+  jwtSecret: changeme
+  encryptionKey: changeme
+
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
