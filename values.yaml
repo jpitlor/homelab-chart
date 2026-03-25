@@ -30,8 +30,10 @@ infisical:
   encryptionKey: changeme
   authSecret: changeme
 
-postal:
-  signingKey: changeme
+postfix:
+  server: smtp.gmail.com
+  username: changeme
+  password: changeme
 
 externalApplications:
   - name: iMessage
