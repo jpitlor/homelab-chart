@@ -101,48 +101,48 @@ spec:
           env:
             - name: NODE_ENV
               value: "production"
-						- name: PORT_BACKEND
-						  value: 4000
-						- name: PORT_FRONTEND
-						  value: 3000
-						- name: APP_URL
-						  value: https://email-archive.test.pitlor.dev
-						- name: ORIGIN
-						  value: https://email-archive.test.pitlor.dev
-						- name: INGESTION_WORKER_CONCURRENCY
-						  value: 5
-						- name: POSTGRES_DB
-						  value: open-archiver
-						- name: POSTGRES_USER
-						  value: open-archiver
-						- name: POSTGRES_PASSWORD
-						  value: open-archiver
-						- name: DATABASE_URL
-						  value: postgresql://open-archiver:open-archiver@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-archiver") }}:5432/open-archiver
-						- name: MEILI_MASTER_KEY
-						  value: {{ .Values.openArchiver.meiliMasterKey }}
-						- name: MEILI_HOST
-						  value: http://meilisearch.email.svc.cluster.local:7700
-						- name: REDIS_HOST
-						  value: valkey.email.svc.cluster.local
-						- name: REDIS_PORT
-						  value: 6379
-						- name: REDIS_PASSWORD
-						  value: "open-archiver"
-						- name: REDIS_TLS_ENABLED
-						  value: false
-						- name: STORAGE_TYPE
-						  value: local
-						- name: BODY_SIZE_LIMIT
-						  value: Infinity
-						- name: JWT_SECRET
-						  value: {{ .Values.openArchiver.jwtSecret }}
-						- name: JWT_EXPIRES_IN
-						  value: "7d"
-						- name: ENCRYPTION_KEY
-						  value: {{ .Values.openArchiver.encryptionKey }}
-						- name: TIKA_URL
-						  value: http://tika.email.svc.cluster.local:9998
+            - name: PORT_BACKEND
+              value: 4000
+            - name: PORT_FRONTEND
+              value: 3000
+            - name: APP_URL
+              value: https://email-archive.test.pitlor.dev
+            - name: ORIGIN
+              value: https://email-archive.test.pitlor.dev
+            - name: INGESTION_WORKER_CONCURRENCY
+              value: 5
+            - name: POSTGRES_DB
+              value: open-archiver
+            - name: POSTGRES_USER
+              value: open-archiver
+            - name: POSTGRES_PASSWORD
+              value: open-archiver
+            - name: DATABASE_URL
+              value: postgresql://open-archiver:open-archiver@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-archiver") }}:5432/open-archiver
+            - name: MEILI_MASTER_KEY
+              value: {{ .Values.openArchiver.meiliMasterKey }}
+            - name: MEILI_HOST
+              value: http://meilisearch.email.svc.cluster.local:7700
+            - name: REDIS_HOST
+              value: valkey.email.svc.cluster.local
+            - name: REDIS_PORT
+              value: 6379
+            - name: REDIS_PASSWORD
+              value: "open-archiver"
+            - name: REDIS_TLS_ENABLED
+              value: false
+            - name: STORAGE_TYPE
+              value: local
+            - name: BODY_SIZE_LIMIT
+              value: Infinity
+            - name: JWT_SECRET
+              value: {{ .Values.openArchiver.jwtSecret }}
+            - name: JWT_EXPIRES_IN
+              value: "7d"
+            - name: ENCRYPTION_KEY
+              value: {{ .Values.openArchiver.encryptionKey }}
+            - name: TIKA_URL
+              value: http://tika.email.svc.cluster.local:9998
           volumeMounts:
             - name: data
               mountPath: /var/data/open-archiver
