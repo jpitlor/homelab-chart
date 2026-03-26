@@ -17,11 +17,13 @@ storageClasses:
     uid: 1000
     shareName: Homelab
     reclaimPolicy: Delete
+    enableProvisioner: true
   - name: nextcloud
     mode: 770
     uid: 33
     shareName: Documents
     reclaimPolicy: Retain
+    enableProvisioner: false
 
 blueskyPds:
   jwtSecret: changeme
