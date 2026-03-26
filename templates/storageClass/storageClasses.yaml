@@ -6,13 +6,13 @@ metadata:
   namespace: homelab
 provisioner: smb.csi.k8s.io
 parameters:
-  source: //{{ $.Values.nas.ipAddress }}/{{ $.Values.nas.shareName }}/
+  source: //{{ $.Values.nas.ipAddress }}/{{ .shareName }}/
   subDir: "${pvc.metadata.name}"
   csi.storage.k8s.io/provisioner-secret-name: {{ $.Values.nas.credentialsName }}
   csi.storage.k8s.io/provisioner-secret-namespace: homelab
   csi.storage.k8s.io/node-stage-secret-name: {{ $.Values.nas.credentialsName }}
   csi.storage.k8s.io/node-stage-secret-namespace: homelab
-reclaimPolicy: Delete
+reclaimPolicy: {{ .reclaimPolicy }}
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
 mountOptions:

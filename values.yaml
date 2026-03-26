@@ -10,15 +10,18 @@ nas:
   ipAddress: 192.168.0.31
   username: docker_containers
   password: changeme
-  shareName: Homelab
 
 storageClasses:
   - name: nas
     mode: 777
     uid: 1000
+    shareName: Homelab
+    reclaimPolicy: Delete
   - name: nextcloud
     mode: 770
     uid: 33
+    shareName: Documents
+    reclaimPolicy: retain
 
 blueskyPds:
   jwtSecret: changeme
@@ -97,7 +100,7 @@ applications:
   - name: nextcloud
     version: 8.4.1
     repository: https://nextcloud.github.io/helm/
-    enabled: false
+    enabled: true
   - name: coder
     version: 2.30.0
     repository: https://helm.coder.com/v2
@@ -133,7 +136,7 @@ applications:
   - name: jellyfin
     version: 3.0.0
     repository: https://jellyfin.github.io/jellyfin-helm
-    enabled: true
+    enabled: false
 
 # This has to be broken into an object to make disaster recovery easier - helm doesn't let you
 # override array items.
