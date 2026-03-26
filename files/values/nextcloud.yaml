@@ -1,5 +1,9 @@
 image:
   tag: 32.0.0
+securityContext: 
+  runAsUser: 33
+  runAsGroup: 33
+  runAsNonRoot: true
 internalDatabase:
   enabled: false
 externalDatabase:
