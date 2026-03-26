@@ -21,7 +21,7 @@ storageClasses:
     mode: 770
     uid: 33
     shareName: Documents
-    reclaimPolicy: retain
+    reclaimPolicy: Retain
 
 blueskyPds:
   jwtSecret: changeme
