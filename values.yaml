@@ -134,7 +134,7 @@ applications:
   - name: music-assistant-server
     version: 0.1.9
     repository: http://lmatfy.github.io/charts
-    enabled: false
+    enabled: true
   - name: jellyfin
     version: 3.0.0
     repository: https://jellyfin.github.io/jellyfin-helm
