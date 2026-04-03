@@ -182,7 +182,7 @@ postgres:
   dawarich:
     appName: "dawarich"
     backupId: "2025-04-08"
-    imageName: postgis/postgis:17-3.5-alpine
+    imageName: ghcr.io/cloudnative-pg/postgis:17-3.6-system-bookworm
     uid: 26
   open-webui:
     appName: "open-webui"
