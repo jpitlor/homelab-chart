@@ -11,7 +11,7 @@ spec:
   imageName: {{ $appPgConfig.imageName }}
   {{ end }}
   instances: 1
-  postgresUID: 0
+  postgresUID: {{ $appPgConfig.uid | default 0 }}
   postgresGID: 0
 
   {{- if $appPgConfig.sharedPreloadLibraries }}
