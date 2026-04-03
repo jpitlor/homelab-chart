@@ -1,5 +1,5 @@
 image:
-  tag: 1.1.0
+  tag: 1.6.1
 
 env:
   timeZone: "America/New_York"

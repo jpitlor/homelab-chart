@@ -182,6 +182,7 @@ postgres:
   dawarich:
     appName: "dawarich"
     backupId: "2025-04-08"
+    imageName: postgis/postgis:17-3.5-alpine
   open-webui:
     appName: "open-webui"
     backupId: "2025-04-08"
