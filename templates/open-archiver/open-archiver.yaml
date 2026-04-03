@@ -6,7 +6,7 @@ metadata:
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Mail archive
-    gethomepage.dev/icon: open-archiver.png
+    gethomepage.dev/icon: sh-open-archiver.png
     gethomepage.dev/name: Open Archiver
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
