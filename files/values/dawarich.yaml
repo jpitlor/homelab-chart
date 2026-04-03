@@ -18,6 +18,9 @@ postgresql:
     username: dawarich
     postgresPassword: dawarich
 
+redis:
+  redisPassword: dawarich
+
 ingress:
   enabled: true
   className: traefik
