@@ -85,7 +85,6 @@ metadata:
   name: games
   namespace: sunshine
 spec:
-  volumeMode: Filesystem
   resources:
     requests:
       storage: 1Gi # This needs to be expanded by a lot when possible
@@ -98,7 +97,6 @@ metadata:
   name: home        
   namespace: sunshine
 spec:
-  volumeMode: Filesystem
   resources:
     requests:
       storage: 1Gi
@@ -206,15 +204,3 @@ spec:
         - name: config
           configMap:
             name: sunshine-config
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sunshine-pvc
-  namespace: sunshine
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
