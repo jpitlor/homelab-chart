@@ -1,3 +1,4 @@
+{{ if index .Values.applications "immich" "enabled" }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -11,3 +12,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: nas
+{{ end }}

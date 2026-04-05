@@ -1,11 +1,12 @@
 {{- define "dev.pitlor.homelab.postgresDatabase" }}
 {{- $globalScope := first . }}
-{{- $appPgConfig := last . }}
+{{- $appName := last . }}
+{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.backupId }}
-  namespace: {{ $appPgConfig.appName }}
+  name: {{ $appName }}-postgres-{{ $appPgConfig.backupId }}
+  namespace: {{ $appName }}
 spec:
   {{ if $appPgConfig.imageName }}
   imageName: {{ $appPgConfig.imageName }}
@@ -24,7 +25,7 @@ spec:
 
   managed:
     roles:
-      - name: {{ $appPgConfig.appName }}
+      - name: {{ $appName }}
         superuser: true
         login: true
 
@@ -32,20 +33,20 @@ spec:
     {{- if $appPgConfig.recoverFromBackupId }}
     recovery:
       source: clusterBackup
-      database: {{ $appPgConfig.appName }}
-      owner: {{ $appPgConfig.appName }}
+      database: {{ $appName }}
+      owner: {{ $appName }}
       secret:
-        name: {{ $appPgConfig.appName }}-postgres-secret
+        name: {{ $appName }}-postgres-secret
       {{- if $appPgConfig.recoverFromBackupTime }}
       recoveryTarget:
         targetTime: {{ $appPgConfig.recoverFromBackupTime | quote }}
       {{- end }}
     {{- else }}
     initdb:
-      database: {{ $appPgConfig.appName }}
-      owner: {{ $appPgConfig.appName }}
+      database: {{ $appName }}
+      owner: {{ $appName }}
       secret:
-        name: {{ $appPgConfig.appName }}-postgres-secret
+        name: {{ $appName }}-postgres-secret
       {{- if $appPgConfig.postInitSQL }}
       postInitSQL:
         {{- range $appPgConfig.postInitSQL }}
@@ -65,8 +66,8 @@ spec:
       plugin:
         name: barman-cloud.cloudnative-pg.io
         parameters:
-          barmanObjectName: {{ $appPgConfig.appName }}-restore-store
-          serverName: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.recoverFromBackupId }}
+          barmanObjectName: {{ $appName }}-restore-store
+          serverName: {{ $appName }}-postgres-{{ $appPgConfig.recoverFromBackupId }}
   {{- end }}
 
   storage:
@@ -76,5 +77,5 @@ spec:
     - name: barman-cloud.cloudnative-pg.io
       isWALArchiver: true
       parameters:
-        barmanObjectName: {{ $appPgConfig.appName }}-backup-store
+        barmanObjectName: {{ $appName }}-backup-store
 {{ end }}

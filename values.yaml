@@ -55,141 +55,142 @@ externalApplications:
     forwardToPort: 1234
 
 applications:
-  - name: grafana
+  grafana:
     version: 10.1.0
     repository: https://grafana.github.io/helm-charts
     enabled: false
-  - name: alloy
+    postgres:
+      backupId: "2025-04-08"
+  alloy:
     version: 1.3.0
     repository: https://grafana.github.io/helm-charts
     enabled: false
-  - name: loki
+  loki:
     version: 6.42.0
     repository: https://grafana.github.io/helm-charts
     enabled: false
-  - name: prometheus
+  prometheus:
     version: 27.40.0
     repository: https://prometheus-community.github.io/helm-charts
     enabled: false
-  - name: bluesky-pds
+  bluesky-pds:
     version: 0.4.0
     repository: https://charts.nerkho.ch
     enabled: true
-  - name: infisical-standalone
+  infisical-standalone:
     version: 1.7.1
     repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
     enabled: true
-  - name: minecraft
+    postgres:
+      backupId: "2025-04-08"
+  minecraft:
     version: 5.0.0
     repository: https://itzg.github.io/minecraft-server-charts/
     enabled: false
-  - name: homepage
+  homepage:
     repository: https://jameswynn.github.io/helm-charts
     version: 2.1.0
     enabled: true
-  - name: gitea
+  gitea:
     repository: https://dl.gitea.io/charts
     version: 12.4.0
     enabled: true
-  - name: vaultwarden
+    postgres:
+      backupId: "2025-04-08"
+      postInitApplicationSQLRefs:
+        - name: postgres-init
+          key: gitea
+  vaultwarden:
     version: 0.34.4
     repository: https://guerzon.github.io/vaultwarden
     enabled: true
-  - name: immich
+    postgres:
+      backupId: "2025-04-08"
+  immich:
     version: 0.10.3
     repository: https://immich-app.github.io/immich-charts
     enabled: true
-  - name: nextcloud
+    postgres:
+      imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
+      sharedPreloadLibraries:
+        - "vchord.so"
+      postInitSQL:
+        - CREATE EXTENSION vchord CASCADE;
+        - CREATE EXTENSION earthdistance CASCADE;
+  nextcloud:
     version: 8.4.1
     repository: https://nextcloud.github.io/helm/
     enabled: true
-  - name: coder
+    postgres:
+      backupId: "2025-04-08"
+  coder:
     version: 2.30.0
     repository: https://helm.coder.com/v2
     enabled: true
-  - name: authentik
+    postgres:
+      backupId: "2025-04-08"
+  authentik:
     version: 2025.12.3
     repository: https://charts.goauthentik.io
     enabled: true
-  - name: dawarich
+    postgres:
+      backupId: "2025-04-08"
+  dawarich:
     version: 2.1.0
     repository: https://charts.cogitri.dev
     enabled: true
-  - name: open-webui
+    postgres:
+      backupId: "2025-04-08"
+      imageName: ghcr.io/cloudnative-pg/postgis:17-3.6-system-bookworm
+      uid: 26
+  open-webui:
     version: 12.8.1
     repository: https://helm.openwebui.com/
     enabled: true
-  - name: homebox
+    postgres:
+      backupId: "2025-04-08"
+  homebox:
     version: 0.2.0
     repository: https://bythehugo.github.io/homebox-helm/
     enabled: true
-  - name: home-assistant
+    postgres:
+      backupId: "2025-04-08"
+  home-assistant:
     version: 0.3.50
     repository: http://pajikos.github.io/home-assistant-helm-chart/
     enabled: true
-  - name: actualbudget
+  actualbudget:
     version: 1.8.7
     repository: https://community-charts.github.io/helm-charts
     enabled: true
-  - name: music-assistant-server
+  music-assistant-server:
     version: 0.1.9
     repository: http://lmatfy.github.io/charts
     enabled: true
-  - name: jellyfin
+  jellyfin:
     version: 3.0.0
     repository: https://jellyfin.github.io/jellyfin-helm
     enabled: true
-
-# This has to be broken into an object to make disaster recovery easier - helm doesn't let you
-# override array items.
-postgres:
-  grafana:
-    backupId: "2025-04-08"
-  vaultwarden:
-    backupId: "2025-04-08"
-  immich:
-    backupId: "2025-04-08"
-    imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
-    sharedPreloadLibraries:
-      - "vchord.so"
-    postInitSQL:
-      - CREATE EXTENSION vchord CASCADE;
-      - CREATE EXTENSION earthdistance CASCADE;
-  nextcloud:
-    backupId: "2025-04-08"
-  gitea:
-    backupId: "2025-04-08"
-    postInitApplicationSQLRefs:
-      - name: postgres-init
-        key: gitea
-  infisical-standalone:
-    backupId: "2025-04-08"
-  guacamole:
-    appName: "guacamole"
-    backupId: "2025-04-08"
-    postInitApplicationSQLRefs:
-      - name: postgres-init
-        key: guacamole
   mealie:
-    appName: "mealie"
-    backupId: "2025-04-08"
-  coder:
-    appName: "coder"
-    backupId: "2025-04-08"
-  authentik:
-    appName: "authentik"
-    backupId: "2025-04-08"
-  dawarich:
-    appName: "dawarich"
-    backupId: "2025-04-08"
-    imageName: ghcr.io/cloudnative-pg/postgis:17-3.6-system-bookworm
-    uid: 26
-  open-webui:
-    appName: "open-webui"
-    backupId: "2025-04-08"
-  homebox:
-    appName: "homebox"
-    backupId: "2025-04-08"
+    enabled: true
+    postgres:
+      backupId: "2025-04-08"
   open-archiver:
-    appName: "open-archiver"
-    backupId: "2025-04-08"
+    enabled: true
+    postgres:
+      backupId: "2025-04-08"
+  guacamole:
+    enabled: true
+    postgres:
+      backupId: "2025-04-08"
+      postInitApplicationSQLRefs:
+        - name: postgres-init
+          key: guacamole
+  sunshine:
+    enabled: true
+  email:
+    enabled: true
+  octoprint:
+    enabled: true
+  calibre-web-automated:
+    enabled: true

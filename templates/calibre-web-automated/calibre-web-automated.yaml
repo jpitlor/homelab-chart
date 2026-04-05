@@ -1,3 +1,4 @@
+{{ if index .Values.applications "calibre-web-automated" "enabled" }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -116,3 +117,4 @@ spec:
   resources:
     requests:
       storage: 2Gi
+{{ end }}

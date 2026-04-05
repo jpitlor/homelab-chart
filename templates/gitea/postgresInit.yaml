@@ -1,3 +1,4 @@
+{{ if index .Values.applications "gitea" "enabled" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,3 +7,4 @@ metadata:
 data:
   gitea: |
 {{ .Files.Get "files/gitea-postgres-init.sql" | indent 4 }}
+{{ end }}

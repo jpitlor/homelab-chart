@@ -1,3 +1,4 @@
+{{ if index .Values.applications "guacamole" "enabled" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,3 +7,4 @@ metadata:
 data:
   guacamole: |
 {{ .Files.Get "files/guacamole-postgres-init.sql" | indent 4 }}
+{{ end }}

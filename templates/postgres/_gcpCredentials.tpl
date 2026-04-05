@@ -1,11 +1,12 @@
 {{- define "dev.pitlor.homelab.gcpCredentials" }}
 {{- $globalScope := first . }}
-{{- $appPgConfig := last . }}
+{{- $appName := last . }}
+{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
 apiVersion: v1
 kind: Secret
 metadata:
   name: gcp-credentials
-  namespace: {{ $appPgConfig.appName }}
+  namespace: {{ $appName }}
 type: Opaque
 stringData:
   serviceAccountJson: {{ $globalScope.Values.google.serviceAccountJson | quote }}

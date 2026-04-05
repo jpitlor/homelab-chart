@@ -1,15 +1,16 @@
 {{- define "dev.pitlor.homelab.gcpBackupStore" }}
 {{- $globalScope := first . }}
-{{- $appPgConfig := last . }}
+{{- $appName := last . }}
+{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
 apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
-  name: {{ $appPgConfig.appName }}-backup-store
-  namespace: {{ $appPgConfig.appName }}
+  name: {{ $appName }}-backup-store
+  namespace: {{ $appName }}
 spec:
   retentionPolicy: "30d"
   configuration:
-    destinationPath: "gs://dev-pitlor-homelab-postgres-backups/{{ $appPgConfig.appName }}/postgresBackups-{{ $appPgConfig.backupId }}"
+    destinationPath: "gs://dev-pitlor-homelab-postgres-backups/{{ $appName }}/postgresBackups-{{ $appPgConfig.backupId }}"
     googleCredentials:
       applicationCredentials:
         name: gcp-credentials

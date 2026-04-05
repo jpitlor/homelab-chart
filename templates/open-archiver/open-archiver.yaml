@@ -1,3 +1,4 @@
+{{ if index .Values.applications "open-archiver" "enabled" }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -118,7 +119,7 @@ spec:
             - name: POSTGRES_PASSWORD
               value: open-archiver
             - name: DATABASE_URL
-              value: postgresql://open-archiver:open-archiver@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-archiver") }}:5432/open-archiver
+              value: "postgresql://open-archiver:open-archiver@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-archiver") }}:5432/open-archiver"
             - name: MEILI_MASTER_KEY
               value: {{ .Values.openArchiver.meiliMasterKey }}
             - name: MEILI_HOST
@@ -246,5 +247,4 @@ spec:
   resources:
     requests:
       storage: 5Gi
----
-{{- template "dev.pitlor.homelab.postgres" (list $ (index .Values.postgres "open-archiver")) }}
+{{ end }}

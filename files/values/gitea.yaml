@@ -12,7 +12,7 @@ gitea:
       ENABLE_PPROF: true
     database:
       DB_TYPE: postgres
-      HOST: {{ template "dev.pitlor.homelab.postgres-name" (list . "gitea") }}
+      HOST: {{ template "dev.pitlor.homelab.postgres-name" (list $ "gitea") }}
       NAME: gitea
       USER: gitea
       PASSWD: gitea

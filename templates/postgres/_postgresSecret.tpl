@@ -1,13 +1,14 @@
 {{- define "dev.pitlor.homelab.postgresSecret" }}
 {{- $globalScope := first . }}
-{{- $appPgConfig := last . }}
+{{- $appName := last . }}
+{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ $appPgConfig.appName }}-postgres-secret
-  namespace: {{ $appPgConfig.appName }}
+  name: {{ $appName }}-postgres-secret
+  namespace: {{ $appName }}
 type: kubernetes.io/basic-auth
 data:
-  username: {{ $appPgConfig.appName | b64enc }}
-  password: {{ $appPgConfig.appName | b64enc }}
+  username: {{ $appName | b64enc }}
+  password: {{ $appName | b64enc }}
 {{ end }}

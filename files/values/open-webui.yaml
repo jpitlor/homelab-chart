@@ -1,5 +1,5 @@
 enableOpenaiApi: false
-databaseUrl: postgres://open-webui:open-webui@{{ template "dev.pitlor.homelab.postgres-name" (list . "open-webui") }}:5432/open-webui
+databaseUrl: postgres://open-webui:open-webui@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-webui") }}:5432/open-webui
 image:
   tag: v0.8.10-cuda
 ollama:

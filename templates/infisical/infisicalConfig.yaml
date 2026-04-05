@@ -1,3 +1,4 @@
+{{ if index .Values.applications "infisical-standalone" "enabled" }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -9,3 +10,4 @@ stringData:
   ENCRYPTION_KEY: {{ .Values.infisical.encryptionKey | required "No encryption key provided" | quote }}
   SITE_URL: "https://vault.test.pitlor.dev"
   DB_CONNECTION_URI: postgresql://infisical-standalone:infisical-standalone@{{ template "dev.pitlor.homelab.postgres-name" (list $ "infisical-standalone") }}
+{{ end }}

@@ -1,16 +1,17 @@
 {{- define "dev.pitlor.homelab.postgresBackup" }}
 {{- $globalScope := first . }}
-{{- $appPgConfig := last . }}
+{{- $appName := last . }}
+{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: {{ $appPgConfig.appName }}-postgres-backup
-  namespace: {{ $appPgConfig.appName }}
+  name: {{ $appName }}-postgres-backup
+  namespace: {{ $appName }}
 spec:
   schedule: "0 0 0 * * *"  # Every day at midnight
   backupOwnerReference: self
   cluster:
-    name: {{ $appPgConfig.appName }}-postgres-{{ $appPgConfig.backupId }}
+    name: {{ $appName }}-postgres-{{ $appPgConfig.backupId }}
   method: plugin
   pluginConfiguration:
     name: barman-cloud.cloudnative-pg.io

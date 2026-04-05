@@ -12,7 +12,7 @@ storage:
     accessMode: ReadWriteOnce
 database:
   type: postgresql
-  host: {{ template "dev.pitlor.homelab.postgres-name" (list . "vaultwarden") }}
+  host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "vaultwarden") }}
   port: "5432"
   username: vaultwarden
   password: vaultwarden

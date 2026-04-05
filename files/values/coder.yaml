@@ -15,7 +15,7 @@ coder:
       gethomepage.dev/pod-selector: ""
   env:
     - name: CODER_PG_CONNECTION_URL
-      value: postgres://coder:coder@{{ template "dev.pitlor.homelab.postgres-name" (list . "coder") }}:5432
+      value: postgres://coder:coder@{{ template "dev.pitlor.homelab.postgres-name" (list $ "coder") }}:5432
     - name: CODER_OAUTH2_GITHUB_DEFAULT_PROVIDER_ENABLE
       value: "false"
     - name: CODER_ACCESS_URL

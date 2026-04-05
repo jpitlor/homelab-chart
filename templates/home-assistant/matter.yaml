@@ -1,4 +1,4 @@
-
+{{ if index .Values.applications "home-assistant" "enabled" }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -54,3 +54,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
+{{ end }}

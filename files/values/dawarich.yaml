@@ -9,7 +9,7 @@ dawarich:
     - location.test.pitlor.dev
 
 postgresql:
-  host: {{ template "dev.pitlor.homelab.postgres-name" (list . "dawarich") }}
+  host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "dawarich") }}
   port: 5432
 
   auth:
