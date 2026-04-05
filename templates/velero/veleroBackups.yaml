@@ -8,7 +8,7 @@ spec:
   template:
     includedNamespaces:
       {{- range keys .Values.applications }}
-      {{- if (get .Values.applications .).enabled }}
+      {{- if (get $.Values.applications .).enabled }}
       - {{ . }}
       {{- end }}
       {{- end }}
