@@ -7,10 +7,9 @@ spec:
   schedule: "0 2 * * *"
   template:
     includedNamespaces:
-      - guacamole
-      {{- range .Values.applications }}
-      {{- if .enabled }}
-      - {{ .name }}
+      {{- range keys .Values.applications }}
+      {{- if (get .Values.applications .).enabled }}
+      - {{ . }}
       {{- end }}
       {{- end }}
     includedResources:

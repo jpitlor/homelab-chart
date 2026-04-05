@@ -9,9 +9,8 @@ spec:
   restorePVs: true
   includedNamespaces:
     {{- range keys .Values.applications }}
-    {{- $appConfig := get .Values.applications . -}}
-    {{- if .enabled }}
-    - {{ .name }}
+    {{- if (get .Values.applications .).enabled }}
+    - {{ . }}
     {{- end }}
     {{- end }}
 {{ end }}
