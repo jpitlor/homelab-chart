@@ -136,7 +136,7 @@ applications:
     postgres:
       backupId: "2025-04-08"
   dawarich:
-    version: 2.1.0
+    version: 2.2.3
     repository: https://charts.cogitri.dev
     enabled: true
     postgres:
