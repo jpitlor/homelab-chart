@@ -6,7 +6,7 @@ kind: Namespace
 metadata:
   name: {{ . }}
 ---
-{{ if hasKey $appConfig "repository "}}
+{{ if hasKey $appConfig "repository" }}
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
