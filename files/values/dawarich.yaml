@@ -18,6 +18,15 @@ postgresql:
     username: dawarich
     postgresPassword: dawarich
 
+redis:
+  replicas: 1
+  redis:
+    config:
+      min-replicas-to-write: 0
+  sentinel:
+    quorum: 1
+  hardAntiAffinity: false
+
 ingress:
   enabled: true
   className: traefik
