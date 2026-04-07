@@ -149,10 +149,15 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /var/data/open-archiver
+            - name: ingest
+              mountPath: /ingest
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: open-archiver-pvc
+            claimName: data-pvc
+        - name: ingest
+          persistentVolumeClaim:
+            claimName: ingest-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -239,7 +244,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: open-archiver-pvc
+  name: data-pvc
   namespace: open-archiver
 spec:
   accessModes:
@@ -247,4 +252,17 @@ spec:
   resources:
     requests:
       storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ingest-pvc
+  namespace: open-archiver
+spec:
+  storageClassName: "ingest"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
 {{ end }}

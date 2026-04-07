@@ -7,7 +7,8 @@ persistence:
     size: 5Gi
   media:
     enabled: true
-    size: 2Gi # TODO: This needs to be expanded
+    storageClass: "media"
+    size: 2Ti
 
 ingress:
   enabled: true

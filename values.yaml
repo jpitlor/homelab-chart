@@ -24,6 +24,18 @@ storageClasses:
     shareName: Documents
     reclaimPolicy: Retain
     enableProvisioner: false
+  - name: media
+    mode: 770
+    uid: 1000
+    shareName: Media
+    reclaimPolicy: Retain
+    enableProvisioner: false
+  - name: ingest
+    mode: 770
+    uid: 1000
+    shareName: Ingest
+    reclaimPolicy: Delete
+    enableProvisioner: true
 
 blueskyPds:
   jwtSecret: changeme

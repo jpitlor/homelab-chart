@@ -71,6 +71,8 @@ spec:
               mountPath: /calibre-library
             - name: plugins
               mountPath: /config/.config/calibre/plugins
+            - name: ingest
+              mountPath: /cwa-book-ingest
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -81,6 +83,9 @@ spec:
         - name: plugins
           persistentVolumeClaim:
             claimName: plugins-pvc
+        - name: ingest
+          persistentVolumeClaim:
+            claimName: ingest-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -112,6 +117,19 @@ metadata:
   name: plugins-pvc
   namespace: calibre-web-automated
 spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ingest-pvc
+  namespace: calibre-web-automated
+spec:
+  storageClassName: "ingest"
   accessModes:
     - ReadWriteOnce
   resources:
