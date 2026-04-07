@@ -180,7 +180,7 @@ spec:
             - name: SUNSHINE_USER
               value: 'sunshine'
             - name: SUNSHINE_PASS
-              value: 'sunshine'
+              value: '{{ .Values.sunshine.password }}'
             - name: ENABLE_EVDEV_INPUTS
               value: 'true'
             - name: NVIDIA_DRIVER_CAPABILITIES

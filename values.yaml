@@ -45,6 +45,9 @@ openArchiver:
   jwtSecret: changeme
   encryptionKey: changeme
 
+sunshine:
+  password: changeme
+
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
