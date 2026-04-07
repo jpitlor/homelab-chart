@@ -14,6 +14,7 @@ metadata:
   namespace: homelab
 spec:
   repo: {{ $appConfig.repository }}
+  version: {{ $appConfig.version }}
   chart: {{ . }}
   targetNamespace: {{ . }}
   timeout: 10m
