@@ -157,7 +157,7 @@ spec:
             claimName: data-pvc
         - name: ingest
           persistentVolumeClaim:
-            claimName: ingest-pvc
+            claimName: mail-ingest-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -256,7 +256,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ingest-pvc
+  name: mail-ingest-pvc
   namespace: open-archiver
 spec:
   storageClassName: "ingest"
