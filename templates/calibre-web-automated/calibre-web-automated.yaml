@@ -85,7 +85,7 @@ spec:
             claimName: plugins-pvc
         - name: ingest
           persistentVolumeClaim:
-            claimName: ingest-pvc
+            claimName: book-ingest-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -126,7 +126,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ingest-pvc
+  name: book-ingest-pvc
   namespace: calibre-web-automated
 spec:
   storageClassName: "ingest"
