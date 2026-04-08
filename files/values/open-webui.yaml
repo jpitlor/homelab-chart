@@ -1,9 +1,11 @@
 enableOpenaiApi: false
 databaseUrl: postgres://open-webui:open-webui@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-webui") }}:5432/open-webui
 image:
-  tag: v0.8.10-cuda
+  tag: v0.8.12-cuda
 ollama:
   enabled: true
+  image:
+    tag: 0.20.3
   extraEnv: 
     - name: CUDA_ERROR_LEVEL
       value: "50"
@@ -16,9 +18,9 @@ ollama:
       number: 1
     models:
       pull:
-        - qwen3.5:9b
+        - gemma3n:e4b
       run:
-        - qwen3.5:9b
+        - gemma3n:e4b
   runtimeClassName: nvidia
   persistentVolume:
     enabled: true
