@@ -8,14 +8,16 @@ metadata:
 ---
 {{ if hasKey $appConfig "repository" }}
 apiVersion: helm.cattle.io/v1
-kind: HelmChart
+kind: HelmCharti
 metadata:
   name: {{ . | trunc 5 }}-{{ $.Release.Name | trunc 5 }}
   namespace: homelab
 spec:
+  {{ if not (hasPrefix $appConfig.repository "oci:") }}
   repo: {{ $appConfig.repository }}
+  {{ end }}
   version: {{ $appConfig.version }}
-  chart: {{ . }}
+  chart: {{ hasPrefix $appConfig.repository "oci:" | (printf "%s/%s" $appConfig.repository .) . }}
   targetNamespace: {{ . }}
   timeout: 10m
   {{- if $.Files.Get (printf "files/values/%s.yaml" .) }}
