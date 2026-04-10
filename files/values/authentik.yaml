@@ -6,6 +6,10 @@ authentik:
     host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "authentik") }}
     user: authentik
     password: authentik
+  email:
+    host: send.email.svc.cluster.local
+    use_tls: true
+    from: "Authentik <noreply@pitlor.dev>"
 server:
   ingress:
     ingressClassName: traefik
