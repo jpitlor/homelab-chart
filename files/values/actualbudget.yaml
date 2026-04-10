@@ -5,6 +5,17 @@ persistence:
   enabled: true
   size: 2Gi
 
+login:
+  method: "openid"
+  allowedLoginMethods:
+    - openid
+  openid:
+    enforce: true
+    providerName: "Authentik"
+    discoveryUrl: "https://auth.test.pitlor.dev/application/o/actual-budget/.well-known/openid-configuration"
+    clientId: {{ .Values.actualbudget.oidcClientId }}
+    clientSecret: {{ .Values.actualbudget.oidcClientSecret }}
+
 ingress:
   enabled: true
   className: traefik

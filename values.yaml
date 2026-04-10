@@ -75,6 +75,10 @@ coder:
   oidcClientId: changeme
   oidcClientSecret: changeme
 
+actualbudget:
+  oidcClientId: changeme
+  oidcClientSecret: changeme
+
 externalApplications:
   - name: iMessage
     description: Messaging for iPhone users
