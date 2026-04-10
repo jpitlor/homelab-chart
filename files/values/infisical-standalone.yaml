@@ -2,6 +2,13 @@ infisical:
   autoDatabaseSchemaMigration: true
   image:
     tag: "v0.149.0"
+  extraEnv:
+    - name: SMTP_HOST
+      value: send.email.svc.cluster.local
+    - name: SMTP_FROM_ADDRESS
+      value: noreply@pitlor.dev
+    - name: SMTP_FROM_NAME
+      value: Infisical
 ingress:
   hostName: vault.test.pitlor.dev
   ingressClassName: traefik
