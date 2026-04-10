@@ -1,5 +1,5 @@
 image:
-  tag: 2.7.11
+  tag: 2.8.2
 
 env:
   TZ: America/New_York
@@ -26,3 +26,7 @@ persistence:
     enabled: true
     accessMode: ReadWriteOnce
     size: 5Gi
+  media:
+    enabled: true
+    storageClass: "media"
+    size: 2Ti

@@ -10,6 +10,19 @@ dawarich:
   hosts:
     - location.test.pitlor.dev
 
+
+oidc:
+  enabled: true
+  providerName: "Authentik"
+  clientId:
+    value: {{ .Values.dawarich.oidcClientId }}
+  clientSecret:
+    value: {{ .Values.dawarich.oidcClientSecret }}
+  issuer: https://auth.test.pitlor.dev/application/o/dawarich/
+  redirectUri: https://ai.test.pitlor.dev/oauth/oidc/callback
+  autoRegister: true
+  allowEmailPasswordRegistration: false
+
 postgresql:
   host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "dawarich") }}
   port: 5432

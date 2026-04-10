@@ -41,7 +41,6 @@ blueskyPds:
   jwtSecret: changeme
   adminPassword: changeme
   plcRotationKey: changeme
-  emailSmtpUrl: changeme
 
 infisical:
   encryptionKey: changeme
@@ -59,6 +58,22 @@ openArchiver:
 
 sunshine:
   password: changeme
+
+homebox:
+  oidcClientId: changeme
+  oidcClientSecret: changeme
+
+open-webui:
+  oidcClientId: changeme
+  oidcClientSecret: changeme
+
+dawarich:
+  oidcClientId: changeme
+  oidcClientSecret: changeme
+
+coder:
+  oidcClientId: changeme
+  oidcClientSecret: changeme
 
 externalApplications:
   - name: iMessage

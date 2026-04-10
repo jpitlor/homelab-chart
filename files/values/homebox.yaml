@@ -3,6 +3,12 @@ image:
 
 env:
   HBOX_DATABASE_DRIVER: postgres
+  HBOX_OIDC_ENABLED: true
+  HBOX_OIDC_ISSUER_URL: https://auth.test.pitlor.dev/application/o/homebox/
+  HBOX_OIDC_CLIENT_ID: {{ .Values.homebox.oidcClientId }}
+  HBOX_OIDC_CLIENT_SECRET: {{ .Values.homebox.oidcClientSecret }}
+  HBOX_OPTIONS_TRUST_PROXY: true
+  HBOX_OPTIONS_HOSTNAME: inventory.test.pitlor.dev
 
 postgresql:
   enabled: false
