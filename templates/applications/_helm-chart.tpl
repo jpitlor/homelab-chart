@@ -6,7 +6,7 @@
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: {{ printf "%s-%s" .Release.Name $appName | trunc 63 | trimSuffix "-" | quote }}
+  name: {{ printf "%s-%s" $.Release.Name $appName | trunc 63 | trimSuffix "-" | quote }}
   namespace: homelab
 spec:
   repo: {{ $appConfig.repository }}
