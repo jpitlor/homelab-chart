@@ -1,0 +1,7 @@
+{{ range .Values.externalApplications }}
+{{ include "dev.pitlor.homelab.externalApplications.endpoint-slice" (list $ .) }}
+---
+{{ include "dev.pitlor.homelab.externalApplications.service" (list $ .) }}
+---
+{{ include "dev.pitlor.homelab.externalApplications.ingress" (list $ .) }}
+{{ end }}

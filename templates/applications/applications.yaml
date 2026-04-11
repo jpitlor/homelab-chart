@@ -1,0 +1,12 @@
+{{- range keys .Values.applications }}
+{{- $appName := . -}}
+{{- $appConfig := get $.Values.applications . -}}
+{{- if $appConfig.enabled -}}
+{{ include "dev.pitlor.homelab.applications.namespace" (list $ $appName $appConfig) }}
+---
+{{ include "dev.pitlor.homelab.applications.helm-chart" (list $ $appName $appConfig) }}
+---
+{{ include "dev.pitlor.homelab.applications.postgres" (list $ $appName $appConfig) }}
+---
+{{ end }}
+{{ end }}
