@@ -1,43 +1,5 @@
 {{ if index .Values.applications "email" "enabled" }}
-apiVersion: v1
-kind: Service
-metadata:
-  name: send
-  namespace: email
-spec:
-  selector:
-    app: postfix
-  ports:
-    - protocol: TCP
-      port: 587
-      targetPort: 587
-  type: ClusterIP
+{{ include "dev.pitlor.homelab.email.service" . }}
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: postfix
-  namespace: email
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postfix
-  template:
-    metadata:
-      labels:
-        app: postfix
-    spec:
-      containers:
-        - name: postfix
-          image: juanluisbaptiste/postfix:1.9.0
-          env:
-            - name: SMTP_SERVER
-              value: {{ .Values.postfix.server }}
-            - name: SMTP_USERNAME
-              value: {{ .Values.postfix.username }}
-            - name: SMTP_PASSWORD
-              value: {{ .Values.postfix.password }}
-            - name: SERVER_HOSTNAME
-              value: pitlor.dev
+{{ include "dev.pitlor.homelab.email.deployment" . }}
 {{ end }}

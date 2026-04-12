@@ -1,4 +1,4 @@
-{{ if index .Values.applications "sunshine" "enabled" }}
+{{- define "dev.pitlor.homelab.sunshine.config-map" -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
