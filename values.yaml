@@ -94,6 +94,10 @@ actualbudget:
   oidcClientId: changeme
   oidcClientSecret: changeme
 
+mealie:
+  oidcClientId: changeme
+  oidcClientSecret: changeme
+
 applications:
   grafana:
     version: 10.1.0
