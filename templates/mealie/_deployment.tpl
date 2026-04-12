@@ -40,6 +40,22 @@ spec:
           value: "5432"
         - name: POSTGRES_DB
           value: mealie
+        - name: OIDC_AUTH_ENABLED
+          value: "true"
+        - name: OIDC_SIGNUP_ENABLED
+          value: "true"
+        - name: OIDC_CONFIGURATION_URL
+          value: https://auth.test.pitlor.dev/application/o/mealie/.well-known/openid-configuration
+        - name: OIDC_CLIENT_ID
+          value: {{ .Values.mealie.oidcClientId }}
+        - name: OIDC_CLIENT_SECRET
+          value: {{ .Values.mealie.oidcClientSecret }}
+        - name: OIDC_USER_GROUP
+          value: "Homelab User"
+        - name: OIDC_ADMIN_GROUP
+          value: "Homelab Admin"
+        - name: OIDC_AUTO_REDIRECT
+          value: "true"
         volumeMounts:
         - name: mealie-data
           mountPath: /app/data/

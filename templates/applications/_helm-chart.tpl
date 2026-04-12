@@ -9,14 +9,15 @@ metadata:
   name: {{ printf "%s-%s" $.Release.Name $appName | trunc 63 | trimSuffix "-" | quote }}
   namespace: homelab
 spec:
+  {{ if not (hasPrefix $appConfig.repository "oci:") }}
   repo: {{ $appConfig.repository }}
+  {{ end }}
   version: {{ $appConfig.version }}
-  chart: {{ $appName }}
+  chart: {{ hasPrefix $appConfig.repository "oci:" | (printf "%s/%s" $appConfig.repository .) . }}
   targetNamespace: {{ $appName }}
   timeout: 10m
   {{- if $.Files.Get (printf "files/values/%s.yaml" $appName) }}
   valuesContent: |-
 {{ tpl ($.Files.Get (printf "files/values/%s.yaml" $appName)) $ | indent 4 }}
   {{- end }}
-{{ end }}
 {{- end -}}
