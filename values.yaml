@@ -1,3 +1,6 @@
+###################
+# GLOBAL SETTINGS #
+###################
 velero:
   restore: false
   version: 1
@@ -37,6 +40,18 @@ storageClasses:
     reclaimPolicy: Delete
     enableProvisioner: true
 
+externalApplications:
+  - name: iMessage
+    description: Messaging for iPhone users
+    icon: apple.png
+    group: Services
+    listenToHost: imessage.test.pitlor.dev
+    forwardToIp: 192.168.0.165
+    forwardToPort: 1234
+
+########################
+# APPLICATION SETTINGS #
+########################
 blueskyPds:
   jwtSecret: changeme
   adminPassword: changeme
@@ -74,15 +89,6 @@ dawarich:
 coder:
   oidcClientId: changeme
   oidcClientSecret: changeme
-
-externalApplications:
-  - name: iMessage
-    description: Messaging for iPhone users
-    icon: apple.png
-    group: Services
-    listenToHost: imessage.test.pitlor.dev
-    forwardToIp: 192.168.0.165
-    forwardToPort: 1234
 
 applications:
   grafana:
