@@ -4,7 +4,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ printf "%s-%s-%s" $.Release.Name "ingress" $appConfig.name | trunc 63 | trimSuffix "-" }}
+  name: {{ printf "%s-%s-%s" $.Release.Name "ingress" $appConfig.name | trunc 63 | trimSuffix "-" | lower | quote }}
   namespace: homelab
   annotations:
     gethomepage.dev/enabled: "true"
@@ -23,7 +23,7 @@ spec:
         paths:
           - backend:
               service:
-                name: {{ printf "%s-%s-%s" $.Release.Name "service" $appConfig.name | trunc 63 | trimSuffix "-" | quote }}
+                name: {{ printf "%s-%s-%s" $.Release.Name "service" $appConfig.name | trunc 63 | trimSuffix "-" | lower | quote }}
                 port:
                   name: "http"
             path: "/"

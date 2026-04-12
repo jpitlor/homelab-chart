@@ -8,10 +8,12 @@ spec:
   selector:
     app: calibre-web-automated
   ports:
-    - protocol: TCP
+    - name: web
+      protocol: TCP
       port: 8083
       targetPort: 8083
-    - protocol: TCP
+    - name: library
+      protocol: TCP
       port: 8080
       targetPort: 8080
   type: ClusterIP

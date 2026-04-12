@@ -4,9 +4,9 @@
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
 metadata:
-  name: {{ printf "%s-%s-%s" $.Release.Name "slice" $appConfig.name | trunc 63 | trimSuffix "-" | quote }}
+  name: {{ printf "%s-%s-%s" $.Release.Name "slice" $appConfig.name | trunc 63 | trimSuffix "-" | lower | quote }}
   labels:
-    kubernetes.io/service-name: {{ printf "%s-%s-%s" $.Release.Name "service" $appConfig.name | trunc 63 | trimSuffix "-" | quote }}
+    kubernetes.io/service-name: {{ printf "%s-%s-%s" $.Release.Name "service" $appConfig.name | trunc 63 | trimSuffix "-" | lower | quote }}
     endpointslice.kubernetes.io/managed-by: dev.pitlor
 addressType: IPv4
 ports:
