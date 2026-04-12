@@ -1,0 +1,60 @@
+{{- define "dev.pitlor.homelab.mealie.deployment" -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+  namespace: mealie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie
+  template:
+    metadata:
+      labels:
+        app: mealie
+    spec:
+      containers:
+      - name: mealie
+        image: ghcr.io/mealie-recipes/mealie:v3.9.1
+        env:
+        - name: ALLOW_SIGNUP
+          value: "false"
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: America/New_York
+        - name: BASE_URL
+          value: https://recipes.test.pitlor.dev
+        - name: DB_ENGINE
+          value: postgres
+        - name: POSTGRES_USER
+          value: mealie
+        - name: POSTGRES_PASSWORD
+          value: mealie
+        - name: POSTGRES_SERVER
+          value: {{ template "dev.pitlor.homelab.postgres-name" (list $ "mealie") }}
+        - name: POSTGRES_PORT
+          value: "5432"
+        - name: POSTGRES_DB
+          value: mealie
+        volumeMounts:
+        - name: mealie-data
+          mountPath: /app/data/
+        startupProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          exec:
+            command:
+            - "timeout"
+            - "1"
+            - "bash"
+            - "-c"
+            - "cat < /dev/null > /dev/tcp/{{ template "dev.pitlor.homelab.postgres-name" (list $ "mealie") }}/5432"
+      volumes:
+      - name: mealie-data
+        persistentVolumeClaim:
+          claimName: mealie-pvc
+{{- end -}}
