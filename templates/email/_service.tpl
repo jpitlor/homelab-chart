@@ -9,7 +9,7 @@ spec:
     app: postfix
   ports:
     - protocol: TCP
-      port: 587
-      targetPort: 587
+      port: 25
+      targetPort: 25
   type: ClusterIP
 {{- end -}}

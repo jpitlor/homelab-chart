@@ -5,7 +5,7 @@ immich:
     library:
       existingClaim: immich-library-pvc
 image:
-  tag: v2.3.1
+  tag: v2.7.4
 valkey:
   enabled: true
 server:

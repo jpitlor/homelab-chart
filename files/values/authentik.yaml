@@ -10,7 +10,26 @@ authentik:
     host: send.email.svc.cluster.local
     use_tls: true
     from: "Authentik <noreply@pitlor.dev>"
+additionalObjects:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: authentik-data
+      namespace: authentik
+    spec:
+      resources:
+        requests:
+          storage: 1Gi
+      accessModes:
+        - ReadWriteOnce
 server:
+  volumeMounts:
+    - name: data
+      mountPath: /data
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: authentik-data
   ingress:
     ingressClassName: traefik
     enabled: true
