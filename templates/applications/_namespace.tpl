@@ -6,4 +6,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: {{ $appName }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "0"
 {{- end -}}

@@ -6,7 +6,7 @@ metadata:
   namespace: homelab
   annotations:
     "helm.sh/hook": pre-install
-    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-weight": "1"
 spec:
   scheduleName: pvc-daily-backup
   restorePVs: true
