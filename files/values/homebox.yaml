@@ -2,6 +2,7 @@ image:
   tag: 0.24.2
 
 env:
+  TZ: "America/New_York"
   HBOX_DATABASE_DRIVER: postgres
   HBOX_OIDC_ENABLED: true
   HBOX_OIDC_ISSUER_URL: https://auth.test.pitlor.dev/application/o/homebox/
