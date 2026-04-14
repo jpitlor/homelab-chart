@@ -1,0 +1,68 @@
+{{ if index .Values.applications "open-webui" "enabled" }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: opencode-ingress
+  namespace: open-webui
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Coding Assistant
+    gethomepage.dev/icon: opencode.png
+    gethomepage.dev/name: OpenCode
+    gethomepage.dev/group: Software Development
+    gethomepage.dev/pod-selector: ""
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: ai-code.test.pitlor.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: opencode
+            port:
+              number: 4096
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opencode
+  namespace: open-webui
+spec:
+  selector:
+    app: opencode
+  ports:
+    - protocol: TCP
+      port: 4096
+      targetPort: 4096
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opencode
+  namespace: open-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opencode
+  template:
+    metadata:
+      labels:
+        app: opencode
+    spec:
+      containers:
+        - name: opencode
+          image: ghcr.io/anomalyco/opencode:1.4.3
+          env:
+            - name: OPENCODE_SERVER_PASSWORD
+              value: {{ index .Values "open-webui" "opencode" "serverPassword" }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              opencode server --cors https://ai-code.test.pitlor.dev
+{{ end }}

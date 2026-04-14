@@ -81,6 +81,8 @@ homebox:
 open-webui:
   oidcClientId: changeme
   oidcClientSecret: changeme
+  opencode:
+    serverPassword: changeme
 
 dawarich:
   oidcClientId: changeme
