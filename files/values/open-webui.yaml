@@ -2,6 +2,17 @@ enableOpenaiApi: false
 databaseUrl: postgres://open-webui:open-webui@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-webui") }}:5432/open-webui
 image:
   tag: v0.8.12-cuda
+extraEnvVars:
+  - name: OPENID_PROVIDER_URL
+    value: "https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration"
+  - name: OAUTH_CLIENT_ID
+    value: {{ (get .Values "open-webui").oidcClientId }}
+  - name: OAUTH_CLIENT_SECRET
+    value: {{ (get .Values "open-webui").oidcClientSecret }}
+  - name: OPENID_PROVIDER_URL
+    value: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
+  - name: ENABLE_OAUTH_SIGNUP
+    value: "true"
 ollama:
   enabled: true
   image:
@@ -11,16 +22,6 @@ ollama:
       value: "50"
     - name: OLLAMA_DEBUG
       value: "1"
-    - name: OPENID_PROVIDER_URL
-      value: "https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration"
-    - name: OAUTH_CLIENT_ID
-      value: {{ (get .Values "open-webui").oidcClientId }}
-    - name: OAUTH_CLIENT_SECRET
-      value: {{ (get .Values "open-webui").oidcClientSecret }}
-    - name: OPENID_PROVIDER_URL
-      value: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
-    - name: ENABLE_OAUTH_SIGNUP
-      value: "true"
   ollama:
     gpu:
       enabled: true
