@@ -34,7 +34,6 @@ ollama:
   runtimeClassName: nvidia
   persistentVolume:
     enabled: true
-    volumeName: "ollama-pv"
 ingress:
   enabled: true
   host: ai.test.pitlor.dev
