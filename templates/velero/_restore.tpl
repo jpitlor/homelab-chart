@@ -1,0 +1,23 @@
+{{- define "dev.pitlor.homelab.velero.restore" -}}
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: velero-restore-{{ .Values.velero.version }}
+  namespace: homelab
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "5"
+spec:
+  scheduleName: pvc-daily-backup
+  restorePVs: true
+  includeClusterResources: true
+  restoreStatus:
+    includedResources:
+      - persistentvolumes
+  includedNamespaces:
+    {{- range keys .Values.applications }}
+    {{- if (get $.Values.applications .).enabled }}
+    - {{ . }}
+    {{- end }}
+    {{- end }}
+{{- end -}}
