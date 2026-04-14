@@ -11,6 +11,8 @@ ollama:
       value: "50"
     - name: OLLAMA_DEBUG
       value: "1"
+    - name: OPENID_PROVIDER_URL
+      value: "https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration"
     - name: OAUTH_CLIENT_ID
       value: {{ (get .Values "open-webui").oidcClientId }}
     - name: OAUTH_CLIENT_SECRET

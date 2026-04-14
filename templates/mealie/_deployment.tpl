@@ -56,6 +56,8 @@ spec:
           value: "Homelab Admin"
         - name: OIDC_AUTO_REDIRECT
           value: "true"
+        - name: "ALLOW_PASSWORD_LOGIN"
+          value: "false"
         volumeMounts:
         - name: mealie-data
           mountPath: /app/data/
