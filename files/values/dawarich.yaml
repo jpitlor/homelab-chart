@@ -19,7 +19,7 @@ oidc:
   clientSecret:
     value: {{ .Values.dawarich.oidcClientSecret }}
   issuer: https://auth.test.pitlor.dev/application/o/dawarich/
-  redirectUri: https://ai.test.pitlor.dev/oauth/oidc/callback
+  redirectUri: https://location.test.pitlor.dev/oauth/oidc/callback
   autoRegister: true
   allowEmailPasswordRegistration: false
 

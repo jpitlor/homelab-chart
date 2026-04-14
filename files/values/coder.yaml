@@ -32,3 +32,5 @@ coder:
       value: {{ .Values.coder.oidcClientSecret }}
     - name: CODER_DISABLE_PASSWORD_AUTH
       value: "true"
+    - name: "CODER_OIDC_IGNORE_EMAIL_VERIFIED"
+      value: "true"
