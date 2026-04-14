@@ -10,6 +10,7 @@ env:
   HBOX_OIDC_CLIENT_SECRET: {{ .Values.homebox.oidcClientSecret }}
   HBOX_OPTIONS_TRUST_PROXY: true
   HBOX_OPTIONS_HOSTNAME: inventory.test.pitlor.dev
+  HBOX_OPTIONS_ALLOW_LOCAL_LOGIN: false
 
 postgresql:
   enabled: false

@@ -18,7 +18,7 @@ ollama:
     - name: OPENID_PROVIDER_URL
       value: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
     - name: ENABLE_OAUTH_SIGNUP
-      value: true
+      value: "true"
   ollama:
     gpu:
       enabled: true
