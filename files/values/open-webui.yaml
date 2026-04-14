@@ -13,6 +13,8 @@ extraEnvVars:
     value: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
   - name: ENABLE_OAUTH_SIGNUP
     value: "true"
+  - name: "ENABLE_PASSWORD_AUTH"
+    value: "false"
 ollama:
   enabled: true
   image:
