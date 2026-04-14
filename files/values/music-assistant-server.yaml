@@ -29,4 +29,5 @@ persistence:
   media:
     enabled: true
     storageClass: "media"
+    accessMode: ReadWriteOnce
     size: 2Ti

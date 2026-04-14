@@ -22,8 +22,8 @@ coder:
       value: "https://develop.test.pitlor.dev"
     - name: CODER_PROMETHEUS_ADDRESS
       value: "0.0.0.0:2112"
-      name: CODER_OIDC_ISSUER_URL
-      value: https://auth.test.pitlor.dev/application/o/coder/
+    - name: CODER_OIDC_ISSUER_URL
+      value: "https://auth.test.pitlor.dev/application/o/coder/"
     - name: CODER_OIDC_EMAIL_DOMAIN
       value: "gmail.com,pitlor.dev"
     - name: CODER_OIDC_CLIENT_ID
@@ -31,4 +31,4 @@ coder:
     - name: CODER_OIDC_CLIENT_SECRET
       value: {{ .Values.coder.oidcClientSecret }}
     - name: CODER_DISABLE_PASSWORD_AUTH
-      value: true
+      value: "true"
