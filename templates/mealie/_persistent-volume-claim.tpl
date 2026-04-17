@@ -5,6 +5,7 @@ metadata:
   name: mealie-pvc
   namespace: mealie
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:

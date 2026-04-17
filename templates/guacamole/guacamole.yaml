@@ -107,6 +107,7 @@ metadata:
   name: guacamole-pvc
   namespace: guacamole
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:

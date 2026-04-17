@@ -4,10 +4,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: games
   namespace: sunshine
+  labels:
+    "velero.io/exclude-from-backup": "true"
 spec:
   resources:
     requests:
-      storage: 1Gi # This needs to be expanded by a lot when possible
+      storage: 1Gi # We're purposely using `local-path` which does not enforce the max
   accessModes:
     - ReadWriteOnce
 ---
@@ -17,6 +19,7 @@ metadata:
   name: home        
   namespace: sunshine
 spec:
+  storageClassName: "longhorn"
   resources:
     requests:
       storage: 1Gi

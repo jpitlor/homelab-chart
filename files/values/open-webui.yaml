@@ -47,3 +47,6 @@ ingress:
     gethomepage.dev/name: Open WebUI
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
+
+persistence:
+  storageClass: "longhorn"

@@ -50,6 +50,7 @@ metadata:
   name: guacd-drive-pvc
   namespace: guacamole
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:
@@ -62,6 +63,7 @@ metadata:
   name: guacd-record-pvc
   namespace: guacamole
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:

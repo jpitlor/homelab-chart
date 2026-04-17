@@ -4,10 +4,12 @@ domain: https://passwords.test.pitlor.dev
 storage:
   data:
     name: vaultwarden-data
+    storageClass: "longhorn"
     size: "15Gi"
     accessMode: ReadWriteOnce
   attachments:
     name: vaultwarden-attachments
+    storageClass: "longhorn"
     size: "5Gi"
     accessMode: ReadWriteOnce
 database:

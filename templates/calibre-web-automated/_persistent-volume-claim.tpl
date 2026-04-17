@@ -5,6 +5,7 @@ metadata:
   name: config-pvc
   namespace: calibre-web-automated
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:
@@ -17,6 +18,7 @@ metadata:
   name: library-pvc
   namespace: calibre-web-automated
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:
@@ -29,6 +31,7 @@ metadata:
   name: plugins-pvc
   namespace: calibre-web-automated
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:

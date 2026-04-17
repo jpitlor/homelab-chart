@@ -5,6 +5,7 @@ metadata:
   name: meilisearch-pvc
   namespace: open-archiver
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:
@@ -17,6 +18,7 @@ metadata:
   name: data-pvc
   namespace: open-archiver
 spec:
+  storageClassName: "longhorn"
   accessModes:
     - ReadWriteOnce
   resources:

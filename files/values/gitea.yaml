@@ -19,6 +19,7 @@ gitea:
       SCHEMA: gitea
 persistence:
   enabled: true
+  storageClass: "longhorn"
 redis-cluster:
   enabled: false
 redis:

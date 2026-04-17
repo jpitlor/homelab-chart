@@ -1,4 +1,6 @@
 coder:  
+  image:
+    tag: "v2.31.9"
   resources:
     requests:
      cpu: 100m
