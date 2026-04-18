@@ -26,4 +26,4 @@ pds:
       existingSecret: bluesky-secrets
     pdsEmailFromAddress: "noreply@pitlor.dev"
   dataStorage:
-    storageClass: "longhorn"
+    storageClass: "ssd"

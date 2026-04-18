@@ -60,6 +60,6 @@ ingress:
 
 persistence:
   public:
-    storageClass: "longhorn"
+    storageClass: "ssd"
   storage:
-    storageClass: "longhorn"
+    storageClass: "ssd"

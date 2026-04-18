@@ -19,7 +19,7 @@ gitea:
       SCHEMA: gitea
 persistence:
   enabled: true
-  storageClass: "longhorn"
+  storageClass: "ssd"
 redis-cluster:
   enabled: false
 redis:
@@ -47,5 +47,5 @@ ingress:
     gethomepage.dev/pod-selector: ""
 valkey-cluster:
   persistence:
-    storageClass: "longhorn"
+    storageClass: "ssd"
     size: 2Gi

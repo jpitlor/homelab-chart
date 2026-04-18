@@ -49,7 +49,7 @@ metadata:
   name: matter-pvc
   namespace: home-assistant
 spec:
-  storageClassName: "longhorn"
+  storageClassName: "ssd"
   accessModes:
     - ReadWriteOnce
   resources:

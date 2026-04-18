@@ -1,0 +1,10 @@
+{{- range keys .Values.storageClasses.longhorn }}
+{{- $storageClass := get .Values.storageClasses.longhorn . }}
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ . }}
+provisioner: driver.longhorn.io
+parameters:
+  numberOfReplicas: {{ $storageClass.replicas | quote }}
+{{ end }}

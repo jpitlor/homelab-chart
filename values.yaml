@@ -15,33 +15,39 @@ nas:
   password: changeme
 
 storageClasses:
-  - name: nas
-    mode: 777
-    uid: 1000
-    shareName: Homelab
-    reclaimPolicy: Delete
-    enableProvisioner: true
-  - name: nextcloud
-    mode: 770
-    uid: 33
-    shareName: Documents
-    reclaimPolicy: Retain
-    enableProvisioner: false
-  - name: media
-    mode: 770
-    uid: 1000
-    shareName: Media
-    reclaimPolicy: Retain
-    enableProvisioner: false
-  - name: ingest
-    mode: 770
-    uid: 1000
-    shareName: Ingest
-    reclaimPolicy: Delete
-    enableProvisioner: true
+  longhorn:
+    ssd:
+      replicas: 2
+    ssd-large:
+      replicas: 1
+  nas:
+    nas:
+      mode: 777
+      uid: 1000
+      shareName: Homelab
+      reclaimPolicy: Delete
+      enableProvisioner: true
+    nextcloud:
+      mode: 770
+      uid: 33
+      shareName: Documents
+      reclaimPolicy: Retain
+      enableProvisioner: false
+    media:
+      mode: 770
+      uid: 1000
+      shareName: Media
+      reclaimPolicy: Retain
+      enableProvisioner: false
+    ingest:
+      mode: 770
+      uid: 1000
+      shareName: Ingest
+      reclaimPolicy: Delete
+      enableProvisioner: true
 
 externalApplications:
-  - name: iMessage
+  iMessage:
     description: Messaging for iPhone users
     icon: apple.png
     group: Services

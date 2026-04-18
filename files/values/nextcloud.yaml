@@ -15,7 +15,7 @@ externalDatabase:
   password: nextcloud
 persistence:
   enabled: true
-  storageClass: "longhorn"
+  storageClass: "ssd"
   nextcloudData:
     enabled: true
     storageClass: nextcloud

@@ -17,7 +17,7 @@ additionalObjects:
       name: authentik-data
       namespace: authentik
     spec:
-      storageClassName: "longhorn"
+      storageClassName: "ssd"
       resources:
         requests:
           storage: 2Gi

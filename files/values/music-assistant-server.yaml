@@ -24,7 +24,7 @@ ingress:
 persistence:
   data:
     enabled: true
-    storageClass: "longhorn"
+    storageClass: "ssd"
     accessMode: ReadWriteOnce
     size: 2Gi
   media:

@@ -5,7 +5,7 @@ metadata:
   name: config-pvc
   namespace: octoprint
 spec:
-  storageClassName: "longhorn"
+  storageClassName: "ssd"
   accessModes:
     - ReadWriteOnce
   resources:

@@ -4,7 +4,7 @@ image:
 persistence:
   config:
     enabled: true
-    storageClass: "longhorn"
+    storageClass: "ssd"
     size: 2Gi
   media:
     enabled: true

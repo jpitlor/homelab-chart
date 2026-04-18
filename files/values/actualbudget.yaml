@@ -3,7 +3,7 @@ image:
 
 persistence:
   enabled: true
-  storageClass: "longhorn"
+  storageClass: "ssd"
   size: 2Gi
 
 login:

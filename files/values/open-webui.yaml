@@ -37,6 +37,8 @@ ollama:
   runtimeClassName: nvidia
   persistentVolume:
     enabled: true
+    size: 10Gi
+    storageClass: "ssd-large"
 ingress:
   enabled: true
   host: ai.test.pitlor.dev
@@ -49,5 +51,5 @@ ingress:
     gethomepage.dev/pod-selector: ""
 
 persistence:
-  storageClass: "longhorn"
+  storageClass: "ssd"
   size: "10Gi"

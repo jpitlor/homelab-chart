@@ -7,9 +7,10 @@ metadata:
   labels:
     "velero.io/exclude-from-backup": "true"
 spec:
+  storageClassName: "ssd-large"
   resources:
     requests:
-      storage: 1Gi # We're purposely using `local-path` which does not enforce the max
+      storage: 30Gi # This needs to be expanded by a lot when possible
   accessModes:
     - ReadWriteOnce
 ---
@@ -19,7 +20,7 @@ metadata:
   name: home        
   namespace: sunshine
 spec:
-  storageClassName: "longhorn"
+  storageClassName: "ssd"
   resources:
     requests:
       storage: 1Gi
