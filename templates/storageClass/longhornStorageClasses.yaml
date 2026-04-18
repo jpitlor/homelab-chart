@@ -7,4 +7,5 @@ metadata:
 provisioner: driver.longhorn.io
 parameters:
   numberOfReplicas: {{ $storageClass.replicas | quote }}
+---
 {{ end }}
