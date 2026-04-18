@@ -5,4 +5,5 @@
 {{ include "dev.pitlor.homelab.externalApplications.service" (list $ . $application) }}
 ---
 {{ include "dev.pitlor.homelab.externalApplications.ingress" (list $ . $application) }}
+---
 {{ end }}
