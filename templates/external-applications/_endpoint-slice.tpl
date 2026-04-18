@@ -1,12 +1,13 @@
 {{- define "dev.pitlor.homelab.externalApplications.endpoint-slice" -}}
 {{- $ := index . 0 -}}
-{{- $appConfig := index . 1 -}}
+{{- $appName := index . 1 -}}
+{{- $appConfig := index . 2 -}}
 apiVersion: discovery.k8s.io/v1
 kind: EndpointSlice
 metadata:
-  name: {{ printf "%s-%s-%s" $.Release.Name "slice" $appConfig.name | trunc 63 | trimSuffix "-" | lower | quote }}
+  name: {{ printf "%s-%s-%s" $.Release.Name "slice" $appName | trunc 63 | trimSuffix "-" | lower | quote }}
   labels:
-    kubernetes.io/service-name: {{ printf "%s-%s-%s" $.Release.Name "service" $appConfig.name | trunc 63 | trimSuffix "-" | lower | quote }}
+    kubernetes.io/service-name: {{ printf "%s-%s-%s" $.Release.Name "service" $appName | trunc 63 | trimSuffix "-" | lower | quote }}
     endpointslice.kubernetes.io/managed-by: dev.pitlor
 addressType: IPv4
 ports:
