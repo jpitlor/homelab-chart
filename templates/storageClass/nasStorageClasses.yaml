@@ -1,3 +1,5 @@
+{{- $nas := .Values.nas }}
+---
 {{- range keys .Values.storageClasses.nas }}
 {{- $storageClass := get .Values.storageClasses.nas . }}
 apiVersion: storage.k8s.io/v1
@@ -7,13 +9,13 @@ metadata:
   namespace: homelab
 provisioner: smb.csi.k8s.io
 parameters:
-  source: //{{ $.Values.nas.ipAddress }}/{{ $storageClass.shareName }}/
+  source: //{{ $nas.ipAddress }}/{{ $storageClass.shareName }}/
   {{- if $storageClass.enableProvisioner }}
   subDir: "${pvc.metadata.name}"
-  csi.storage.k8s.io/provisioner-secret-name: {{ $.Values.nas.credentialsName }}
+  csi.storage.k8s.io/provisioner-secret-name: {{ $nas.credentialsName }}
   csi.storage.k8s.io/provisioner-secret-namespace: homelab
   {{- end }}
-  csi.storage.k8s.io/node-stage-secret-name: {{ $.Values.nas.credentialsName }}
+  csi.storage.k8s.io/node-stage-secret-name: {{ $nas.credentialsName }}
   csi.storage.k8s.io/node-stage-secret-namespace: homelab
 reclaimPolicy: {{ $storageClass.reclaimPolicy }}
 volumeBindingMode: Immediate
