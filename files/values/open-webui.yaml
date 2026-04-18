@@ -50,3 +50,4 @@ ingress:
 
 persistence:
   storageClass: "longhorn"
+  size: "10Gi"

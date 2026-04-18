@@ -26,7 +26,7 @@ persistence:
     enabled: true
     storageClass: "longhorn"
     accessMode: ReadWriteOnce
-    size: 5Gi
+    size: 2Gi
   media:
     enabled: true
     storageClass: "media"

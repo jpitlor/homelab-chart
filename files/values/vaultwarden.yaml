@@ -5,12 +5,12 @@ storage:
   data:
     name: vaultwarden-data
     storageClass: "longhorn"
-    size: "15Gi"
+    size: "5Gi"
     accessMode: ReadWriteOnce
   attachments:
     name: vaultwarden-attachments
     storageClass: "longhorn"
-    size: "5Gi"
+    size: "2Gi"
     accessMode: ReadWriteOnce
 database:
   type: postgresql
