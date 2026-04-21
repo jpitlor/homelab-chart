@@ -1,4 +1,4 @@
-{{- range keys .Values.applications }}
+{{- range keys .Values }}
 {{- $appName := . -}}
 {{- $appConfig := get $.Values.applications . -}}
 {{- if $appConfig.enabled -}}
