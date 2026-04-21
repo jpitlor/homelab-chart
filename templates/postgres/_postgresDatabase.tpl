@@ -1,7 +1,7 @@
 {{- define "dev.pitlor.homelab.postgresDatabase" }}
 {{- $globalScope := first . }}
 {{- $appName := last . }}
-{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
+{{- $appPgConfig := index  $globalScope.Values $appName "postgres" }}
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:

@@ -1,4 +1,4 @@
-{{ if index .Values.applications "open-archiver" "enabled" }}
+{{ if index .Values "open-archiver" "enabled" }}
 {{ include "dev.pitlor.homelab.open-archiver.ingress" . }}
 ---
 {{ include "dev.pitlor.homelab.open-archiver.service" . }}

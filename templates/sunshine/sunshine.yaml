@@ -1,4 +1,4 @@
-{{ if index .Values.applications "sunshine" "enabled" }}
+{{ if index .Values "sunshine" "enabled" }}
 {{ include "dev.pitlor.homelab.sunshine.config-map" $ }}
 ---
 {{ include "dev.pitlor.homelab.sunshine.ingress" . }}

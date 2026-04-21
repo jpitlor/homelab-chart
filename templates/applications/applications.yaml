@@ -1,6 +1,6 @@
 {{- range keys .Values }}
 {{- $appName := . -}}
-{{- $appConfig := get $.Values.applications . -}}
+{{- $appConfig := get $.Values . -}}
 {{- if $appConfig.enabled -}}
 {{ include "dev.pitlor.homelab.applications.namespace" (list $ $appName $appConfig) }}
 ---

@@ -1,4 +1,4 @@
-{{ if index .Values.applications "octoprint" "enabled" }}
+{{ if index .Values "octoprint" "enabled" }}
 {{ include "dev.pitlor.homelab.octoprint.ingress" . }}
 ---
 {{ include "dev.pitlor.homelab.octoprint.service" . }}

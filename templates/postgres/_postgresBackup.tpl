@@ -1,7 +1,7 @@
 {{- define "dev.pitlor.homelab.postgresBackup" }}
 {{- $globalScope := first . }}
 {{- $appName := last . }}
-{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
+{{- $appPgConfig := index  $globalScope.Values $appName "postgres" }}
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:

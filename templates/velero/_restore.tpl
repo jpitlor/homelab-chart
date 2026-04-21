@@ -15,8 +15,8 @@ spec:
     includedResources:
       - persistentvolumes
   includedNamespaces:
-    {{- range keys .Values.applications }}
-    {{- if (get $.Values.applications .).enabled }}
+    {{- range keys .Values }}
+    {{- if (get $.Values .).enabled }}
     - {{ . }}
     {{- end }}
     {{- end }}

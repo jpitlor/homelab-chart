@@ -1,4 +1,4 @@
-{{ if index .Values.applications "immich" "enabled" }}
+{{ if index .Values "immich" "enabled" }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

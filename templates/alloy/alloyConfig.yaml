@@ -1,4 +1,4 @@
-{{ if index .Values.applications "alloy" "enabled" }}
+{{ if index .Values "alloy" "enabled" }}
 apiVersion: v1
 kind: Namespace
 metadata:

@@ -1,7 +1,7 @@
 {{- define "dev.pitlor.homelab.gcpCredentials" }}
 {{- $globalScope := first . }}
 {{- $appName := last . }}
-{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
+{{- $appPgConfig := index  $globalScope.Values $appName "postgres" }}
 apiVersion: v1
 kind: Secret
 metadata:

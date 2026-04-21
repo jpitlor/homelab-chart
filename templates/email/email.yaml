@@ -1,4 +1,4 @@
-{{ if index .Values.applications "email" "enabled" }}
+{{ if index .Values "email" "enabled" }}
 {{ include "dev.pitlor.homelab.email.service" . }}
 ---
 {{ include "dev.pitlor.homelab.email.deployment" . }}

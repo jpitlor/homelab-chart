@@ -1,4 +1,4 @@
-{{ if index .Values.applications "guacamole" "enabled" }}
+{{ if index .Values "guacamole" "enabled" }}
 apiVersion: v1
 kind: Service
 metadata:

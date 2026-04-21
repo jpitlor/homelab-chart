@@ -1,4 +1,4 @@
-{{ if index .Values.applications "mealie" "enabled" }}
+{{ if index .Values "mealie" "enabled" }}
 {{ include "dev.pitlor.homelab.mealie.ingress" . }}
 ---
 {{ include "dev.pitlor.homelab.mealie.service" . }}

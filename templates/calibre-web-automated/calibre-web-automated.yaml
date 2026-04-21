@@ -1,4 +1,4 @@
-{{ if index .Values.applications "calibre-web-automated" "enabled" }}
+{{ if index .Values "calibre-web-automated" "enabled" }}
 {{ include "dev.pitlor.homelab.calibre-web-automated.ingress" . }}
 ---
 {{ include "dev.pitlor.homelab.calibre-web-automated.service" . }}

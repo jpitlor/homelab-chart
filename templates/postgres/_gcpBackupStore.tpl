@@ -1,7 +1,7 @@
 {{- define "dev.pitlor.homelab.gcpBackupStore" }}
 {{- $globalScope := first . }}
 {{- $appName := last . }}
-{{- $appPgConfig := index  $globalScope.Values.applications $appName "postgres" }}
+{{- $appPgConfig := index  $globalScope.Values $appName "postgres" }}
 apiVersion: barmancloud.cnpg.io/v1
 kind: ObjectStore
 metadata:
