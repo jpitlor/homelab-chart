@@ -258,5 +258,6 @@ guacamole:
         key: guacamole
 
 portainer:
+  enabled: true
   repository: https://portainer.github.io/k8s/
   version: 239.1.0
