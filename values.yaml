@@ -80,7 +80,7 @@ prometheus:
   repository: https://prometheus-community.github.io/helm-charts
   enabled: false
 
-blueskyPds:
+bluesky-pds:
   version: 0.4.0
   repository: https://charts.nerkho.ch
   enabled: true
