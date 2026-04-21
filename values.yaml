@@ -175,6 +175,7 @@ immich:
   repository: oci://ghcr.io/immich-app/immich-charts
   enabled: true
   postgres:
+    backupId: "2025-04-08"
     imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.4.3
     sharedPreloadLibraries:
       - "vchord.so"
