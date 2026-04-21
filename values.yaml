@@ -88,7 +88,7 @@ blueskyPds:
   adminPassword: changeme
   plcRotationKey: changeme
 
-infisical:
+infisical-standalone:
   version: 1.7.1
   repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
   enabled: true

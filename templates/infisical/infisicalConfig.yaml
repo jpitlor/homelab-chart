@@ -6,8 +6,8 @@ metadata:
   namespace: infisical-standalone
 type: Opaque
 stringData:
-  AUTH_SECRET: {{ .Values.infisical.authSecret | required "No auth secret provided" | quote }}
-  ENCRYPTION_KEY: {{ .Values.infisical.encryptionKey | required "No encryption key provided" | quote }}
+  AUTH_SECRET: {{ index .Values "infisical-standalone" "authSecret" | required "No auth secret provided" | quote }}
+  ENCRYPTION_KEY: {{ index .Values "infisical-standalone" "encryptionKey" | required "No encryption key provided" | quote }}
   SITE_URL: "https://vault.test.pitlor.dev"
   DB_CONNECTION_URI: postgresql://infisical-standalone:infisical-standalone@{{ template "dev.pitlor.homelab.postgres-name" (list $ "infisical-standalone") }}
 {{ end }}
