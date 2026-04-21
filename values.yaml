@@ -256,3 +256,7 @@ guacamole:
     postInitApplicationSQLRefs:
       - name: postgres-init
         key: guacamole
+
+portainer:
+  repository: https://portainer.github.io/k8s/
+  version: 239.1.0

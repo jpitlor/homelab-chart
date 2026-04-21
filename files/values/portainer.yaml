@@ -1,0 +1,8 @@
+image:
+  tag: 2.40.0
+
+tls:
+  force: true
+
+persistence:
+  storageClass: ssd
