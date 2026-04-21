@@ -187,6 +187,7 @@ applications:
     enabled: true
     postgres:
       backupId: "2025-04-08"
+      storageSize: "6Gi"
   dawarich:
     version: 2.2.3
     repository: https://charts.cogitri.dev

@@ -74,6 +74,7 @@ spec:
 
   storage:
     size: {{ $appPgConfig.storageSize | default "4Gi" }}
+    storageClass: "ssd"
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io
