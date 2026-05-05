@@ -14,11 +14,6 @@ spec:
       - {{ . }}
       {{- end }}
       {{- end }}
-    includedResources:
-      - persistentvolumeclaims
-      - persistentvolumes
     includeClusterResources: true
     storageLocation: gcs-backup-location
-    volumeSnapshotLocations:
-      - gcs-snapshot-location
     ttl: 720h0m0s
