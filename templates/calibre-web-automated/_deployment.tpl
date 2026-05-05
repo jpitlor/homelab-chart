@@ -24,6 +24,8 @@ spec:
               value: "1000"
             - name: TZ
               value: America/New_York
+          annotations:
+            "backup.velero.io/backup-volumes-excludes": ingest
           volumeMounts:
             - name: config
               mountPath: /config

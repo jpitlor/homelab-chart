@@ -30,8 +30,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: mail-ingest-pvc
   namespace: open-archiver
-  labels:
-    "velero.io/exclude-from-backup": "true"
 spec:
   storageClassName: "ingest"
   accessModes:

@@ -4,6 +4,8 @@ securityContext:
   runAsUser: 33
   runAsGroup: 33
   runAsNonRoot: true
+podAnnotations:
+  "backup.velero.io/backup-volumes-excludes": nextcloudData
 internalDatabase:
   enabled: false
 externalDatabase:
@@ -20,8 +22,6 @@ persistence:
     enabled: true
     storageClass: nextcloud
     size: 1Ti
-    labels:
-      "velero.io/exclude-from-backup": "true"
 metrics:
   enabled: true
   serviceMonitor:
@@ -40,7 +40,7 @@ nextcloud:
   host: files.test.pitlor.dev
 startupProbe:
   enabled: true
-  initialDelaySeconds: 300
+  initialDelaySeconds: 180
   periodSeconds: 100
   timeoutSeconds: 10
   failureThreshold: 5

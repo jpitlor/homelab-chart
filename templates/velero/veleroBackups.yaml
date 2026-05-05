@@ -6,7 +6,7 @@ metadata:
 spec:
   schedule: "0 2 * * *"
   template:
-    csiSnapshotTimeout: 60m
+    defaultVolumesToFsBackup: true
     includedNamespaces:
       {{- range keys .Values }}
       {{- if (get $.Values .).enabled }}

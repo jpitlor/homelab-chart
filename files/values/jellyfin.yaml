@@ -1,6 +1,9 @@
 image:
   tag: 10.11.6
 
+podAnnotations:
+  "backup.velero.io/backup-volumes-excludes": "media"
+
 persistence:
   config:
     enabled: true
@@ -10,8 +13,6 @@ persistence:
     enabled: true
     storageClass: "media"
     size: 2Ti
-    labels:
-      "velero.io/exclude-from-backup": "true"
 
 ingress:
   enabled: true

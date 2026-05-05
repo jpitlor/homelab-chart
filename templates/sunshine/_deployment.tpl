@@ -30,6 +30,8 @@ spec:
               nvidia.com/gpu: 1 
             limits:
               nvidia.com/gpu: 1 
+          annotations:
+            "backup.velero.io/backup-volumes-excludes": "games-dir"
           volumeMounts:
             - name: home-dir
               mountPath: /home/default/

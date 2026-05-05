@@ -15,8 +15,8 @@ spec:
   postgresUID: {{ $appPgConfig.uid | default 0 }}
   postgresGID: 0
   inheritedMetadata:
-    labels:
-      "velero.io/exclude-from-backup": "true"
+    annotations:
+      "backup.velero.io/backup-volumes-excludes": pgdata
   {{- if $appPgConfig.sharedPreloadLibraries }}
   postgresql:
     shared_preload_libraries:

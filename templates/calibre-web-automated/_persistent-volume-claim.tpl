@@ -43,8 +43,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: book-ingest-pvc
   namespace: calibre-web-automated
-  labels:
-    "velero.io/exclude-from-backup": "true"
 spec:
   storageClassName: "ingest"
   accessModes:

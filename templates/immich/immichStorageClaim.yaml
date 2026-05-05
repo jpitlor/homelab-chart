@@ -4,8 +4,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-library-pvc
   namespace: immich
-  labels:
-    "velero.io/exclude-from-backup": "true" # This is already backed up
 spec:
   resources:
     requests:

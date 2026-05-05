@@ -4,8 +4,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: games
   namespace: sunshine
-  labels:
-    "velero.io/exclude-from-backup": "true"
 spec:
   storageClassName: "ssd-large"
   resources:

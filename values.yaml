@@ -215,7 +215,7 @@ vaultwarden:
     backupId: "2025-04-08"
 
 nextcloud:
-  version: 8.4.1
+  version: 9.0.6
   repository: https://nextcloud.github.io/helm/
   enabled: true
   postgres:
