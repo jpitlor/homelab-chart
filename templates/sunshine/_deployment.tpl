@@ -30,8 +30,6 @@ spec:
               nvidia.com/gpu: 1 
             limits:
               nvidia.com/gpu: 1 
-          annotations:
-            "backup.velero.io/backup-volumes-excludes": "games-dir"
           volumeMounts:
             - name: home-dir
               mountPath: /home/default/
@@ -86,6 +84,8 @@ spec:
               value: 'all'
             - name: NVIDIA_DRIVER_VERSION
               value: 580.126.09
+      annotations:
+        "backup.velero.io/backup-volumes-excludes": "games-dir"
       volumes:
         - name: home-dir
           persistentVolumeClaim:

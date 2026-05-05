@@ -24,8 +24,6 @@ spec:
               value: "1000"
             - name: TZ
               value: America/New_York
-          annotations:
-            "backup.velero.io/backup-volumes-excludes": ingest
           volumeMounts:
             - name: config
               mountPath: /config
@@ -35,6 +33,8 @@ spec:
               mountPath: /config/.config/calibre/plugins
             - name: ingest
               mountPath: /cwa-book-ingest
+      annotations:
+        "backup.velero.io/backup-volumes-excludes": ingest
       volumes:
         - name: config
           persistentVolumeClaim:

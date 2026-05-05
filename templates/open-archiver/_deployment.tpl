@@ -64,13 +64,13 @@ spec:
               value: http://tika.open-archiver.svc.cluster.local:9998
             - name: STORAGE_LOCAL_ROOT_PATH
               value: /var/data/open-archiver
-          annotations:
-            "backup.velero.io/backup-volumes-excludes": ingest
           volumeMounts:
             - name: data
               mountPath: /var/data/open-archiver
             - name: ingest
               mountPath: /ingest
+      annotations:
+        "backup.velero.io/backup-volumes-excludes": ingest
       volumes:
         - name: data
           persistentVolumeClaim:
