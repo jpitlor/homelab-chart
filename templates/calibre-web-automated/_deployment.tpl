@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: calibre-web-automated
+      annotations:
+        "backup.velero.io/backup-volumes-excludes": ingest
     spec:
       containers:
         - name: calibre-web-automated
@@ -33,8 +35,6 @@ spec:
               mountPath: /config/.config/calibre/plugins
             - name: ingest
               mountPath: /cwa-book-ingest
-      annotations:
-        "backup.velero.io/backup-volumes-excludes": ingest
       volumes:
         - name: config
           persistentVolumeClaim:

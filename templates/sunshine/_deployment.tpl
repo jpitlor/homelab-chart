@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: sunshine
+      annotations:
+        "backup.velero.io/backup-volumes-excludes": "games-dir"
     spec:
       runtimeClassName: nvidia
       containers:
@@ -84,8 +86,6 @@ spec:
               value: 'all'
             - name: NVIDIA_DRIVER_VERSION
               value: 580.126.09
-      annotations:
-        "backup.velero.io/backup-volumes-excludes": "games-dir"
       volumes:
         - name: home-dir
           persistentVolumeClaim:

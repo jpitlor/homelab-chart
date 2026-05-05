@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: open-archiver
+      annotations:
+        "backup.velero.io/backup-volumes-excludes": ingest
     spec:
       containers:
         - name: open-archiver
@@ -69,8 +71,6 @@ spec:
               mountPath: /var/data/open-archiver
             - name: ingest
               mountPath: /ingest
-      annotations:
-        "backup.velero.io/backup-volumes-excludes": ingest
       volumes:
         - name: data
           persistentVolumeClaim:
