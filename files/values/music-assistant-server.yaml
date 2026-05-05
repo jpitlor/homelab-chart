@@ -32,3 +32,5 @@ persistence:
     storageClass: "media"
     accessMode: ReadWriteOnce
     size: 2Ti
+    labels:
+      "velero.io/exclude-from-backup": "true"

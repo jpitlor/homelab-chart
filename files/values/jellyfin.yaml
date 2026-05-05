@@ -10,6 +10,8 @@ persistence:
     enabled: true
     storageClass: "media"
     size: 2Ti
+    labels:
+      "velero.io/exclude-from-backup": "true"
 
 ingress:
   enabled: true

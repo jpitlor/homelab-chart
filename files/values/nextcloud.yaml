@@ -21,7 +21,7 @@ persistence:
     storageClass: nextcloud
     size: 1Ti
     labels:
-      "velero.io/exclude-from-backup": "true" # This is already backed up
+      "velero.io/exclude-from-backup": "true"
 metrics:
   enabled: true
   serviceMonitor:
