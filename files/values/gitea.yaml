@@ -1,6 +1,9 @@
+# https://gitea.com/gitea/helm-gitea/src/branch/main/values.yaml
 image:
   tag: 1.24.6
 gitea:
+  podAnnotations:
+    "backup.velero.io/backup-volumes": data
   metrics:
     enabled: true
     serviceMonitor:

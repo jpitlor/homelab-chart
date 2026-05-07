@@ -14,7 +14,7 @@ spec:
       labels:
         app: sunshine
       annotations:
-        "backup.velero.io/backup-volumes-excludes": "games-dir"
+        "backup.velero.io/backup-volumes": "home-dir"
     spec:
       runtimeClassName: nvidia
       containers:

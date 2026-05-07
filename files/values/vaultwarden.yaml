@@ -1,6 +1,9 @@
+# https://github.com/guerzon/vaultwarden/blob/main/charts/vaultwarden/values.yaml
 image:
   tag: 1.34.3
 domain: https://passwords.test.pitlor.dev
+podAnnotations:
+  "backup.velero.io/backup-volumes": "vaultwarden-data,vaultwarden-attachments"
 storage:
   data:
     name: vaultwarden-data

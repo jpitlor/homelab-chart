@@ -2,7 +2,7 @@ image:
   tag: 10.11.6
 
 podAnnotations:
-  "backup.velero.io/backup-volumes-excludes": "media"
+  "backup.velero.io/backup-volumes": "config"
 
 persistence:
   config:

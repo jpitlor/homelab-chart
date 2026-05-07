@@ -63,6 +63,8 @@ spec:
     metadata:
       labels:
         app: guacamole
+      annotations:
+        "backup.velero.io/backup-volumes": drive
     spec:
       containers:
       - name: guacamole

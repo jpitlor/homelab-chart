@@ -1,3 +1,4 @@
+# https://github.com/Cogitri/charts/blob/master/charts/dawarich/values.yaml
 image:
   tag: 1.6.1
 
@@ -57,6 +58,9 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+podAnnotations:
+  "backup.velero.io/backup-volumes": "public,storage"
 
 persistence:
   public:

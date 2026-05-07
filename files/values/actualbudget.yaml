@@ -1,3 +1,4 @@
+# https://github.com/community-charts/helm-charts/blob/main/charts/actualbudget/values.yaml
 image:
   tag: 26.3.0
 
@@ -5,6 +6,9 @@ persistence:
   enabled: true
   storageClass: "ssd"
   size: 2Gi
+
+podAnnotations:
+  "backup.velero.io/backup-volumes": data
 
 login:
   method: "openid"
