@@ -7,7 +7,7 @@ metadata:
   annotations:
     "storageclass.kubernetes.io/is-default-class": {{ $storageClass.isDefault | quote }}
   labels:
-    "velero.io/exclude-from-backup": {{ $storageClass.backup | quote }}
+    "velero.io/exclude-from-backup": {{ not $storageClass.backup | quote }}
 provisioner: driver.longhorn.io
 parameters:
   numberOfReplicas: {{ $storageClass.replicas | quote }}
