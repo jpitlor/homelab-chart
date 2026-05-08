@@ -34,7 +34,7 @@ spec:
   schedule: "0 2 * * *"
   template:
     snapshotMoveData: true
-    resourcePolicies:
+    resourcePolicy:
       kind: ConfigMap
       name: backup-policy
     includedNamespaces:
