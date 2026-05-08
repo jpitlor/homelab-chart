@@ -4,6 +4,10 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: {{ . }}
+  annotations:
+    "storageclass.kubernetes.io/is-default-class": {{ $storageClass.isDefault | quote }}
+  labels:
+    "velero.io/exclude-from-backup": {{ $storageClass.backup | quote }}
 provisioner: driver.longhorn.io
 parameters:
   numberOfReplicas: {{ $storageClass.replicas | quote }}

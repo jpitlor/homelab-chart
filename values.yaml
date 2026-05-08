@@ -18,8 +18,12 @@ storageClasses:
   longhorn:
     ssd:
       replicas: 2
+      backup: true
+      isDefault: false
     ssd-large:
       replicas: 1
+      backup: false
+      isDefault: true
   nas:
     nas:
       mode: 777

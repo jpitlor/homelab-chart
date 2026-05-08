@@ -5,6 +5,8 @@ kind: StorageClass
 metadata:
   name: {{ . }}
   namespace: homelab
+  labels:
+    "velero.io/exclude-from-backup": "true"
 provisioner: smb.csi.k8s.io
 parameters:
   source: //{{ $.Values.nas.ipAddress }}/{{ $storageClass.shareName }}/
