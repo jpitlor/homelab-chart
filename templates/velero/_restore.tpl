@@ -11,9 +11,6 @@ spec:
   scheduleName: pvc-daily-backup
   restorePVs: true
   includeClusterResources: true
-  restoreStatus:
-    includedResources:
-      - persistentvolumes
   includedNamespaces:
     {{- range keys .Values }}
     {{- if (get $.Values .).enabled }}

@@ -23,7 +23,7 @@ spec:
             - |
               RESTORE_NAME="velero-restore-{{ .Values.velero.version }}"
               NAMESPACE="homelab"
-              TIMEOUT=600  # 10 minutes
+              TIMEOUT=1800  # 30 minutes
               ELAPSED=0
 
               echo "Waiting for Velero Restore '$RESTORE_NAME' to complete..."

@@ -12,6 +12,8 @@ infisical:
     - name: SMTP_FROM_NAME
       value: Infisical
 ingress:
+  nginx:
+    enabled: false
   hostName: vault.test.pitlor.dev
   ingressClassName: traefik
   annotations:
