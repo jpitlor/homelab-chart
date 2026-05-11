@@ -23,10 +23,18 @@ gitea:
 persistence:
   enabled: true
   storageClass: "ssd"
-redis-cluster:
+valkey-cluster:
   enabled: false
-redis:
+valkey:
   enabled: true
+  primary:
+    persistence:
+      enabled: true
+      storageClass: "ssd-large"
+  replica:
+    persistence:
+      enabled: true
+      storageClass: "ssd-large"
 postgresql-ha:
   enabled: false
 postgresql:
