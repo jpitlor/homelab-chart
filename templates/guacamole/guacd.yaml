@@ -27,6 +27,8 @@ spec:
     metadata:
       labels:
         app: guacd
+      annotations:
+        "backup.velero.io/backup-volumes": "drive,record"
     spec:
       containers:
       - name: guacd

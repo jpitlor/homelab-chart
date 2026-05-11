@@ -1,3 +1,4 @@
+# https://github.com/portainer/k8s/blob/master/charts/portainer/values.yaml
 image:
   tag: 2.40.0
 

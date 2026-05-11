@@ -1,3 +1,4 @@
+# https://github.com/pajikos/home-assistant-helm-chart/blob/main/charts/home-assistant/values.yaml
 image:
   tag: 2026.3.3
 
@@ -25,6 +26,9 @@ persistence:
   accessMode: ReadWriteOnce
   storageClass: "ssd"
   size: 2Gi
+
+podAnnotations:
+  "backup.velero.io/backup-volumes": "{{ .Release.Name }}-home-assistant-pvc"
 
 
 # additionalVolumes:

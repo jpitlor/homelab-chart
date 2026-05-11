@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: mealie
+      annotations:
+        "backup.velero.io/backup-volumes": mealie-data
     spec:
       containers:
       - name: mealie

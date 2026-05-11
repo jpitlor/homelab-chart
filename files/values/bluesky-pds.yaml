@@ -1,5 +1,7 @@
+# https://github.com/Nerkho/helm-charts/blob/main/charts/bluesky-pds/templates/deployment.yaml
 image:
   tag: 0.4.182
+
 ingress:
   enabled: true
   className: "traefik"
@@ -19,6 +21,10 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+podAnnotations:
+  "backup.velero.io/backup-volumes": data
+
 pds:
   config:
     hostname: tweet.test.pitlor.dev

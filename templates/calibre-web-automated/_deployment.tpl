@@ -14,7 +14,7 @@ spec:
       labels:
         app: calibre-web-automated
       annotations:
-        "backup.velero.io/backup-volumes-excludes": ingest
+        "backup.velero.io/backup-volumes": "config,library,plugins"
     spec:
       containers:
         - name: calibre-web-automated

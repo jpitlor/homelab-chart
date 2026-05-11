@@ -1,3 +1,4 @@
+# https://github.com/goauthentik/helm/blob/main/charts/authentik/values.yaml
 authentik:
   secret_key: "wqfDYKQkOJTxKcRDXWacVeYD5e51AkxRjAbD/WV1bVLRVjtLBnVG8S4V3AoJbldrJdoXYwrF9L4IRvLO"
   error_reporting:
@@ -24,6 +25,8 @@ additionalObjects:
       accessModes:
         - ReadWriteOnce
 server:
+  podAnnotations:
+    "backup.velero.io/backup-volumes": data
   volumeMounts:
     - name: data
       mountPath: /data

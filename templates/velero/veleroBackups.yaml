@@ -1,3 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backup-policy
+  namespace: homelab
+data:
+  policy.json: |
+    {
+      "version": "v1",
+      "volumePolicies": [
+        {
+          "conditions": {
+            "storageClass": ["ssd"]
+          },
+          "action": {
+            "type": "fs-backup"
+          }
+        },
+        {
+          "conditions": {},
+          "action": {
+            "type": "skip"
+          }
+        }
+      ]
+    }
+---
 apiVersion: velero.io/v1
 kind: Schedule
 metadata:
@@ -6,19 +33,16 @@ metadata:
 spec:
   schedule: "0 2 * * *"
   template:
-    defaultVolumesToFsBackup: true
     snapshotMoveData: true
+    resourcePolicy:
+      kind: ConfigMap
+      name: backup-policy
     includedNamespaces:
       {{- range keys .Values }}
       {{- if (get $.Values .).enabled }}
       - {{ . }}
       {{- end }}
       {{- end }}
-    includedResources:
-      - persistentvolumeclaims
-      - persistentvolumes
     includeClusterResources: true
     storageLocation: gcs-backup-location
-    volumeSnapshotLocations:
-      - gcs-snapshot-location
     ttl: 720h0m0s

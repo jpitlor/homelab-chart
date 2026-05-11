@@ -1,3 +1,4 @@
+# https://github.com/ByTheHugo/homebox-helm/blob/master/chart/values.yaml
 image:
   tag: 0.24.2
 
@@ -11,6 +12,9 @@ env:
   HBOX_OPTIONS_TRUST_PROXY: true
   HBOX_OPTIONS_HOSTNAME: inventory.test.pitlor.dev
   HBOX_OPTIONS_ALLOW_LOCAL_LOGIN: false
+
+podAnnotations:
+  "backup.velero.io/backup-volumes": data
 
 postgresql:
   enabled: false

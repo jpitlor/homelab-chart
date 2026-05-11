@@ -14,7 +14,7 @@ spec:
       labels:
         app: open-archiver
       annotations:
-        "backup.velero.io/backup-volumes-excludes": ingest
+        "backup.velero.io/backup-volumes": data
     spec:
       containers:
         - name: open-archiver

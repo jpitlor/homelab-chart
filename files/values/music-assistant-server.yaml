@@ -1,3 +1,4 @@
+# https://github.com/lmatfy/charts/blob/main/charts/music-assistant-server/values.yaml
 image:
   tag: 2.8.2
 
@@ -21,8 +22,9 @@ ingress:
           - path: /
             pathType: Prefix
 
-podAnnotations:
-  "backup.velero.io/backup-volumes-excludes": "media"
+common:
+  podAnnotations:
+    "backup.velero.io/backup-volumes": "data"
 
 persistence:
   data:

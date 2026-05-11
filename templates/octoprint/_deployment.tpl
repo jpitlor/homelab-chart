@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: octoprint
+      annotations:
+        "backup.velero.io/backup-volumes": config
     spec:
       containers:
         - name: octoprint

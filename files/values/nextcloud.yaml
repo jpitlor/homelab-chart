@@ -1,3 +1,4 @@
+# https://github.com/nextcloud/helm/blob/main/charts/nextcloud/values.yaml
 image:
   tag: 32.0.0
 securityContext: 
@@ -5,7 +6,7 @@ securityContext:
   runAsGroup: 33
   runAsNonRoot: true
 podAnnotations:
-  "backup.velero.io/backup-volumes-excludes": nextcloudData
+  "backup.velero.io/backup-volumes": "nextcloud-main"
 internalDatabase:
   enabled: false
 externalDatabase:
