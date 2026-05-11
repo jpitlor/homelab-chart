@@ -24,6 +24,10 @@ spec:
       {{- end }}
   {{- end }}
 
+  inheritedMetadata:
+    labels:
+      velero.io/exclude-from-backup: "true"
+
   managed:
     roles:
       - name: {{ $appName }}
