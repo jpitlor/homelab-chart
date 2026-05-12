@@ -8,48 +8,6 @@ velero:
 google:
   serviceAccountJson: changeme
 
-nas:
-  credentialsName: nas-credentials
-  ipAddress: 192.168.0.31
-  username: docker_containers
-  password: changeme
-
-storageClasses:
-  longhorn:
-    ssd:
-      replicas: 2
-      backup: true
-      isDefault: false
-    ssd-large:
-      replicas: 1
-      backup: false
-      isDefault: true
-  nas:
-    nas:
-      mode: 777
-      uid: 1000
-      shareName: Homelab
-      reclaimPolicy: Delete
-      enableProvisioner: true
-    nextcloud:
-      mode: 770
-      uid: 33
-      shareName: Documents
-      reclaimPolicy: Retain
-      enableProvisioner: false
-    media:
-      mode: 770
-      uid: 1000
-      shareName: Media
-      reclaimPolicy: Retain
-      enableProvisioner: false
-    ingest:
-      mode: 770
-      uid: 1000
-      shareName: Ingest
-      reclaimPolicy: Delete
-      enableProvisioner: true
-
 externalApplications:
   iMessage:
     description: Messaging for iPhone users
