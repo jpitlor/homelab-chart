@@ -7,6 +7,8 @@ kind: Cluster
 metadata:
   name: {{ $appName }}-postgres-{{ $appPgConfig.backupId }}
   namespace: {{ $appName }}
+  labels:
+    velero.io/exclude-from-backup: "true"
 spec:
   {{ if $appPgConfig.imageName }}
   imageName: {{ $appPgConfig.imageName }}
@@ -21,6 +23,10 @@ spec:
       - {{ . }}
       {{- end }}
   {{- end }}
+
+  inheritedMetadata:
+    labels:
+      velero.io/exclude-from-backup: "true"
 
   managed:
     roles:
@@ -71,7 +77,7 @@ spec:
 
   storage:
     size: {{ $appPgConfig.storageSize | default "4Gi" }}
-    storageClass: "ssd"
+    storageClass: "ssd-large"
 
   plugins:
     - name: barman-cloud.cloudnative-pg.io

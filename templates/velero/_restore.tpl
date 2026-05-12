@@ -11,6 +11,7 @@ spec:
   scheduleName: pvc-daily-backup
   restorePVs: true
   includeClusterResources: true
+  existingResourcePolicy: update
   excludedResources:
     - clusters.postgresql.cnpg.io
   includedNamespaces:
