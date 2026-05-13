@@ -56,7 +56,3 @@ ingress:
     gethomepage.dev/name: Gitea
     gethomepage.dev/group: Software Development
     gethomepage.dev/pod-selector: ""
-valkey-cluster:
-  persistence:
-    storageClass: "ssd"
-    size: 2Gi
