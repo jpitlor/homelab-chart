@@ -60,6 +60,12 @@ spec:
           value: "true"
         - name: "ALLOW_PASSWORD_LOGIN"
           value: "false"
+        - name: "SMTP_HOST"
+          value: "send.mail.svc.cluster.local"
+        - name: "SMTP_AUTH_STRATEGY"
+          value: "NONE"
+        - name: "SMTP_FROM_EMAIL"
+          value: "noreply@pitlor.dev"
         volumeMounts:
         - name: mealie-data
           mountPath: /app/data/
