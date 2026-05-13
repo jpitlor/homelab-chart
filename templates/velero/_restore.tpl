@@ -8,6 +8,7 @@ metadata:
     "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "5"
 spec:
+  itemOperationTimeout: 2h
   scheduleName: pvc-daily-backup
   restorePVs: true
   includeClusterResources: true
