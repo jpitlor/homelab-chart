@@ -43,6 +43,5 @@ spec:
       - {{ . }}
       {{- end }}
       {{- end }}
-    includeClusterResources: true
     storageLocation: gcs-backup-location
     ttl: 720h0m0s

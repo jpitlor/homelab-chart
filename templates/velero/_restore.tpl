@@ -10,17 +10,14 @@ metadata:
 spec:
   itemOperationTimeout: 2h
   scheduleName: pvc-daily-backup
-  restorePVs: true
-  includeClusterResources: false
-  existingResourcePolicy: update
   includedResources:
     - persistentvolumeclaims
-    - persistentvolumes
     - secrets
     - configmaps
     - namespaces
   excludedResources:
     - clusters.postgresql.cnpg.io
+    - persistentvolumes
     - pods
     - deployments
     - replicasets
