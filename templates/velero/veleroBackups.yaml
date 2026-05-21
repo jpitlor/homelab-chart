@@ -34,9 +34,25 @@ spec:
   schedule: "0 2 * * *"
   template:
     snapshotMoveData: true
+    snapshotVolumes: true
     resourcePolicy:
       kind: ConfigMap
       name: backup-policy
+    includedResources:
+      - persistentvolumeclaims
+      - secrets
+      - configmaps
+      - namespaces
+    excludedResources:
+      - clusters.postgresql.cnpg.io
+      - persistentvolumes
+      - pods
+      - deployments
+      - replicasets
+      - statefulsets
+      - daemonsets
+      - jobs
+      - cronjobs
     includedNamespaces:
       {{- range keys .Values }}
       {{- if (get $.Values .).enabled }}
