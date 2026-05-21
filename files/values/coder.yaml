@@ -4,6 +4,8 @@ coder:
   resources:
     requests:
      cpu: 100m
+  service:
+    type: ClusterIP
   ingress:
     enable: true
     className: traefik
