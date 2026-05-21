@@ -39,6 +39,7 @@ spec:
       kind: ConfigMap
       name: backup-policy
     includedResources:
+      - persistentvolumes
       - persistentvolumeclaims
       - secrets
       - configmaps
