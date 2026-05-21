@@ -15,7 +15,6 @@ spec:
   version: {{ $appConfig.version }}
   chart: {{ hasPrefix "oci:" $appConfig.repository | ternary (printf "%s/%s" $appConfig.repository $appName) $appName }}
   targetNamespace: {{ $appName }}
-  timeout: 10m
   {{- if $.Files.Get (printf "files/values/%s.yaml" $appName) }}
   valuesContent: |-
 {{ tpl ($.Files.Get (printf "files/values/%s.yaml" $appName)) $ | indent 4 }}
