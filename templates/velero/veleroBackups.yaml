@@ -39,6 +39,7 @@ spec:
       kind: ConfigMap
       name: backup-policy
     includedResources:
+      - pods
       - persistentvolumes
       - persistentvolumeclaims
       - secrets
@@ -46,7 +47,6 @@ spec:
       - namespaces
     excludedResources:
       - clusters.postgresql.cnpg.io
-      - pods
       - deployments
       - replicasets
       - statefulsets
