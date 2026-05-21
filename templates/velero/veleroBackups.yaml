@@ -46,7 +46,6 @@ spec:
       - namespaces
     excludedResources:
       - clusters.postgresql.cnpg.io
-      - persistentvolumes
       - pods
       - deployments
       - replicasets
