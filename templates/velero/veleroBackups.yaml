@@ -13,7 +13,7 @@ data:
             "storageClass": ["ssd"]
           },
           "action": {
-            "type": "fs-backup"
+            "type": "snapshot"
           }
         },
         {
