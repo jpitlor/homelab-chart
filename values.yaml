@@ -117,8 +117,6 @@ actualbudget:
   version: 1.8.7
   repository: https://community-charts.github.io/helm-charts
   enabled: true
-  oidcClientId: changeme
-  oidcClientSecret: changeme
 
 mealie:
   enabled: true
