@@ -83,7 +83,7 @@ homebox:
   oidcClientSecret: changeme
 
 open-webui:
-  version: 12.8.1
+  version: 14.7.0
   repository: https://helm.openwebui.com/
   enabled: true
   postgres:
