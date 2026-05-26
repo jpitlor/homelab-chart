@@ -3,19 +3,25 @@ enableOpenaiApi: false
 databaseUrl: postgres://open-webui:open-webui@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-webui") }}:5432/open-webui
 image:
   tag: v0.8.12-cuda
+
 extraEnvVars:
-  - name: OPENID_PROVIDER_URL
-    value: "https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration"
-  - name: OAUTH_CLIENT_ID
-    value: {{ (get .Values "open-webui").oidcClientId }}
-  - name: OAUTH_CLIENT_SECRET
-    value: {{ (get .Values "open-webui").oidcClientSecret }}
-  - name: OPENID_PROVIDER_URL
-    value: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
-  - name: ENABLE_OAUTH_SIGNUP
-    value: "true"
   - name: "ENABLE_PASSWORD_AUTH"
     value: "false"
+  - name: "ENABLE_PASSWORD_CHANGE_FORM"
+    value: "false"
+
+sso:
+  enabled: true
+  enableSignup: true
+  mergeAccountsByEmail: true
+  enableRoleManagement: true
+  enableGroupManagement: true
+  oidc:
+    enabled: true
+    clientId: {{ (get .Values "open-webui").oidcClientId }}
+    clientSecret:  {{ (get .Values "open-webui").oidcClientSecret }}
+    providerUrl: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
+
 ollama:
   enabled: true
   image:
