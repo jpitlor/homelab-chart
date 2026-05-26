@@ -161,6 +161,8 @@ gitea:
   repository: https://dl.gitea.io/charts
   version: 12.4.0
   enabled: true
+  oidcClientId: changeme
+  oidcClientSecret: changeme
   postgres:
     backupId: "2025-04-08"
     postInitApplicationSQLRefs:
