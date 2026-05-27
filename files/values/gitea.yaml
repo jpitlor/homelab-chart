@@ -1,6 +1,7 @@
 # https://gitea.com/gitea/helm-gitea/src/branch/main/values.yaml
 image:
   tag: 1.24.6
+
 gitea:
   podAnnotations:
     "backup.velero.io/backup-volumes": data
@@ -35,25 +36,23 @@ gitea:
       USER: gitea
       PASSWD: gitea
       SCHEMA: gitea
+
 persistence:
   enabled: true
   storageClass: "ssd"
+
 valkey-cluster:
   enabled: false
+
 valkey:
   enabled: true
-  primary:
-    persistence:
-      enabled: true
-      storageClass: "ssd-large"
-  replica:
-    persistence:
-      enabled: true
-      storageClass: "ssd-large"
+
 postgresql-ha:
   enabled: false
+
 postgresql:
   enabled: false
+
 ingress:
   className: "traefik"
   enabled: true
