@@ -4,6 +4,9 @@ kind: ConfigMap
 metadata:
   name: restore-resource-modifier
   namespace: homelab
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "4"
 data:
   patch.yaml: |
     version: v1
