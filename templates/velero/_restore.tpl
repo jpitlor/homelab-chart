@@ -16,13 +16,19 @@ data:
           matches:
             - path: "/spec/storageClassName"
               value: "ssd-large"
-        patches:
-          - operation: remove
-            path: "/spec/volumeName"
-          - operation: remove
-            path: "/metadata/annotations/pv.kubernetes.io~1bind-completed"
-          - operation: remove
-            path: "/metadata/annotations/pv.kubernetes.io~1bound-by-controller"
+        mergePatches:
+          - patchData: |
+              {
+                "metadata": {
+                  "annotations": {
+                    "pv.kubernetes.io/bind-completed": null,
+                    "pv.kubernetes.io/bound-by-controller": null
+                  }
+                },
+                "spec": {
+                  "volumeName": null
+                }
+              }
 ---
 apiVersion: velero.io/v1
 kind: Restore
