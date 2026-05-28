@@ -21,6 +21,7 @@ gitea:
       secret: {{ .Values.gitea.oidcClientSecret }}
       autoDiscoverUrl: https://auth.test.pitlor.dev/application/o/gitea/.well-known/openid-configuration
       adminGroup: "Homelab Admin"
+      groupClaimName: "groups"
   config:
     actions:
       ENABLED: true
