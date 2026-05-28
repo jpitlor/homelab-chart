@@ -22,6 +22,9 @@ spec:
           command: 
             - ls
             - "/octoprint/**/*"
+          volumeMounts:
+            - name: config
+              mountPath: /octoprint
         - name: init-octoprint
           image: mikefarah/yq:4.53.2
           command:
@@ -29,6 +32,9 @@ spec:
             - "-i"
             - ".accessControl.autologinLocal = true | .accessControl.autologinAs = \"admin\" | .accessControl.localNetworks.[0] = \"0.0.0.0/0\""
             - "/octoprint/octoprint/config.yaml"
+          volumeMounts:
+            - name: config
+              mountPath: /octoprint
       containers:
         - name: octoprint
           image: octoprint/octoprint:1.11.7
