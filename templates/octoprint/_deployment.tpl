@@ -20,6 +20,7 @@ spec:
         runAsGroup: 1000
         runAsNonRoot: true
         runAsUser: 1000
+        fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
       initContainers:
         - name: init-octoprint
