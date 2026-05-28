@@ -48,7 +48,7 @@ initContainers:
     command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
     volumeMounts:
       - mountPath: /config
-        name: home-assistant
+        name: homelab-chart-home-assistant-homelab-chart-home-assistant-0
 
 configuration:
   enabled: true
