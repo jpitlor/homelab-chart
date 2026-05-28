@@ -17,14 +17,6 @@ spec:
         "backup.velero.io/backup-volumes": config
     spec:
       initContainers:
-        - name: debug
-          image: bash:5
-          command: 
-            - ls
-            - "/octoprint/**/*"
-          volumeMounts:
-            - name: config
-              mountPath: /octoprint
         - name: init-octoprint
           image: mikefarah/yq:4.53.2
           command:
