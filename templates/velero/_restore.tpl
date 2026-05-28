@@ -31,6 +31,15 @@ data:
                 }
               }
       {{ end }}
+      - conditions:
+          groupResource: persistentvolumeclaims
+          matches:
+            - path: "/spec/storageClassName"
+              value: "nas"
+          patches:
+            - operation: replace
+              path: "/spec/storageClassName"
+              value: "photos"
 ---
 apiVersion: velero.io/v1
 kind: Restore
