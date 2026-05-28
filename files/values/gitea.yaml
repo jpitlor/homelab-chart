@@ -9,7 +9,7 @@ gitea:
     username: jpitlor123
     email: jpitlor123@gmail.com
     password: {{ randAscii 20 }}
-    passwordMode: initialOnlyNoReset
+    passwordMode: keepUpdated
   metrics:
     enabled: true
     serviceMonitor:
@@ -22,6 +22,7 @@ gitea:
       autoDiscoverUrl: https://auth.test.pitlor.dev/application/o/gitea/.well-known/openid-configuration
       adminGroup: "Homelab Admin"
       groupClaimName: "groups"
+      scopes: "profile email"
   config:
     actions:
       ENABLED: true
