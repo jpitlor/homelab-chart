@@ -21,4 +21,4 @@ spec:
       - X-authentik-meta-provider
       - X-authentik-meta-app
       - X-authentik-meta-version
-{{-- end }}
+{{- end }}
