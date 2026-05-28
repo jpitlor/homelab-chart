@@ -16,6 +16,11 @@ spec:
       annotations:
         "backup.velero.io/backup-volumes": config
     spec:
+      securityContext:
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroupChangePolicy: OnRootMismatch
       initContainers:
         - name: init-octoprint
           image: mikefarah/yq:4.53.2
