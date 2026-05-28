@@ -18,6 +18,7 @@ spec:
     spec:
       securityContext:
         runAsGroup: 1000
+        runAsUser: 0
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
       initContainers:
