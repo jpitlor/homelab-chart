@@ -94,6 +94,8 @@ spec:
           value: {{ .Values.guacamole.oidcClientId | quote }}
         - name: OPENID_REDIRECT_URI
           value: "https://rdp.test.pitlor.dev"
+        - name: EXTENSION_PRIORITY
+          value: "openid"
         volumeMounts:
         - name: drive
           mountPath: /drive
