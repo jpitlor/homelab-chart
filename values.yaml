@@ -213,6 +213,7 @@ open-archiver:
 
 guacamole:
   enabled: true
+  oidcClientId: changeme
   postgres:
     backupId: "2025-04-08"
     postInitApplicationSQLRefs:
