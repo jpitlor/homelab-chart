@@ -23,5 +23,5 @@ spec:
           service:
             name: open-archiver
             port:
-              number: 3000
+              number: 8080
 {{- end -}}

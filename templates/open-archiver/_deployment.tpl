@@ -17,6 +17,28 @@ spec:
         "backup.velero.io/backup-volumes": data
     spec:
       containers:
+        # This is a temporary workaround until OA gets native OIDC
+        - name: oidc-proxy
+          image: golang:1.26.3
+          env:
+            - name: OIDC_CLIENT_ID
+              value: {{ .Values.openArchiver.oidcClientId }}
+            - name: OIDC_CLIENT_SECRET
+              value: {{ .Values.openArchiver.oidcClientSecret }}
+            - name: COOKIE_DOMAIN
+              value: email-archive.test.pitlor.dev
+            - name: OIDC_REDIRECT_URL
+              value: https://email-archive.test.pitlor.dev/auth/callback
+            - name: OIDC_PROVIDER_URL
+              value: https://auth.test.pitlor.dev/application/o/open-archiver/
+            - name: TARGET_ENDPOINT_URL
+              value: https://email-archive.test.pitlor.dev
+            - name: JWT_SIGNING_KEY
+              value: {{ .Values.openArchiver.jwtSecret }}
+          command:
+            - "/bin/sh"
+            - "-c"
+            - "git clone https://github.com/tomfrenzel/openarchiver-oauth2-proxy && cd openarchiver-oauth2-proxy && go run ./cmd/server"
         - name: open-archiver
           image: logiclabshq/open-archiver:v0.5.0
           env:

@@ -208,6 +208,8 @@ jellyfin:
 
 open-archiver:
   enabled: true
+  oidcClientId: changeme
+  oidcClientSecret: changeme
   postgres:
     backupId: "2025-04-08"
 

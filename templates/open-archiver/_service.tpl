@@ -9,8 +9,8 @@ spec:
     app: open-archiver
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 8080
+      targetPort: 8080
   type: ClusterIP
 ---
 apiVersion: v1
