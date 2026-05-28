@@ -23,7 +23,7 @@ spec:
             - yq
             - "-i"
             - ".accessControl.autologinLocal = true | .accessControl.autologinAs = \"admin\" | .accessControl.localNetworks.[0] = \"0.0.0.0/0\""
-            - "/octoprint/config.yaml"
+            - "/octoprint/octoprint/config.yaml"
       containers:
         - name: octoprint
           image: octoprint/octoprint:1.11.7
