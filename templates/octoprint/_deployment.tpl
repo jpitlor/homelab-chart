@@ -16,6 +16,14 @@ spec:
       annotations:
         "backup.velero.io/backup-volumes": config
     spec:
+      initContainers:
+        - name: init-octoprint
+          image: mikefarah/yq:4.53.2
+          command:
+            - yq
+            - "-i"
+            - ".accessControl.autologinLocal = true | .accessControl.autologinAs = \"admin\" | .accessControl.localNetworks.[0] = \"0.0.0.0/0\""
+            - "/octoprint/config.yaml"
       containers:
         - name: octoprint
           image: octoprint/octoprint:1.11.7

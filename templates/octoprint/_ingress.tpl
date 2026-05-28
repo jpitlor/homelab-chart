@@ -5,6 +5,7 @@ metadata:
   name: octoprint-ingress
   namespace: octoprint
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: octoprint-authentik@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: 3D Printer
     gethomepage.dev/icon: octoprint.png
