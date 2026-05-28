@@ -11,11 +11,12 @@ data:
   patch.yaml: |
     version: v1
     resourceModifierRules:
+      {{ range tuple "ssd-large" "ingest" "media" "photos" "nextcloud" }}
       - conditions:
           groupResource: persistentvolumeclaims
           matches:
             - path: "/spec/storageClassName"
-              value: "ssd-large"
+              value: {{ . | quote }}
         mergePatches:
           - patchData: |
               {
@@ -29,6 +30,7 @@ data:
                   "volumeName": null
                 }
               }
+      {{ end }}
 ---
 apiVersion: velero.io/v1
 kind: Restore
