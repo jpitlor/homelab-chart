@@ -6,8 +6,8 @@ gitea:
   podAnnotations:
     "backup.velero.io/backup-volumes": data
   admin:
-    username: jpitlor123
-    email: jpitlor123@gmail.com
+    username: jpitlor
+    email: jpitlor@gmail.com
     password: {{ randAscii 20 }}
     passwordMode: keepUpdated
   metrics:
