@@ -36,10 +36,10 @@ data:
           matches:
             - path: "/spec/storageClassName"
               value: "nas"
-          patches:
-            - operation: replace
-              path: "/spec/storageClassName"
-              value: "photos"
+        patches:
+          - operation: replace
+            path: "/spec/storageClassName"
+            value: "photos"
 ---
 apiVersion: velero.io/v1
 kind: Restore
