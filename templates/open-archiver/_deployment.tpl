@@ -32,9 +32,9 @@ spec:
             - name: OIDC_PROVIDER_URL
               value: https://auth.test.pitlor.dev/application/o/open-archiver/
             - name: TARGET_ENDPOINT_URL
-              value: https://email-archive.test.pitlor.dev
+              value: http://open-archiver.open-archiver.svc.cluster.local:3000
             - name: JWT_SIGNING_KEY
-              value: {{ .Values.openArchiver.jwtSecret }}
+              value: {{ index .Values "open-archiver" "jwtSecret" }} # Why is this not working??
           command:
             - "/bin/sh"
             - "-c"
@@ -63,7 +63,7 @@ spec:
             - name: DATABASE_URL
               value: "postgresql://open-archiver:open-archiver@{{ template "dev.pitlor.homelab.postgres-name" (list $ "open-archiver") }}:5432/open-archiver"
             - name: MEILI_MASTER_KEY
-              value: {{ .Values.openArchiver.meiliMasterKey }}
+              value: {{ index .Values "open-archiver" "meiliMasterKey" }}
             - name: MEILI_HOST
               value: http://meilisearch.open-archiver.svc.cluster.local:7700
             - name: REDIS_HOST
@@ -79,11 +79,11 @@ spec:
             - name: BODY_SIZE_LIMIT
               value: Infinity
             - name: JWT_SECRET
-              value: {{ .Values.openArchiver.jwtSecret }}
+              value: {{ index .Values "open-archiver" "jwtSecret" }}
             - name: JWT_EXPIRES_IN
               value: "7d"
             - name: ENCRYPTION_KEY
-              value: {{ .Values.openArchiver.encryptionKey }}
+              value: {{ index .Values "open-archiver" "encryptionKey" }}
             - name: TIKA_URL
               value: http://tika.open-archiver.svc.cluster.local:9998
             - name: STORAGE_LOCAL_ROOT_PATH
@@ -141,7 +141,7 @@ spec:
           image: getmeili/meilisearch:v1.15
           env:
             - name: MEILI_MASTER_KEY
-              value: "{{ .Values.openArchiver.meiliMasterKey }}"
+              value: "{{ index .Values "open-archiver" "meiliMasterKey" }}"
             - name: MEILI_SCHEDULE_SNAPSHOT
               value: "86400"
           volumeMounts:
