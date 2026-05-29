@@ -8,10 +8,12 @@ spec:
   selector:
     app: open-archiver
   ports:
-    - protocol: TCP
+    - name: proxy
+      protocol: TCP
       port: 8080
       targetPort: 8080
-    - protocol: TCP
+    - name: app
+      protocol: TCP
       port: 3000
       targetPort: 3000
   type: ClusterIP
