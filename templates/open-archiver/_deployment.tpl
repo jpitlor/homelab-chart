@@ -22,9 +22,9 @@ spec:
           image: golang:1.26.3
           env:
             - name: OIDC_CLIENT_ID
-              value: {{ .Values.openArchiver.oidcClientId }}
+              value: {{ index .Values "open-archiver" "oidcClientId" }}
             - name: OIDC_CLIENT_SECRET
-              value: {{ .Values.openArchiver.oidcClientSecret }}
+              value: {{ index .Values "open-archiver" "oidcClientSecret" }}
             - name: COOKIE_DOMAIN
               value: email-archive.test.pitlor.dev
             - name: OIDC_REDIRECT_URL
