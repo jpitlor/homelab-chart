@@ -26,9 +26,9 @@ spec:
             - name: OIDC_CLIENT_SECRET
               value: {{ index .Values "open-archiver" "oidcClientSecret" }}
             - name: COOKIE_DOMAIN
-              value: email-archive.test.pitlor.dev
+              value: mail-archive.test.pitlor.dev
             - name: OIDC_REDIRECT_URL
-              value: https://email-archive.test.pitlor.dev/auth/callback
+              value: https://mail-archive.test.pitlor.dev/auth/callback
             - name: OIDC_PROVIDER_URL
               value: https://auth.test.pitlor.dev/application/o/open-archiver/
             - name: TARGET_ENDPOINT_URL
