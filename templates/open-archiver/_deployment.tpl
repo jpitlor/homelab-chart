@@ -35,8 +35,6 @@ spec:
               value: http://localhost:3000
             - name: JWT_SIGNING_KEY
               value: {{ index .Values "open-archiver" "jwtSecret" }} # Why is this not working??
-            - name: CLAIM_SUBJECT
-              value: open_archiver_id
           command:
             - "/bin/sh"
             - "-c"
