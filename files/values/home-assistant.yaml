@@ -46,9 +46,6 @@ initContainers:
   - name: install-hacs
     image: bash
     command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
-    volumeMounts:
-      - mountPath: /config
-        name: homelab-chart-home-assistant-homelab-chart-home-assistant-0
 
 configuration:
   enabled: true
