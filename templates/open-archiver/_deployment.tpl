@@ -32,7 +32,7 @@ spec:
             - name: OIDC_PROVIDER_URL
               value: https://auth.test.pitlor.dev/application/o/open-archiver/
             - name: TARGET_ENDPOINT_URL
-              value: http://open-archiver.open-archiver.svc.cluster.local:3000
+              value: http://localhost:3000
             - name: JWT_SIGNING_KEY
               value: {{ index .Values "open-archiver" "jwtSecret" }} # Why is this not working??
           command:
