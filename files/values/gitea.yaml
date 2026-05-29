@@ -7,8 +7,8 @@ gitea:
     "backup.velero.io/backup-volumes": data
   admin:
     username: jpitlor
-    email: jpitlor@gmail.com
-    password: {{ randAscii 20 }}
+    email: "jpitlor@gmail.com"
+    password: {{ randAscii 20 | quote }}
     passwordMode: keepUpdated
   metrics:
     enabled: true
