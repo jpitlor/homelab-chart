@@ -203,11 +203,14 @@ jellyfin:
 
 open-archiver:
   enabled: true
+  oidcClientId: changeme
+  oidcClientSecret: changeme
   postgres:
     backupId: "2025-04-08"
 
 guacamole:
   enabled: true
+  oidcClientId: changeme
   postgres:
     backupId: "2025-04-08"
     postInitApplicationSQLRefs:

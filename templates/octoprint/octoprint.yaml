@@ -1,6 +1,8 @@
 {{ if index .Values "octoprint" "enabled" }}
 {{ include "dev.pitlor.homelab.octoprint.ingress" . }}
 ---
+{{ include "dev.pitlor.homelab.octoprint.middleware" . }}
+---
 {{ include "dev.pitlor.homelab.octoprint.service" . }}
 ---
 {{ include "dev.pitlor.homelab.octoprint.deployment" . }}

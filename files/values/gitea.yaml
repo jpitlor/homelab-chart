@@ -7,9 +7,9 @@ gitea:
     "backup.velero.io/backup-volumes": data
   admin:
     username: jpitlor
-    email: jpitlor@gmail.com
-    password: {{ randAscii 20 }}
-    passwordMode: initialOnlyNoReset
+    email: "jpitlor@gmail.com"
+    password: {{ randAscii 20 | quote }}
+    passwordMode: keepUpdated
   metrics:
     enabled: true
     serviceMonitor:
@@ -20,7 +20,10 @@ gitea:
       key: {{ .Values.gitea.oidcClientId }}
       secret: {{ .Values.gitea.oidcClientSecret }}
       autoDiscoverUrl: https://auth.test.pitlor.dev/application/o/gitea/.well-known/openid-configuration
-      adminGroup: "Homelab Admin"
+      adminGroup: "gitea_admin"
+      restrictedGroup: "gitea_restricted"
+      groupClaimName: "gitea"
+      scopes: "profile email gitea"
   config:
     actions:
       ENABLED: true
@@ -29,6 +32,7 @@ gitea:
       ROOT_URL: https://code.test.pitlor.dev
       ENABLE_BASIC_AUTHENTICATION: "false"
       ENABLE_PASSWORD_SIGNIN_FORM: "false"
+      ENABLE_AUTO_REGISTRATION: "true"
     database:
       DB_TYPE: postgres
       HOST: {{ template "dev.pitlor.homelab.postgres-name" (list $ "gitea") }}

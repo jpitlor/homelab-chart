@@ -70,8 +70,6 @@ spec:
       - name: guacamole
         image: guacamole/guacamole:1.6.0
         env:
-        - name: EXTENSIONS
-          value: auth-totp
         - name: GUACD_HOSTNAME
           value: guacd
         - name: POSTGRESQL_DATABASE
@@ -84,6 +82,20 @@ spec:
           value: guacamole
         - name: POSTGRESQL_AUTO_CREATE_ACCOUNTS
           value: "true"
+        - name: OPENID_ENABLED
+          value: "true"
+        - name: OPENID_AUTHORIZATION_ENDPOINT
+          value: "https://auth.test.pitlor.dev/application/o/authorize/"
+        - name: OPENID_JWKS_ENDPOINT
+          value: "https://auth.test.pitlor.dev/application/o/guacamole/jwks/"
+        - name: OPENID_ISSUER
+          value: "https://auth.test.pitlor.dev/application/o/guacamole/"
+        - name: OPENID_CLIENT_ID
+          value: {{ .Values.guacamole.oidcClientId | quote }}
+        - name: OPENID_REDIRECT_URI
+          value: "https://rdp.test.pitlor.dev"
+        - name: EXTENSION_PRIORITY
+          value: "openid"
         volumeMounts:
         - name: drive
           mountPath: /drive

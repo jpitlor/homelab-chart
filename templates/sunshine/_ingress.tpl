@@ -24,6 +24,7 @@ metadata:
   name: sunshine-config-ingress
   namespace: sunshine
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: sunshine-authentik@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Remote Games
     gethomepage.dev/icon: sunshine.png

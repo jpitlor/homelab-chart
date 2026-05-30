@@ -3,6 +3,8 @@
 ---
 {{ include "dev.pitlor.homelab.sunshine.ingress" . }}
 ---
+{{ include "dev.pitlor.homelab.sunshine.middleware" . }}
+---
 {{ include "dev.pitlor.homelab.sunshine.servers-transport" . }}
 ---
 {{ include "dev.pitlor.homelab.sunshine.service" . }}
