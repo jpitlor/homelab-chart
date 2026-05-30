@@ -45,7 +45,7 @@ podAnnotations:
 initContainers:
   - name: install-hacs
     image: bash
-    command: ["bash", "-c", "cd /config && wget -O - https://get.hacs.xyz | bash -"]
+    command: ["bash", "-c", "cd /config && touch home-assistant.log && wget -O - https://get.hacs.xyz | bash -"]
     volumeMounts:
       - mountPath: /config
         name: homelab-chart-home-assistant
