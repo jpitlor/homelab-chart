@@ -70,7 +70,7 @@ configuration:
       use_x_forwarded_for: true
       trusted_proxies:
         - 10.42.0.0/16
-      frontend:
     
-    extra_module_url:
-      - /hacsfiles/custom-sidebar/custom-sidebar-plugin.js
+    frontend:
+      extra_module_url:
+        - /hacsfiles/custom-sidebar/custom-sidebar-plugin.js
