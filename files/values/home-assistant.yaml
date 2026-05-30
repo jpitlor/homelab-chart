@@ -54,7 +54,7 @@ additionalVolumes:
 initContainers:
   - name: install-hacs
     image: bash
-    command: ["bash", "-c", "/init-scripts/install_hacs.sh"]
+    command: ["bash", "-c", "chmod +x /init-scripts/install_hacs.sh && /init-scripts/install_hacs.sh"]
     volumeMounts:
       - mountPath: /config
         name: homelab-chart-home-assistant
