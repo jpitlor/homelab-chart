@@ -10,11 +10,11 @@ data:
     [ -f ".HA_VERSION" ]
     ha_not_started=$?
 
-    if [ $ha_not_started -neq 0 ]; then
+    if [ $ha_not_started -ne 0 ]; then
         touch .HA_VERSION
     fi
     wget -O - https://get.hacs.xyz | bash -
-    if [ $ha_not_started -neq 0 ]; then
+    if [ $ha_not_started -ne 0 ]; then
         rm .HA_VERSION
     fi
 {{ end }}
