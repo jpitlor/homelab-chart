@@ -196,11 +196,6 @@ home-assistant:
   repository: http://pajikos.github.io/home-assistant-helm-chart/
   enabled: true
 
-music-assistant-server:
-  version: 0.1.9
-  repository: http://lmatfy.github.io/charts
-  enabled: true
-
 jellyfin:
   version: 3.0.0
   repository: https://jellyfin.github.io/jellyfin-helm

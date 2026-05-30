@@ -1,0 +1,78 @@
+{{ if index .Values "home-assistant" "enabled" }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: music-assistant
+  namespace: home-assistant
+spec:
+  selector:
+    app: music-assistant
+  ports:
+    - protocol: TCP
+      port: 8095
+      targetPort: 8095
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: music-assistant
+  namespace: home-assistant
+spec:
+  # network mode host???
+  replicas: 1
+  selector:
+    matchLabels:
+      app: music-assistant
+  template:
+    metadata:
+      labels:
+        app: music-assistant
+      annotations:
+        "backup.velero.io/backup-volumes": music-assistant-data
+    spec:
+      securityContext:
+        appArmorProfile:
+          type: Unconfined
+      containers:
+        - name: music-assistant
+          image: ghcr.io/music-assistant/server:2.8.8
+          volumeMounts:
+            - name: music-assistant-data
+              mountPath: /data/
+            - name: music-assistant-media
+              mountPath: /media/
+      volumes:
+        - name: music-assistant-data
+          persistentVolumeClaim:
+            claimName: music-assistant-data-pvc
+        - name: music-assistant-media
+          persistentVolumeClaim:
+            claimName: music-assistant-media-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: music-assistant-data-pvc
+  namespace: home-assistant
+spec:
+  storageClassName: "ssd"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: music-assistant-media-pvc
+  namespace: home-assistant
+spec:
+  storageClassName: "media"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+{{ end }}

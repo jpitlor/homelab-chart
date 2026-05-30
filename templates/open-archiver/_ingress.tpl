@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: Mail archive
     gethomepage.dev/icon: sh-open-archiver.png
     gethomepage.dev/name: Open Archiver
-    gethomepage.dev/group: Apps
+    gethomepage.dev/group: Services
     gethomepage.dev/pod-selector: ""
 spec:
   ingressClassName: traefik
