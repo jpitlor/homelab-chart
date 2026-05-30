@@ -5,6 +5,12 @@ image:
 securityContext:
   privileged: true
 
+podSecurityContext:
+  runAsUser: 568
+  runAsGroup: 568
+  fsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+
 ingress:
   enabled: true
   className: traefik
