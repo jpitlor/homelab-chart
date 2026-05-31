@@ -33,6 +33,7 @@ gitea:
       ENABLE_BASIC_AUTHENTICATION: "false"
       ENABLE_PASSWORD_SIGNIN_FORM: "false"
       ENABLE_AUTO_REGISTRATION: "true"
+      DISABLE_REGISTRATION: "true"
     database:
       DB_TYPE: postgres
       HOST: {{ template "dev.pitlor.homelab.postgres-name" (list $ "gitea") }}
