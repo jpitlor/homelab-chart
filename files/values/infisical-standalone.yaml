@@ -1,16 +1,9 @@
+# https://github.com/Infisical/infisical/blob/main/helm-charts/infisical-standalone-postgres/values.yaml
 infisical:
   autoDatabaseSchemaMigration: true
   image:
     tag: "v0.149.0"
-  extraEnv:
-    - name: SMTP_HOST
-      value: send.email.svc.cluster.local
-    - name: SMTP_PORT
-      value: 25
-    - name: SMTP_FROM_ADDRESS
-      value: noreply@pitlor.dev
-    - name: SMTP_FROM_NAME
-      value: Infisical
+
 ingress:
   nginx:
     enabled: false
@@ -23,7 +16,9 @@ ingress:
     gethomepage.dev/name: Infisical
     gethomepage.dev/group: System Administration
     gethomepage.dev/pod-selector: ""
+
 redis:
   enabled: true
+
 postgresql:
   enabled: false
