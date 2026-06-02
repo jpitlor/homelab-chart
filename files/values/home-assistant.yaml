@@ -7,7 +7,7 @@ securityContext:
 
 podSecurityContext:
   runAsUser: 568
-  runAsGroup: 568
+  runAsGroup: 0
   fsGroup: 568
   fsGroupChangePolicy: "OnRootMismatch"
 
