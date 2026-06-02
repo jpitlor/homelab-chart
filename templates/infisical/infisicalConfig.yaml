@@ -11,7 +11,7 @@ stringData:
   SITE_URL: "https://vault.test.pitlor.dev"
   DB_CONNECTION_URI: postgresql://infisical-standalone:infisical-standalone@{{ template "dev.pitlor.homelab.postgres-name" (list $ "infisical-standalone") }}
   SMTP_HOST: send.email.svc.cluster.local
-  SMTP_PORT: 25
+  SMTP_PORT: "25"
   SMTP_FROM_ADDRESS: noreply@pitlor.dev
   SMTP_FROM_NAME: Infisical
 {{ end }}
