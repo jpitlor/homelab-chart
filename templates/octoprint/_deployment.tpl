@@ -25,9 +25,9 @@ spec:
         - name: init-octoprint
           image: mikefarah/yq:4.53.2
           command:
-            - "bash"
+            - "/bin/sh"
             - "-c"
-            - "touch /octoprint/octoprint/config.yaml && yq -i '.accessControl.autologinLocal = true | .accessControl.autologinAs = \"admin\" | .accessControl.localNetworks.[0] = \"0.0.0.0/0\"' /octoprint/octoprint/config.yaml"
+            - "mkdir -p /octoprint/octoprint && touch /octoprint/octoprint/config.yaml && yq -i '.accessControl.autologinLocal = true | .accessControl.autologinAs = \"admin\" | .accessControl.localNetworks.[0] = \"0.0.0.0/0\"' /octoprint/octoprint/config.yaml"
           volumeMounts:
             - name: config
               mountPath: /octoprint
