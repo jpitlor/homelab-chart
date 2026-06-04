@@ -23,7 +23,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi # TODO: This needs to be expanded
+      storage: 20Gi # TODO: This needs to be expanded
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -49,5 +49,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 20Gi
 {{- end -}}
