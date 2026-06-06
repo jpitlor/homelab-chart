@@ -62,6 +62,8 @@ spec:
           value: "false"
         - name: "SMTP_HOST"
           value: "send.email.svc.cluster.local"
+        - name: "SMTP_PORT"
+          value: "25"
         - name: "SMTP_AUTH_STRATEGY"
           value: "NONE"
         - name: "SMTP_FROM_EMAIL"
