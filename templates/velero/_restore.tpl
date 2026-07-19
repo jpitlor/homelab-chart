@@ -42,6 +42,7 @@ metadata:
     "helm.sh/hook-weight": "5"
 spec:
   itemOperationTimeout: 2h
+  allowPartiallyFailed: true
   scheduleName: pvc-daily-backup
   resourceModifier:
     kind: ConfigMap

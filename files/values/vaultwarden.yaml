@@ -3,6 +3,26 @@ image:
   tag: 1.34.3
 
 domain: https://passwords.test.pitlor.dev
+signupsAllowed: false
+invitationsAllowed: false
+timeZone: "America/New_York"
+
+smtp:
+  host: send.email.svc.local.cluster
+  from: noreply@pitlor.dev
+  fromName: Vaultwarden
+
+sso:
+  enabled: true
+  onlySSO: true
+  signupsMatchEmail: true
+  ignoreEmailVerification: true
+  authority: 
+  scopes: "openid profile email offline_access"
+  clientId:
+    value: "{{ .Values.authentik.oidcClientId }}"
+  clientSecret:
+    value: "{{ .Values.authentik.oidcClientSecret }}"
 
 podAnnotations:
   "backup.velero.io/backup-volumes": "vaultwarden-data,vaultwarden-attachments"
