@@ -42,7 +42,11 @@ metadata:
     "helm.sh/hook-weight": "5"
 spec:
   itemOperationTimeout: 2h
+  {{ if .Values.velero.backupName }}
+  backupName: {{ .Values.velero.backupName }}
+  {{ else }}
   scheduleName: pvc-daily-backup
+  {{ end }}
   resourceModifier:
     kind: ConfigMap
     name: restore-resource-modifier
