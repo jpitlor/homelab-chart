@@ -170,7 +170,7 @@ gitea:
         key: gitea
 
 vaultwarden:
-  version: 0.34.4
+  version: 0.43.1
   repository: https://guerzon.github.io/vaultwarden
   enabled: true
   postgres:

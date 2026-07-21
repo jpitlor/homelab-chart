@@ -1,6 +1,6 @@
 # https://github.com/guerzon/vaultwarden/blob/main/charts/vaultwarden/values.yaml
 image:
-  tag: 1.34.3
+  tag: 1.36.0
 
 domain: https://passwords.test.pitlor.dev
 signupsAllowed: false
@@ -8,7 +8,7 @@ invitationsAllowed: false
 timeZone: "America/New_York"
 
 smtp:
-  host: send.email.svc.local.cluster
+  host: send.email.svc.cluster.local
   from: noreply@pitlor.dev
   fromName: Vaultwarden
 
