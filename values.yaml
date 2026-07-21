@@ -187,6 +187,8 @@ authentik:
   version: 2025.12.3
   repository: https://charts.goauthentik.io
   enabled: true
+  oidcClientId: changeme
+  oidcClientSecret: changeme
   postgres:
     backupId: "2025-04-08"
     storageSize: "6Gi"
