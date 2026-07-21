@@ -20,9 +20,12 @@ sso:
   authority: 
   scopes: "openid profile email offline_access"
   clientId:
-    value: "{{ .Values.authentik.oidcClientId }}"
+    value: "{{ .Values.vaultwarden.oidcClientId }}"
   clientSecret:
-    value: "{{ .Values.authentik.oidcClientSecret }}"
+    value: "{{ .Values.vaultwarden.oidcClientSecret }}"
+
+adminToken:
+  value: "{{ .Values.vaultwarden.adminToken }}"
 
 podAnnotations:
   "backup.velero.io/backup-volumes": "vaultwarden-data,vaultwarden-attachments"
