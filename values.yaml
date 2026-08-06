@@ -223,3 +223,11 @@ portainer:
   enabled: false
   repository: https://portainer.github.io/k8s/
   version: 239.1.0
+
+donetick:
+  enabled: true
+  repository: https://rtomik.github.io/helm-charts
+  version: 1.0.6
+  jwtSecret: changeme
+  postgres:
+    backupId: "2025-04-08"

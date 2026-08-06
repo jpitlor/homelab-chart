@@ -1,0 +1,55 @@
+image:
+  tag: v
+
+config:
+  database:
+    type: "postgres"
+    host: {{ template "dev.pitlor.homelab.postgres-name" (list $ "donetick") }}
+    port: 5432
+    name: "donetick"
+    secrets:
+      existingSecret: "donetick-postgres-secret"
+      userKey: "username"
+      passwordKey: "password"
+
+  oauth2:
+    client_id: "{{ .Values.donetick.oidcClientId }}"
+    client_secret: "{{ .Values.donetick.oidcClientSecret }}"
+    auth_url: "https://auth.test.pitlor.dev/application/o/authorize/"
+    token_url: "https://auth.test.pitlor.dev/application/o/token/"
+    user_info_url: "https://auth.test.pitlor.dev/application/o/userinfo/"
+    redirect_url: "https://todo.test.pitlor.dev/auth/oauth2"
+
+  jwt:
+    secret: "{{ .Values.donetick.jwtSecret }}"
+
+  server:
+    cors_allow_origins:
+      - "https://todo.test.pitlor.dev"
+
+  features:
+    notifications: true
+    realtime: true
+    oauth: true
+    is_user_creation_disabled: true
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: DoneTick
+    gethomepage.dev/description: TODO Tracking
+    gethomepage.dev/icon: donetick The backlog items and describe like is there a blocker for it? If yes, what are the dependencies and requirements and information that is needed from the business in order to start to you know start working forward on these items and so like I put this all in an Excel document to send over after this call but this is kind of listing out each of the requirements what they need and then if they have a template for that requirement so you'll see for requirement fifty eight they have a specific template you would want you to fill out to provide more information I think this will help you with your prioritization because if it's something that's going to take a while for you to deliver what they're needing that could you know in play into like how soon you would want to do that what your resource availability to actually get this additional information so that it could play it prioritize for the next month so I'll share this after a call I just kind of wanted to show it to you real quick and the templates are across the bottom assigned to like whichever ID item they're related to and Joe I have one of these four model changes as well they actually provided specific templates and additional information that they're looking for and then just basically the dependencies for each of those scenarios does that helps you prioritize whether you want to work on next for everyone self recelle spreadsheets which like the latest green s in the jere boards black perfect where we can like to myself are trying to do at least internally of like queuing up pay this is what kids are talking about here's the stuff that they ask for where we haven't necessarily guided to the backward or micros that we provided in some that we want to review eternal we're just trying to do all that in a central place do that but in terms of like this I don't know if we ever build the template to like maintain that it's share documents or what where we have wheel as an example go down one we have this inger I don't know if we have a template for you to get this information we need to work with some pass elsewhere you know it's not a thousand emails we have made an excel spreadsheet and zero that's shared that cap again things like that and you know we go to go it's on this fifteen percent sent us to travel drivers out and have one of these for each of the items and attach it out to that item in gera so that when you go to look at it that information is there and you understand what you have to deliver why you have to deliver it and what it needs to be filled out of using data because the only one that's very realistic on email to you guys and they were it's okay this needs an action from you know you start a discussion on whatever taste we had results a template where it's ready to be sent to Charles Rock that way like we went to live and breezing so if you see any on this if there is me I use and the old number is going to be down I can understand what the three means of data so let's just take the design notes I can pull through what they're saying that we still have to deliver whether dependency was so star and then I can attach this template B for this item when you go to work on the site item and I can do that for each one of what is Charles R expecting us to answer for complete before we actually set it to do all you have to roll back to the Jada boom so go to that story and assign it back to me or run so then automatically you will get generated and we can take all of it does that make sense to I don't want to create a ton of work so every document I mean every comment you added it creates an audit everything you keep adding so comment or anything and just change that sign if you want me to review then change the name to me or assign it to a one and a one can take a look. So that way others, right? Like let's say Jim Karrigan's right we ask for something. Hey Jim, we need this headphone, tag him and it's aside to you we're not gonna move until you know you provide XYZ with the comment in there of what you're actually asking him to do and then you can assign it to him he'll get the email if it's like if we meet you know share we meet by by we weekly in Jim because I like Jim hasn't looked at this in three months he's the blocker at this point let's just ping Jim. Hey, can you go back in and then we'll so you can do that here eva in the comment just say accembled well this doesn't happen but so I don't know we want to start something a misweds so you can't explore sitting only to you save Mitchell gets an email I don't want to start with him you put this name automatically the email goes to him and say oh what is this and Michele is going to look open this Jra ticket and we can take a look so that's the way you can all specifically people and say are you there and if you find a person is not there let me know I can add them to J Up I ask a question on your I the board makes sense to me where I'm getting a little bit lost everything Charles River upgrades but like I mean so you can just go here and move it to list and so then it comes up a list for you no it it just brings up everything I don't know I got to look at everything it should bring only these twenty four items or whatever I have no idea can't we do like a custom Yeah so let me clean this up and Jo I'll make it easy for you if you want to go to somebody summary is another view it will give you a summary view of my thirty two hundred this is still right you just have to customize if you have to customize it but again the view varies so for me let may take a look why you are not getting so this is me if I have somebody see my summary is the forty seven icons that we are working thirty seven are updated five are completed yeah I have a filter but why is it maybe I'll clean that up and I will if you guys post it my bad I did not look at this view board a little bit more so just fucking read it just like honestly enjoy an example is three sustainalytics stuff like it's been out there for six years I don't think we have it more than a service on its analytics anymore like at least from our golden coffee process I'm not sure if there's a direct feed from Charles River or into Charles River but we don't send sustainalytics anymore from a guess the golden copy process we do Bloomberg Morning Star Ice and there are a chance that we get it through Charles River's Day and Rich's what I'm thinking it has to be through if we do it would be through their data enrichment if they would still get it or either that are still.png
+    gethomepage.dev/group: Apps
+    gethomepage.dev/pod-selector: ""
+  hosts:
+    - host: todo.pitlor.dev
+      paths:
+        - path: /
+          pathType: Prefix
+
+persistence:
+  enabled: true
+  storageClass: "ssd"
+  size: "5Gi"
