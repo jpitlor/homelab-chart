@@ -48,6 +48,9 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+  tls:
+    - hosts:
+        - todo.test.pitlor.dev
 
 persistence:
   enabled: true
