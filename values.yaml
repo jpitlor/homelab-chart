@@ -229,5 +229,7 @@ donetick:
   repository: https://rtomik.github.io/helm-charts
   version: 1.0.6
   jwtSecret: changeme
+  oidcClientId: changeme
+  oidcClientSecret: changeme
   postgres:
     backupId: "2025-04-08"

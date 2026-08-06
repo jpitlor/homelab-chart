@@ -1,5 +1,5 @@
 image:
-  tag: v
+  tag: v0.1.76
 
 config:
   database:
