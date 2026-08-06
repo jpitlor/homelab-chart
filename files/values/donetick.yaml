@@ -43,7 +43,7 @@ ingress:
     gethomepage.dev/icon: donetick.png
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: ""
   hosts:
     - host: todo.test.pitlor.dev
       paths:
