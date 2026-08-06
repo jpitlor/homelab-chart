@@ -1,3 +1,0 @@
-{{ if index .Values "donetick" "enabled" }}
-{{ include "dev.pitlor.homelab.donetick.servers-transport" . }}
-{{ end }}

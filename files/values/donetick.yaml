@@ -56,8 +56,3 @@ persistence:
   enabled: true
   storageClass: "ssd"
   size: "5Gi"
-
-service:
-  annotations:
-    traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: donetick-insecure-transport@kubernetescrd
