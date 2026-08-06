@@ -34,22 +34,7 @@ config:
     is_user_creation_disabled: true
 
 ingress:
-  enabled: true
-  className: traefik
-  annotations:
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/name: DoneTick
-    gethomepage.dev/description: TODO Tracking
-    gethomepage.dev/icon: donetick.png
-    gethomepage.dev/group: Apps
-    gethomepage.dev/pod-selector: ""
-    traefik.ingress.kubernetes.io/router.entrypoints: ""
-  hosts:
-    - host: todo.test.pitlor.dev
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []
+  enabled: false # Bugs out, so it is custom
 
 persistence:
   enabled: true
