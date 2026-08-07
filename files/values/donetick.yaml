@@ -19,6 +19,7 @@ config:
     token_url: "https://auth.test.pitlor.dev/application/o/token/"
     user_info_url: "https://auth.test.pitlor.dev/application/o/userinfo/"
     redirect_url: "https://todo.test.pitlor.dev/auth/oauth2"
+    name: "Authentik"
 
   jwt:
     secret: "{{ .Values.donetick.jwtSecret }}"
@@ -26,12 +27,21 @@ config:
   server:
     cors_allow_origins:
       - "https://todo.test.pitlor.dev"
+      - "https://localhost"
+      - "capacitor://localhost"
+
+  email:
+    host: send.email.svc.cluster.local
+    port: 25
+    email: noreply@pitlor.dev
+    appHost: todo.test.pitlor.dev
 
   features:
     notifications: true
     realtime: true
     oauth: true
-    is_user_creation_disabled: true
+
+  is_user_creation_disabled: true
 
 ingress:
   enabled: false # Bugs out, so it is custom
