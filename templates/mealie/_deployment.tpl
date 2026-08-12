@@ -29,7 +29,7 @@ spec:
         - name: TZ
           value: America/New_York
         - name: BASE_URL
-          value: https://recipes.test.pitlor.dev
+          value: https://recipes.pitlor.dev
         - name: DB_ENGINE
           value: postgres
         - name: POSTGRES_USER
@@ -47,7 +47,7 @@ spec:
         - name: OIDC_SIGNUP_ENABLED
           value: "true"
         - name: OIDC_CONFIGURATION_URL
-          value: https://auth.test.pitlor.dev/application/o/mealie/.well-known/openid-configuration
+          value: https://auth.pitlor.dev/application/o/mealie/.well-known/openid-configuration
         - name: OIDC_CLIENT_ID
           value: {{ .Values.mealie.oidcClientId }}
         - name: OIDC_CLIENT_SECRET

@@ -13,11 +13,11 @@ ingress:
     gethomepage.dev/group: Services
     gethomepage.dev/pod-selector: ""
   hosts:
-    - host: tweet.test.pitlor.dev
+    - host: tweet.pitlor.dev
       paths:
         - path: /
           pathType: Prefix
-    - host: "*.tweet.test.pitlor.dev"
+    - host: "*.tweet.pitlor.dev"
       paths:
         - path: /
           pathType: Prefix
@@ -27,7 +27,7 @@ podAnnotations:
 
 pds:
   config:
-    hostname: tweet.test.pitlor.dev
+    hostname: tweet.pitlor.dev
     secrets:
       existingSecret: bluesky-secrets
     pdsEmailFromAddress: "noreply@pitlor.dev"

@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: mail-archive.test.pitlor.dev
+  - host: mail-archive.pitlor.dev
     http:
       paths:
       - path: /

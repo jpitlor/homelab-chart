@@ -6,11 +6,11 @@ env:
   TZ: "America/New_York"
   HBOX_DATABASE_DRIVER: postgres
   HBOX_OIDC_ENABLED: true
-  HBOX_OIDC_ISSUER_URL: https://auth.test.pitlor.dev/application/o/homebox/
+  HBOX_OIDC_ISSUER_URL: https://auth.pitlor.dev/application/o/homebox/
   HBOX_OIDC_CLIENT_ID: {{ .Values.homebox.oidcClientId }}
   HBOX_OIDC_CLIENT_SECRET: {{ .Values.homebox.oidcClientSecret }}
   HBOX_OPTIONS_TRUST_PROXY: true
-  HBOX_OPTIONS_HOSTNAME: inventory.test.pitlor.dev
+  HBOX_OPTIONS_HOSTNAME: inventory.pitlor.dev
   HBOX_OPTIONS_ALLOW_LOCAL_LOGIN: false
 
 podAnnotations:
@@ -38,7 +38,7 @@ ingress:
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
   hosts:
-    - host: inventory.test.pitlor.dev
+    - host: inventory.pitlor.dev
       paths:
         - path: /
           pathType: Prefix

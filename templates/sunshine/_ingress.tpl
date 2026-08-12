@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: games.test.pitlor.dev
+  - host: games.pitlor.dev
     http:
       paths:
       - path: /
@@ -34,7 +34,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: games-config.test.pitlor.dev
+  - host: games-config.pitlor.dev
     http:
       paths:
       - path: /

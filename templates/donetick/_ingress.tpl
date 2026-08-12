@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: todo.test.pitlor.dev
+  - host: todo.pitlor.dev
     http:
       paths:
       - path: /

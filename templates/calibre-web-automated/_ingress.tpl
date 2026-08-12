@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: books.test.pitlor.dev
+  - host: books.pitlor.dev
     http:
       paths:
       - path: /
@@ -33,7 +33,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: books-library.test.pitlor.dev
+  - host: books-library.pitlor.dev
     http:
       paths:
       - path: /

@@ -14,7 +14,7 @@ server:
       className: "traefik"
       enabled: true
       hosts:
-        - host: photos.test.pitlor.dev
+        - host: photos.pitlor.dev
           paths:
             - path: /
               pathType: Prefix

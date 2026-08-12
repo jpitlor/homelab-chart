@@ -15,10 +15,10 @@ config:
   oauth2:
     client_id: "{{ .Values.donetick.oidcClientId }}"
     client_secret: "{{ .Values.donetick.oidcClientSecret }}"
-    auth_url: "https://auth.test.pitlor.dev/application/o/authorize/"
-    token_url: "https://auth.test.pitlor.dev/application/o/token/"
-    user_info_url: "https://auth.test.pitlor.dev/application/o/userinfo/"
-    redirect_url: "https://todo.test.pitlor.dev/auth/oauth2"
+    auth_url: "https://auth.pitlor.dev/application/o/authorize/"
+    token_url: "https://auth.pitlor.dev/application/o/token/"
+    user_info_url: "https://auth.pitlor.dev/application/o/userinfo/"
+    redirect_url: "https://todo.pitlor.dev/auth/oauth2"
     name: "Authentik"
 
   jwt:
@@ -26,7 +26,7 @@ config:
 
   server:
     cors_allow_origins:
-      - "https://todo.test.pitlor.dev"
+      - "https://todo.pitlor.dev"
       - "https://localhost"
       - "capacitor://localhost"
 
@@ -34,7 +34,7 @@ config:
     host: send.email.svc.cluster.local
     port: 25
     email: noreply@pitlor.dev
-    appHost: todo.test.pitlor.dev
+    appHost: todo.pitlor.dev
 
   features:
     notifications: true

@@ -17,7 +17,7 @@ login:
   openid:
     enforce: true
     providerName: "Authentik"
-    discoveryUrl: "https://auth.test.pitlor.dev/application/o/actual-budget/.well-known/openid-configuration"
+    discoveryUrl: "https://auth.pitlor.dev/application/o/actual-budget/.well-known/openid-configuration"
     clientId: {{ .Values.actualbudget.oidcClientId }}
     clientSecret: {{ .Values.actualbudget.oidcClientSecret }}
 
@@ -32,7 +32,7 @@ ingress:
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
   hosts:
-    - host: budget.test.pitlor.dev
+    - host: budget.pitlor.dev
       paths:
         - path: /
           pathType: Prefix

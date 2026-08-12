@@ -50,6 +50,6 @@ server:
       gethomepage.dev/group: System Administration
       gethomepage.dev/pod-selector: ""
     hosts:
-      - auth.test.pitlor.dev
+      - auth.pitlor.dev
 postgresql:
   enabled: false

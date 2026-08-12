@@ -46,7 +46,7 @@ ingress:
     gethomepage.dev/pod-selector: ""
 
 nextcloud:
-  host: files.test.pitlor.dev
+  host: files.pitlor.dev
 
 startupProbe:
   enabled: true

@@ -25,7 +25,7 @@ ingress:
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
   hosts:
-    - host: media.test.pitlor.dev
+    - host: media.pitlor.dev
       paths:
         - path: /
           pathType: Prefix

@@ -2,7 +2,7 @@
 image:
   tag: 1.36.0
 
-domain: https://passwords.test.pitlor.dev
+domain: https://passwords.pitlor.dev
 signupsAllowed: false
 invitationsAllowed: false
 timeZone: "America/New_York"
@@ -18,7 +18,7 @@ sso:
   onlySSO: true
   signupsMatchEmail: true
   ignoreEmailVerification: true
-  authority: "https://auth.test.pitlor.dev/application/o/vaultwarden/"
+  authority: "https://auth.pitlor.dev/application/o/vaultwarden/"
   scopes: "openid profile email offline_access"
   clientId:
     value: "{{ .Values.vaultwarden.oidcClientId }}"
@@ -54,7 +54,7 @@ database:
 ingress:
   class: "traefik"
   enabled: true
-  hostname: passwords.test.pitlor.dev
+  hostname: passwords.pitlor.dev
   additionalAnnotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Passwords

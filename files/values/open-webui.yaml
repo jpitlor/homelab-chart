@@ -20,7 +20,7 @@ sso:
     enabled: true
     clientId: {{ (get .Values "open-webui").oidcClientId }}
     clientSecret:  {{ (get .Values "open-webui").oidcClientSecret }}
-    providerUrl: https://auth.test.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
+    providerUrl: https://auth.pitlor.dev/application/o/open-web-ui/.well-known/openid-configuration
 
 ollama:
   enabled: true
@@ -52,7 +52,7 @@ podAnnotations:
 
 ingress:
   enabled: true
-  host: ai.test.pitlor.dev
+  host: ai.pitlor.dev
   annotations:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Generative AI

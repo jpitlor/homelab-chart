@@ -19,7 +19,7 @@ gitea:
       provider: openidConnect
       key: {{ .Values.gitea.oidcClientId }}
       secret: {{ .Values.gitea.oidcClientSecret }}
-      autoDiscoverUrl: https://auth.test.pitlor.dev/application/o/gitea/.well-known/openid-configuration
+      autoDiscoverUrl: https://auth.pitlor.dev/application/o/gitea/.well-known/openid-configuration
       adminGroup: "gitea_admin"
       restrictedGroup: "gitea_restricted"
       groupClaimName: "gitea"
@@ -29,7 +29,7 @@ gitea:
       ENABLED: true
     server:
       ENABLE_PPROF: true
-      ROOT_URL: https://code.test.pitlor.dev
+      ROOT_URL: https://code.pitlor.dev
     oauth2_client:
       ENABLE_AUTO_REGISTRATION: "true"
     service:
@@ -66,7 +66,7 @@ ingress:
   nginx:
     enabled: false
   hosts:
-    - host: code.test.pitlor.dev
+    - host: code.pitlor.dev
       paths:
         - path: /
           pathType: Prefix

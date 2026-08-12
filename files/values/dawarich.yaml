@@ -9,7 +9,7 @@ env:
 
 dawarich:
   hosts:
-    - location.test.pitlor.dev
+    - location.pitlor.dev
 
 oidc:
   enabled: true
@@ -18,8 +18,8 @@ oidc:
     value: {{ .Values.dawarich.oidcClientId }}
   clientSecret:
     value: {{ .Values.dawarich.oidcClientSecret }}
-  issuer: https://auth.test.pitlor.dev/application/o/dawarich/
-  redirectUri: https://location.test.pitlor.dev/users/auth/openid_connect/callback
+  issuer: https://auth.pitlor.dev/application/o/dawarich/
+  redirectUri: https://location.pitlor.dev/users/auth/openid_connect/callback
   autoRegister: true
   allowEmailPasswordRegistration: false
 
@@ -53,7 +53,7 @@ ingress:
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
   hosts:
-    - host: location.test.pitlor.dev
+    - host: location.pitlor.dev
       paths:
         - path: /
           pathType: Prefix

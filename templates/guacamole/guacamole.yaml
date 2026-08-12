@@ -15,7 +15,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: rdp.test.pitlor.dev
+  - host: rdp.pitlor.dev
     http:
       paths:
       - path: /
@@ -85,15 +85,15 @@ spec:
         - name: OPENID_ENABLED
           value: "true"
         - name: OPENID_AUTHORIZATION_ENDPOINT
-          value: "https://auth.test.pitlor.dev/application/o/authorize/"
+          value: "https://auth.pitlor.dev/application/o/authorize/"
         - name: OPENID_JWKS_ENDPOINT
-          value: "https://auth.test.pitlor.dev/application/o/guacamole/jwks/"
+          value: "https://auth.pitlor.dev/application/o/guacamole/jwks/"
         - name: OPENID_ISSUER
-          value: "https://auth.test.pitlor.dev/application/o/guacamole/"
+          value: "https://auth.pitlor.dev/application/o/guacamole/"
         - name: OPENID_CLIENT_ID
           value: {{ .Values.guacamole.oidcClientId | quote }}
         - name: OPENID_REDIRECT_URI
-          value: "https://rdp.test.pitlor.dev"
+          value: "https://rdp.pitlor.dev"
         - name: EXTENSION_PRIORITY
           value: "openid"
         volumeMounts:

@@ -15,7 +15,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: 3dprinter.test.pitlor.dev
+  - host: 3dprinter.pitlor.dev
     http:
       paths:
       - path: /

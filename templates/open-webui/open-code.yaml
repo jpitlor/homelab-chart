@@ -14,7 +14,7 @@
 # spec:
 #   ingressClassName: traefik
 #   rules:
-#   - host: ai-code.test.pitlor.dev
+#   - host: ai-code.pitlor.dev
 #     http:
 #       paths:
 #       - path: /
@@ -64,5 +64,5 @@
 #             - /bin/sh
 #             - -c
 #             - |
-#               opencode server --cors https://ai-code.test.pitlor.dev
+#               opencode server --cors https://ai-code.pitlor.dev
 # {{ end }}

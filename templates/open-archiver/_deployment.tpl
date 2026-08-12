@@ -26,11 +26,11 @@ spec:
             - name: OIDC_CLIENT_SECRET
               value: {{ index .Values "open-archiver" "oidcClientSecret" }}
             - name: COOKIE_DOMAIN
-              value: mail-archive.test.pitlor.dev
+              value: mail-archive.pitlor.dev
             - name: OIDC_REDIRECT_URL
-              value: https://mail-archive.test.pitlor.dev/auth/callback
+              value: https://mail-archive.pitlor.dev/auth/callback
             - name: OIDC_PROVIDER_URL
-              value: https://auth.test.pitlor.dev/application/o/open-archiver/
+              value: https://auth.pitlor.dev/application/o/open-archiver/
             - name: TARGET_ENDPOINT_URL
               value: http://localhost:3000
             - name: JWT_SIGNING_KEY
@@ -49,9 +49,9 @@ spec:
             - name: PORT_FRONTEND
               value: "3000"
             - name: APP_URL
-              value: https://email-archive.test.pitlor.dev
+              value: https://email-archive.pitlor.dev
             - name: ORIGIN
-              value: https://email-archive.test.pitlor.dev
+              value: https://email-archive.pitlor.dev
             - name: INGESTION_WORKER_CONCURRENCY
               value: "5"
             - name: POSTGRES_DB

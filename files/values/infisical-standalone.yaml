@@ -7,7 +7,7 @@ infisical:
 ingress:
   nginx:
     enabled: false
-  hostName: vault.test.pitlor.dev
+  hostName: vault.pitlor.dev
   ingressClassName: traefik
   annotations:
     gethomepage.dev/enabled: "true"

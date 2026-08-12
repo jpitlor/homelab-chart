@@ -13,7 +13,7 @@ externalApplications:
     description: Messaging for iPhone users
     icon: apple.png
     group: Services
-    listenToHost: imessage.test.pitlor.dev
+    listenToHost: imessage.pitlor.dev
     forwardToIp: 192.168.0.165
     forwardToPort: 1234
 

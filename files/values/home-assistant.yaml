@@ -22,7 +22,7 @@ ingress:
     gethomepage.dev/group: Apps
     gethomepage.dev/pod-selector: ""
   hosts:
-    - host: iot.test.pitlor.dev
+    - host: iot.pitlor.dev
       paths:
         - path: /
           pathType: Prefix
