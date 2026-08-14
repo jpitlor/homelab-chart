@@ -8,7 +8,7 @@ spec:
   storageClassName: "ssd-large"
   resources:
     requests:
-      storage: 30Gi # This needs to be expanded by a lot when possible
+      storage: 300Gi
   accessModes:
     - ReadWriteOnce
 ---
@@ -21,7 +21,7 @@ spec:
   storageClassName: "ssd"
   resources:
     requests:
-      storage: 1Gi
+      storage: 2Gi
   accessModes:
     - ReadWriteOnce
 {{- end -}}
