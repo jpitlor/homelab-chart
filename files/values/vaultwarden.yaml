@@ -1,6 +1,6 @@
 # https://github.com/guerzon/vaultwarden/blob/main/charts/vaultwarden/values.yaml
 image:
-  tag: 1.36.0
+  tag: 1.37.0
 
 domain: https://passwords.pitlor.dev
 signupsAllowed: false
