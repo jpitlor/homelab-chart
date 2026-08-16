@@ -11,14 +11,14 @@ spec:
   selector:
     app: sunshine
   ports:
-    {{- range (concat (untilStep 47984 47991 1) (list 48010)) }}
+    {{- range (list 47984 47989 48010) }}
     - protocol: TCP
       name: sunshine-tcp-{{ . }}
       port: {{ . }}
       targetPort: {{ . }}
       nodePort: {{ . }}
     {{ end }}
-    {{- range (concat (untilStep 47998 48001 1) (list 48010)) }}
+    {{- range (list 47998 47999 48002 48010) }}
     - protocol: UDP
       name: sunshine-udp-{{ . }}
       port: {{ . }}
