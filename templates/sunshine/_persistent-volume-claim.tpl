@@ -21,7 +21,7 @@ spec:
   storageClassName: "ssd"
   resources:
     requests:
-      storage: 2Gi
+      storage: 20Gi
   accessModes:
     - ReadWriteOnce
 {{- end -}}
