@@ -77,3 +77,8 @@ ingress:
     gethomepage.dev/name: Gitea
     gethomepage.dev/group: Software Development
     gethomepage.dev/pod-selector: ""
+
+service:
+  ssh:
+    type: LoadBalancer
+    port: 2222
